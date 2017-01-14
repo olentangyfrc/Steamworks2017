@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
        
         
         //this.autonomousCommand = new autonomousCommandGroup();
-        table = NetworkTable.getTable("GRIP/data");
+        //table = NetworkTable.getTable("GRIP/data");				//Network tables to pull VA data to roborio. Not currently in use
     }
 
 

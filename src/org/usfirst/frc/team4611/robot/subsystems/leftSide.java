@@ -14,22 +14,17 @@ public class leftSide extends Subsystem {
     private Victor backL;
 
     public leftSide() {
-        this.frontL = new Victor(RobotMap.frontLeftWheel);
-        this.backL = new Victor(RobotMap.backLeftWheel);
+        this.frontL = new Victor(RobotMap.frontLeftWheel);		//Tell the robot that there's a motor there, and name it
+        this.backL = new Victor(RobotMap.backLeftWheel);		//Tell the robot that there's a motor there, and name it
     }
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void move(double speed) {
-        //speed = Math.signum(speed) * (Math.abs(speed) - .1);
-        this.frontL.set(speed);
+        this.frontL.set(speed);		//Each side has 2 motors, so we've gotta set them individually
         this.backL.set(speed);
     }
 
-    public void moveSingle(double speed) {
-        this.frontL.set(speed);
-        this.backL.set(speed);
-    }
 
     @Override
     public void initDefaultCommand() {

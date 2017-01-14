@@ -11,21 +11,17 @@ public class rightSide extends Subsystem {
     private Victor backR;
 
     public rightSide() {
-        this.frontR = new Victor(RobotMap.frontRightWheel);
-        this.backR = new Victor(RobotMap.backRightWheel);
+        this.frontR = new Victor(RobotMap.frontRightWheel);			//Tell the robot that there's a motor there, and name it
+        this.backR = new Victor(RobotMap.backRightWheel);			//Tell the robot that there's a motor there, and name it
     }
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void move(double speed) {
-        this.frontR.set(-speed);
-        this.backR.set(-speed);
+        this.frontR.set(-speed);			//Each side has 2 motors, so we've gotta set them individually
+        this.backR.set(-speed);				//The geartrain requires this side to run backwards, hence the negative
     }
 
-    public void moveSingle(double speed) {
-        this.frontR.set(-speed);
-        this.backR.set(speed);
-    }
 
     @Override
     public void initDefaultCommand() {

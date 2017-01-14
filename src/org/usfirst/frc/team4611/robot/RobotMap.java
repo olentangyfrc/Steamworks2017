@@ -7,10 +7,9 @@ package org.usfirst.frc.team4611.robot;
  * floating around.
  */
 public class RobotMap {
-    //Drive train ports
-    public static int frontLeftWheel = 3;
-    public static int backLeftWheel = 2;
+    //Drive motor ports. They're numbered clockwise, starting with zero at the front right.
     public static int frontRightWheel = 0;
     public static int backRightWheel = 1;
-
+    public static int backLeftWheel = 2;
+    public static int frontLeftWheel = 3;
 }

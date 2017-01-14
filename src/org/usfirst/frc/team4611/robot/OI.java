@@ -9,33 +9,23 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-            //INSTANTIATING JOYSTICKS AND BUTTONS:
+    //INSTANTIATING JOYSTICKS AND BUTTONS
 
-    //Driver Station joysticks
+    //Instantiate Joysticks on ports 0 and 1.
     public Joystick leftJoy = new Joystick(0);
     public Joystick rightJoy = new Joystick(1);
     
     
     public OI() {
-        //Runs the wheels backwards while the wheel shooter is down WHILEHELD
-        
-     
 
-        //this.lowerArm.whenPressed(new ArmAuto(false));
-        //this.raiseArm.whenPressed(new ArmAuto(true));
-        //this.reverse.whenPressed(new ToggleCommand());
-        //new ShooterWheelsMove(RobotMap.feedingWheelShooterSpeed));//not sure if this will work
-        //this.combineLoading.whenPressed(new FeedingPosition()); //not sure if this will work
-        //wheelShoot.whenPressed(new WheelShoot());
-        //wheelReverse.whileHeld(new WheelReverse());
     }
 
-    public double filter(double raw) //used to cut interference
+    public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
     {
         if (Math.abs(raw) < .15) {
-            return 0;
+            return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  raw * 0.7;
+            return  raw * 0.7;		//Cut power output down to 70%, to make drive happy
         }
     }
 
