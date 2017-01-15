@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,7 +32,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
-
+    public UltrasonicRange ultra;
    
     public static Preferences prefs;
     Command autonomousCommand;
@@ -59,7 +60,7 @@ public class Robot extends IterativeRobot {
 
         
         this.chooser = new SendableChooser();
-       
+        
         
         //this.autonomousCommand = new autonomousCommandGroup();
         //table = NetworkTable.getTable("GRIP/data");				//Network tables to pull VA data to roborio. Not currently in use
@@ -118,7 +119,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (this.autonomousCommand != null) {
             this.autonomousCommand.cancel();
-        }
+            }
+        ultra = new UltrasonicRange();
 
     }
 
@@ -129,6 +131,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         //LiveWindow.run();
+        ultra.ultrasonicMeasurement();
     }
 
     /**
