@@ -16,9 +16,11 @@ public class UltrasonicRange  {
 	
 
 	public int raw_range;
+	public double raw_rangeVoltage;
 	public static AnalogInput ultrasonicAnalog = new AnalogInput(0);
 	public double suppliedVolt = 5;
-	public double voltsPerInch;
+	public double voltsPerInch = suppliedVolt / 512;
+	public double rangeInches;
 	
     /*public void Init() 
     {
@@ -30,11 +32,19 @@ public class UltrasonicRange  {
     public void ultrasonicMeasurement() 
     {
     	 // reads the range on the ultrasonic sensor
-    	voltsPerInch = suppliedVolt / 512; 
-    	raw_range = ultrasonicAnalog.getValue();
+    	ultrasonicAnalog.setOversampleBits(4);
+    	ultrasonicAnalog.setAverageBits(2);
+    	
+    	raw_rangeVoltage = ultrasonicAnalog.getAverageVoltage();
+    	raw_range = ultrasonicAnalog.getAverageValue();
+    	
+    	rangeInches = raw_rangeVoltage / voltsPerInch;
+    	
     	
     	//double rangeInInches = raw_range / voltsPerInch;
-    	SmartDashboard.putNumber("Ultrasonic", raw_range);
+    	SmartDashboard.putNumber("Raw value", raw_range);
+    	SmartDashboard.putNumber("Voltage", raw_rangeVoltage);
+    	SmartDashboard.putNumber("Inches", rangeInches);
     	System.out.println(raw_range);
     	
     }
