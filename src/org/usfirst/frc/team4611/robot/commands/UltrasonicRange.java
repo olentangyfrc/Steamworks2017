@@ -2,11 +2,8 @@
 
 package org.usfirst.frc.team4611.robot.commands;
 import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.SampleRobot;
-import edu.wpi.first.wpilibj.SensorBase;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.smartdashboard.*;
+
+import edu.wpi.first.wpilibj.smartdashboard.*; 
 
 
 
@@ -15,10 +12,11 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 public class UltrasonicRange  {
 	
 
-	public int raw_range;
-	public static AnalogInput ultrasonicAnalog = new AnalogInput(0);
+	//public double raw_range;
+	public static AnalogInput ultrasonicAnalog = new AnalogInput(3); //port number
+	
 	public double suppliedVolt = 5;
-	public double voltsPerInch;
+	public double voltsPerInch = suppliedVolt / 512;
 	
     /*public void Init() 
     {
@@ -26,16 +24,35 @@ public class UltrasonicRange  {
     	ultra.startLiveWindowMode();
     	   	
     }*/
-
+	public UltrasonicRange()
+	{
+		ultrasonicAnalog.setOversampleBits(7);
+		ultrasonicAnalog.setAverageBits(5);
+	}
     public void ultrasonicMeasurement() 
     {
     	 // reads the range on the ultrasonic sensor
-    	voltsPerInch = suppliedVolt / 512; 
-    	raw_range = ultrasonicAnalog.getValue();
+ 
+    	double raw_rangeVoltage = ultrasonicAnalog.getVoltage();
+    	int raw_rangeValue = ultrasonicAnalog.getValue();
+    	double averageVoltage = ultrasonicAnalog.getAverageVoltage();
+    	double averageValue = ultrasonicAnalog.getAverageValue();
     	
-    	//double rangeInInches = raw_range / voltsPerInch;
-    	SmartDashboard.putNumber("Ultrasonic", raw_range);
-    	System.out.println(raw_range);
+    	double rangeInInchesA = averageVoltage / voltsPerInch;
+    	double rangeInInchesB = averageVoltage * voltsPerInch;
+    	double rangeInInchesC = 39.587242 * (averageVoltage) + 1.049719;
+    	
+    	//SmartDashboard.putNumber("Ultrasonic", rangeInInches);
+    	
+    	SmartDashboard.putNumber("UltraSonicVoltage", raw_rangeVoltage);
+    	SmartDashboard.putNumber("UltrasonicValue", raw_rangeValue);
+    	SmartDashboard.putNumber("UltraSonicVoltageAverage", averageVoltage);
+    	SmartDashboard.putNumber("UltrasonicValueAverage", averageValue);
+    	SmartDashboard.putNumber("Max botix", rangeInInchesA);
+    	SmartDashboard.putNumber("Max botix, but with mult", rangeInInchesB);
+    	SmartDashboard.putNumber("With our data", rangeInInchesC);
+    	
+    	//System.out.println(raw_);
     	
     }
     
