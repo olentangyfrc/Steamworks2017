@@ -43,8 +43,13 @@ public class PressureSense
 		exampleAnalog.getAccumulatorOutput(result);
 		count = result.count;//.count()?
 		value = result.value;//.value()?
-		SmartDashboard.putNumber("Pressure", value);//SmartDashboard.putNumber("Pressure", exampleAnalog.getAccumulatorOutput(result));
-
+		SmartDashboard.putNumber("Pressure Raw", raw);
+		SmartDashboard.putNumber("Pressure volts", volts);
+		SmartDashboard.putNumber("Pressure averageRaw", averageRaw);
+		SmartDashboard.putNumber("Pressure averageVolts", averageVolts);
+		SmartDashboard.putNumber("Accumulator count", count);
+		SmartDashboard.putNumber("Accumulator value", value);
+		
 }
 
 }
