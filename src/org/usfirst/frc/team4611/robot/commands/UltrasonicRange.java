@@ -29,7 +29,7 @@ public class UltrasonicRange  {
     }*/
 	public UltrasonicRange()
 	{
-		ultrasonicAnalog.setOversampleBits(7);
+		ultrasonicAnalog.setOversampleBits(8);
 		ultrasonicAnalog.setAverageBits(5);
 	}
     public void ultrasonicMeasurement() 

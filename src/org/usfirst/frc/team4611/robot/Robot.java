@@ -3,8 +3,8 @@ package org.usfirst.frc.team4611.robot;
 
 
 
-import org.usfirst.frc.team4611.robot.subsystems.ButtonOLS;
-import org.usfirst.frc.team4611.robot.subsystems.Motor;
+//import org.usfirst.frc.team4611.robot.subsystems.ButtonOLS;
+//import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
@@ -36,8 +36,8 @@ public class Robot extends IterativeRobot {
     public static rightSide rightS = new rightSide();
     public UltrasonicRange ultra;
     
-    public static Motor m = new Motor();
-	public static ButtonOLS n = new ButtonOLS();
+    //public static Motor m = new Motor();
+	//public static ButtonOLS n = new ButtonOLS();
 	public static boolean dir = false;
    
     public static Preferences prefs;
