@@ -36,41 +36,27 @@ public class UltrasonicRange  {
     {
     	 // reads the range on the ultrasonic sensor
  
-    	double raw_rangeVoltage = ultrasonicAnalog.getVoltage();
-    	int raw_rangeValue = ultrasonicAnalog.getValue();
+    	//double raw_rangeVoltage = ultrasonicAnalog.getVoltage();
+    	//int raw_rangeValue = ultrasonicAnalog.getValue();
     	double averageVoltage = ultrasonicAnalog.getAverageVoltage();
-    	double averageValue = ultrasonicAnalog.getAverageValue();
+    	//double averageValue = ultrasonicAnalog.getAverageValue();
     	
-    	double rangeInInchesA = averageVoltage / voltsPerInch;
-    	double rangeInInchesB = averageVoltage * voltsPerInch;
-    	double rangeInInchesC = 39.587242 * (averageVoltage) + 1.049719;
+    	//double rangeInInchesA = averageVoltage / voltsPerInch;
+    	//double rangeInInchesB = averageVoltage * voltsPerInch;
+    	double rangeInInches = 39.587242 * (averageVoltage) + 1.049719;
+    	double roundedInches = rangeInInches = .5;
+    	
     	
     	//SmartDashboard.putNumber("Ultrasonic", rangeInInches);
     	
-    	SmartDashboard.putNumber("UltraSonicVoltage", raw_rangeVoltage);
-    	SmartDashboard.putNumber("UltrasonicValue", raw_rangeValue);
-    	SmartDashboard.putNumber("UltraSonicVoltageAverage", averageVoltage);
-    	SmartDashboard.putNumber("UltrasonicValueAverage", averageValue);
-    	SmartDashboard.putNumber("Max botix", rangeInInchesA);
-    	SmartDashboard.putNumber("Max botix, but with mult", rangeInInchesB);
-    	SmartDashboard.putNumber("With our data", rangeInInchesC);
+    	//SmartDashboard.putNumber("UltraSonicVoltage", raw_rangeVoltage);
+    	//SmartDashboard.putNumber("UltrasonicValue", raw_rangeValue);
+    	//SmartDashboard.putNumber("UltraSonicVoltageAverage", averageVoltage);
+    	//SmartDashboard.putNumber("UltrasonicValueAverage", averageValue);
+    	//SmartDashboard.putNumber("Max botix", rangeInInchesA);
+    	//SmartDashboard.putNumber("Max botix, but with mult", rangeInInchesB);
+    	SmartDashboard.putNumber("Ultrasonic Range", (int)roundedInches);
     	
-    	//System.out.println(raw_);
-    	/*ultrasonicAnalog.setOversampleBits(4);
-    	ultrasonicAnalog.setAverageBits(2);
-    	
-    	raw_rangeVoltage = ultrasonicAnalog.getAverageVoltage();
-    	raw_range = ultrasonicAnalog.getAverageValue();
-    	
-    	rangeInches = raw_rangeVoltage / voltsPerInch;
-    	
-    	
-    	//double rangeInInches = raw_range / voltsPerInch;
-    	SmartDashboard.putNumber("Raw value", raw_range);
-    	SmartDashboard.putNumber("Voltage", raw_rangeVoltage);
-    	SmartDashboard.putNumber("Inches", rangeInches);
-    	System.out.println(raw_range);
-    	*/
     }
     
 

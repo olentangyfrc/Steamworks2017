@@ -1,9 +1,9 @@
 package org.usfirst.frc.team4611.robot;
 
 
-import org.usfirst.frc.team4611.robot.commands.ButtonFast;
-import org.usfirst.frc.team4611.robot.commands.ButtonMed;
-import org.usfirst.frc.team4611.robot.commands.ButtonSlow;
+//import org.usfirst.frc.team4611.robot.commands.ButtonFast;
+//import org.usfirst.frc.team4611.robot.commands.ButtonMed;
+//import org.usfirst.frc.team4611.robot.commands.ButtonSlow;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -25,9 +25,9 @@ public class OI {
 	public Button fast= new JoystickButton(leftJoy, 5);
     
     public OI() {
-    	this.slow.whileHeld(new ButtonSlow());
-		this.med.whileHeld(new ButtonMed());
-		this.fast.whileHeld(new ButtonFast());
+    	//this.slow.whileHeld(new ButtonSlow());
+		//this.med.whileHeld(new ButtonMed());
+		//this.fast.whileHeld(new ButtonFast());
 
     }
 
