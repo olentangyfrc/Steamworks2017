@@ -10,6 +10,7 @@ public class ButtonOLS extends Subsystem{
 	
 	public ButtonOLS(){
 		this.buttonMove = new Victor(RobotMap.shooter);
+		
 	}
 	public void move(double speed){
 		this.buttonMove.set(speed);

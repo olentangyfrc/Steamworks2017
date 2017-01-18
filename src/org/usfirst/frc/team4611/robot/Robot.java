@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
     public UltrasonicRange ultra;
     
     public static Motor m = new Motor();
-	public static ButtonOLS n = new ButtonOLS();
+	public static ButtonOLS n;
 	public static boolean dir = false;
    
     public static Preferences prefs;
@@ -61,7 +61,7 @@ public class Robot extends IterativeRobot {
         //server.startAutomaticCapture("cam1");
 
         oi = new OI();
-        
+        n = new ButtonOLS();
         prefs = Preferences.getInstance();
 
         
