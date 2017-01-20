@@ -1,4 +1,4 @@
-//Ultrasonic rangefinder V2
+//Ultrasonic rangefinder V3 it works
 
 package org.usfirst.frc.team4611.robot.commands;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -34,27 +34,10 @@ public class UltrasonicRange  {
 	}
     public void ultrasonicMeasurement() 
     {
-    	 // reads the range on the ultrasonic sensor
- 
-    	//double raw_rangeVoltage = ultrasonicAnalog.getVoltage();
-    	//int raw_rangeValue = ultrasonicAnalog.getValue();
-    	double averageVoltage = ultrasonicAnalog.getAverageVoltage();
-    	//double averageValue = ultrasonicAnalog.getAverageValue();
-    	
-    	//double rangeInInchesA = averageVoltage / voltsPerInch;
-    	//double rangeInInchesB = averageVoltage * voltsPerInch;
+    	double averageVoltage = ultrasonicAnalog.getAverageVoltage();	
     	double rangeInInches = 39.587242 * (averageVoltage) + 1.049719;
-    	double roundedInches = rangeInInches = .5;
+    	double roundedInches = rangeInInches + .5;
     	
-    	
-    	//SmartDashboard.putNumber("Ultrasonic", rangeInInches);
-    	
-    	//SmartDashboard.putNumber("UltraSonicVoltage", raw_rangeVoltage);
-    	//SmartDashboard.putNumber("UltrasonicValue", raw_rangeValue);
-    	//SmartDashboard.putNumber("UltraSonicVoltageAverage", averageVoltage);
-    	//SmartDashboard.putNumber("UltrasonicValueAverage", averageValue);
-    	//SmartDashboard.putNumber("Max botix", rangeInInchesA);
-    	//SmartDashboard.putNumber("Max botix, but with mult", rangeInInchesB);
     	SmartDashboard.putNumber("Ultrasonic Range", (int)roundedInches);
     	
     }
