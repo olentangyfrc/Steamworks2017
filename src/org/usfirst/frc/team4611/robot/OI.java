@@ -3,7 +3,11 @@ package org.usfirst.frc.team4611.robot;
 
 //import org.usfirst.frc.team4611.robot.commands.ButtonFast;
 //import org.usfirst.frc.team4611.robot.commands.ButtonMed;
+<<<<<<< HEAD
 import org.usfirst.frc.team4611.robot.commands.ButtonSlow;
+=======
+import org.usfirst.frc.team4611.robot.commands.*;
+>>>>>>> Sensors
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -18,6 +22,7 @@ public class OI {
     //INSTANTIATING JOYSTICKS AND BUTTONS
 
     //Instantiate Joysticks on ports 0 and 1.
+<<<<<<< HEAD
     public Joystick leftJoy = new Joystick(0);
     public Joystick rightJoy = new Joystick(1);
     public Button slow= new JoystickButton(leftJoy, 4);
@@ -28,6 +33,19 @@ public class OI {
     	this.slow.whileHeld(new ButtonSlow());
 		//this.med.whileHeld(new ButtonMed());
 		//this.fast.whileHeld(new ButtonFast());
+=======
+    public Joystick leftJoy;
+    public Joystick rightJoy;
+    public Button shootbut;
+
+    
+    public OI() {
+    	leftJoy = new Joystick(0);
+        rightJoy = new Joystick(1);
+        shootbut = new JoystickButton(leftJoy, 1);
+    	//shootbut.whileHeld (new DualWheelShooter());
+    	
+>>>>>>> Sensors
 
     }
 
