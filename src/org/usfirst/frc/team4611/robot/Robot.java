@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4611.robot.commands.EncoderMeasure;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 
 /**
@@ -35,6 +37,10 @@ public class Robot extends IterativeRobot {
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
     public UltrasonicRange ultra;
+    
+    public EncoderMeasure encoder;
+    
+    
     
     //public static Motor m = new Motor();
 	//public static ButtonOLS n = new ButtonOLS();
