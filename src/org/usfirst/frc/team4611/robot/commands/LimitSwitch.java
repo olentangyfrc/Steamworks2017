@@ -1,13 +1,17 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import org.usfirst.frc.team4611.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
-public class LimitSwitch{
+import edu.wpi.first.wpilibj.command.Command;
+public class LimitSwitch extends Command{
 	 public DigitalInput limitSwitch;
 
 	//Closed = true
 	boolean normalOpenSwitch;
-	public LimitSwitch(boolean normalOpen) {		
+	public LimitSwitch(boolean normalOpen) {
+		limitSwitch = new DigitalInput(RobotMap.encoderReset);
 		normalOpenSwitch = normalOpen;
 	}
 	
@@ -19,6 +23,12 @@ public class LimitSwitch{
 		}
 		return status;
 		
+	}
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

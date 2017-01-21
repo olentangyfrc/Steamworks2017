@@ -4,17 +4,17 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4611.robot.Robot;
+import org.usfirst.frc.team4611.robot.RobotMap;
 
 public class EncoderMeasure {
-	
+	Encoder encoder;
 	
 	public EncoderMeasure()
 	{
-		Encoder enc;
-		enc = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
+		encoder = new Encoder(RobotMap.channelA, RobotMap.channelB, false, Encoder.EncodingType.k2X);
 		encoder.setSamplesToAverage(7);
 	}
-	public static Encoder encoder = new Encoder(0, 1, false, Encoder.EncodingType.k2X);
+	
 	
 	public void getEncoderMeasure() {
 		
