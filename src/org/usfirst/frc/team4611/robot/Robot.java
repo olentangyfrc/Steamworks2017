@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot;
 
 
 
+import org.usfirst.frc.team4611.robot.subsystems.CimMotor;
 //import org.usfirst.frc.team4611.robot.subsystems.ButtonOLS;
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
@@ -20,7 +21,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-
+import org.usfirst.frc.team4611.robot.commands.Gyro;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -32,10 +33,11 @@ public class Robot extends IterativeRobot {
 
     //public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
-    public static leftSide leftS = new leftSide();
-    public static rightSide rightS = new rightSide();
+    public static leftSide leftS;
+    public static rightSide rightS;
+    public static CimMotor s;
     public UltrasonicRange ultra;
-    
+    public Gyro gy;
     //public static Motor m = new Motor();
 	//public static ButtonOLS n = new ButtonOLS();
 	public static boolean dir = false;
@@ -61,9 +63,11 @@ public class Robot extends IterativeRobot {
         //server.startAutomaticCapture("cam1");
 
         oi = new OI();
-        
+         leftS = new leftSide();
+        rightS = new rightSide();
+        s = new CimMotor();
         prefs = Preferences.getInstance();
-
+       
         
         this.chooser = new SendableChooser();
         
@@ -127,7 +131,7 @@ public class Robot extends IterativeRobot {
             this.autonomousCommand.cancel();
             }
         ultra = new UltrasonicRange();
-
+        gy = new Gyro();
     }
 
     /**
@@ -138,6 +142,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         //LiveWindow.run();
         ultra.ultrasonicMeasurement();
+        
     }
 
     /**

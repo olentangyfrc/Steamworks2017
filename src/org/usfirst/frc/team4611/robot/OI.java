@@ -20,6 +20,7 @@ public class OI {
     //Instantiate Joysticks on ports 0 and 1.
     public Joystick leftJoy = new Joystick(0);
     public Joystick rightJoy = new Joystick(1);
+    public Joystick cimStick = new Joystick(2);
     public Button slow= new JoystickButton(leftJoy, 4);
 	public Button med = new JoystickButton(leftJoy, 3);
 	public Button fast= new JoystickButton(leftJoy, 5);
