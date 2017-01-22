@@ -2,7 +2,8 @@ package org.usfirst.frc.team4611.robot.commands;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
-public class LimitSwitch{
+import edu.wpi.first.wpilibj.command.Command;
+public class LimitSwitch extends Command{
 	 public DigitalInput limitSwitch;
 
 	//Closed = true
@@ -19,6 +20,12 @@ public class LimitSwitch{
 		}
 		return status;
 		
+	}
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

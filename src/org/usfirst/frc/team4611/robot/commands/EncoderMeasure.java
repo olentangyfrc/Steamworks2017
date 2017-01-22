@@ -2,6 +2,7 @@ package org.usfirst.frc.team4611.robot.commands;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4611.robot.commands.LimitSwitch;
 
 import org.usfirst.frc.team4611.robot.Robot;
 
@@ -31,6 +32,7 @@ public class EncoderMeasure {
 	}
 	
 	public void resetEncoderMeasure() {
-		
+			if(turret.isClosed() = true)
+				encoder.reset();
 	}
 }
