@@ -1,11 +1,9 @@
 
 package org.usfirst.frc.team4611.robot;
 
-import org.usfirst.frc.team4611.robot.subsystems.*;
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
-import org.usfirst.frc.team4611.robot.subsystems.leftSide;
-import org.usfirst.frc.team4611.robot.subsystems.rightSide;
+import org.usfirst.frc.team4611.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -33,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
+	public static Turret turret;
 	public static DualWheels dw;
 	public static SingleWheel sw;
 	public UltrasonicRange ultra;
@@ -66,6 +65,7 @@ public class Robot extends IterativeRobot {
 		dw = new DualWheels();
 		sw = new SingleWheel();
 		oi = new OI();
+		turret = new Turret();
 
 		prefs = Preferences.getInstance();
 		 
@@ -129,7 +129,7 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
-
+		
 	}
 
 	/**
@@ -140,6 +140,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
+		turret.getEncoderMeasure();
 	}
 
 	/**

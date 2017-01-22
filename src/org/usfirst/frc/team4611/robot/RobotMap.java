@@ -12,8 +12,20 @@ public class RobotMap {
     public static int backRightWheel = 1;
     public static int backLeftWheel = 2;
     public static int frontLeftWheel = 3;
+    //tank drive
     
     public static int leftShooter = 4;
     public static int rightShooter = 5;
+    //dual wheel shooter
     public static int singleShooter = 6;
+    //single wheel shooter
+    public static int turretMotor = 7;
+    //Turret Motor
+    
+    public static int encoderReset= 2;
+    
+    public static int channelA = 0;
+    public static int channelB = 1;
+    
+    
 }

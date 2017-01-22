@@ -13,7 +13,7 @@ public class UltrasonicRange  {
 	
 
 	//public double raw_range;
-	public static AnalogInput ultrasonicAnalog = new AnalogInput(3); //port number
+	public static AnalogInput ultrasonicAnalog = new AnalogInput(0); //port number
 	
 	public int raw_range;
 	public double raw_rangeVoltage;
