@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot;
 
 
 
+import org.usfirst.frc.team4611.robot.subsystems.Turret;
 //import org.usfirst.frc.team4611.robot.subsystems.ButtonOLS;
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
@@ -36,9 +37,10 @@ public class Robot extends IterativeRobot {
     public static OI oi;
     public static leftSide leftS = new leftSide();
     public static rightSide rightS = new rightSide();
+    public static Turret turret = new Turret();
     public UltrasonicRange ultra;
     
-    public EncoderMeasure encoder;
+    
     
     
     
