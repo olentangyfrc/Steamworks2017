@@ -12,7 +12,8 @@ public class SingleWheelShooter extends Command{
 	 protected void initialize() {
 	    }
 	 protected void execute() {
-	     double joyVal = (Robot.oi.rightJoy.getZ());//?	//Use the 'filter' function on the raw joystick input
+	     double joyVal = (Robot.oi.rightJoy.getZ()); //port one //no filter on this (run 100%)
+	     //Use the 'filter' function on the raw joystick input
 	     Robot.sw.move(joyVal);									//Actually pass that value to the motors
 	    }
 	@Override
