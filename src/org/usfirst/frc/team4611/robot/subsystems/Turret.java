@@ -12,12 +12,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Turret extends Subsystem{
-	private DigitalInput l;
+	private DigitalInput rightLim;
+	private DigitalInput leftLim;
 	private Victor t;
 	private Encoder e;
 	
 	public Turret(){
-		l = new DigitalInput(RobotMap.encoderReset);
+		rightLim = new DigitalInput(RobotMap.rightLimit);
+		leftLim = new DigitalInput(RobotMap.leftLimit);
 		t = new Victor(RobotMap.turretMotor);
 		e = new Encoder(RobotMap.channelA, RobotMap.channelB, false, Encoder.EncodingType.k2X);
 		
@@ -49,23 +51,30 @@ public class Turret extends Subsystem{
 	 */
 	
 	public void specialMove(double speed){
-		if(isClosed() == false){
-			t.set(speed);
+		if((isLeftOpen() == false) && (e.getDirection() == true)){ //if LeftLim closed
+			e.reset();
+			t.set(-speed);
 		}
-		else{
-			if(speed < 0 && e.getDirection() == true){
-				t.set(speed);
-			}
-			if(speed > 0 && e.getDirection() == false){
-				t.set(speed);
-			}
+		if((isRightOpen() == false) && (e.getDirection() == false)){ //if RightLim closed
+			e.reset();
+			t.set(-speed);
 		}
+		//else{ //when switch is hit
+			//e.reset();
+			//if(speed < 0 && e.getDirection() == true){
+				//t.set(0); 
+			//}
+			//if(speed > 0 && e.getDirection() == false){
+				//t.set(0);
+			//}
+		//}
 	}
 	
-	public boolean isClosed(){
-		
-		return l.get();
-		
+	public boolean isLeftOpen(){
+		return leftLim.get();
+	}
+	public boolean isRightOpen(){
+		return rightLim.get();
 	}
 	public void getEncoderMeasure() {
 		
