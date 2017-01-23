@@ -1,11 +1,8 @@
 
 package org.usfirst.frc.team4611.robot;
 
+
 import org.usfirst.frc.team4611.robot.subsystems.*;
-//import org.usfirst.frc.team4611.robot.subsystems.Motor;
-//import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
-import org.usfirst.frc.team4611.robot.subsystems.leftSide;
-import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -18,6 +15,8 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
+import org.usfirst.frc.team4611.robot.subsystems.TestSolenoid;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +34,9 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static DualWheels dw;
 	public UltrasonicRange ultra;
+	
+	public static TestSolenoid testDSole = new TestSolenoid(); //Get us that dank testSolenoid
+	
 
 	// public static Motor m = new Motor();
 	// public static ButtonOLS n = new ButtonOLS();
@@ -63,6 +65,7 @@ public class Robot extends IterativeRobot {
 		rightS = new rightSide();
 		dw = new DualWheels();
 		oi = new OI();
+		
 
 		prefs = Preferences.getInstance();
 		 
