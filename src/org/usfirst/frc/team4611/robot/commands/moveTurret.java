@@ -17,7 +17,7 @@ public class moveTurret extends Command{
 	}
 	
 	protected void execute(){
-		double joyVal = Robot.oi.filter(Robot.oi.rightJoy.getX());
+		double joyVal = Robot.oi.filter(Robot.oi.rightJoy.getX()); //Joysticks from x value (side to side)
 		Robot.turret.specialMove(joyVal);
 	}
 

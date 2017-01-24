@@ -22,8 +22,10 @@ public class RobotMap {
     public static int turretMotor = 7;
     //Turret Motor
     
-    public static int rightLimit = 2;
-    public static int leftLimit = 3;
+    public static int encoderReset = 2;
+    
+    public static int rightLimit = 3;
+    public static int leftLimit = 2;
     
     public static int channelA = 0;
     public static int channelB = 1;

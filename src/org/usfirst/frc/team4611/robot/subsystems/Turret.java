@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4611.robot.subsystems;
 
+import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 import org.usfirst.frc.team4611.robot.commands.EncoderMeasure;
 import org.usfirst.frc.team4611.robot.commands.LimitSwitch;
@@ -16,6 +17,7 @@ public class Turret extends Subsystem{
 	private DigitalInput leftLim;
 	private Victor t;
 	private Encoder e;
+	private boolean dir;
 	
 	public Turret(){
 		rightLim = new DigitalInput(RobotMap.rightLimit);
@@ -51,14 +53,30 @@ public class Turret extends Subsystem{
 	 */
 	
 	public void specialMove(double speed){
-		if((isLeftOpen() == false) && (e.getDirection() == true)){ //if LeftLim closed
-			e.reset();
-			t.set(-speed);
+		//true: counterclockwise
+		//false: clockwise
+		//right: positive speed
+		//left: negative speed
+		if(isOpen(leftLim) && isOpen(rightLim)){ //if both limit switches are open
+			t.set(speed); //proceed to turn
 		}
-		if((isRightOpen() == false) && (e.getDirection() == false)){ //if RightLim closed
-			e.reset();
-			t.set(-speed);
+		//if one is closed
+		else{
+			if (isOpen(leftLim)== false || isOpen(rightLim)== false){ //hit left or right limit switch
+				dir = e.getDirection(); //check if running repetitively!!!!!! If doesn't, use while loop
+				if (dir == e.getDirection()){ //don't move unless direction is changed
+					t.set(0);
+				}
+				else{
+					t.set(speed);
+				}
+				
+				
+				
+				
 		}
+		}
+			
 		//else{ //when switch is hit
 			//e.reset();
 			//if(speed < 0 && e.getDirection() == true){
@@ -70,12 +88,11 @@ public class Turret extends Subsystem{
 		//}
 	}
 	
-	public boolean isLeftOpen(){
-		return leftLim.get();
+	
+	public boolean isOpen(DigitalInput d){
+		return d.get();
 	}
-	public boolean isRightOpen(){
-		return rightLim.get();
-	}
+	
 	public void getEncoderMeasure() {
 		
 		//encoder.setMaxPeriod(.1);
@@ -87,10 +104,17 @@ public class Turret extends Subsystem{
 		boolean eDirection= e.getDirection();
 		double eDistance= e.getDistance();
 		
+		boolean leftOpen = isOpen(leftLim);
+		boolean rightOpen = isOpen(rightLim);
+		
 		SmartDashboard.putNumber("Enconder rate", eRate);
 		SmartDashboard.putNumber("Enconder raw", eRaw);
 		SmartDashboard.putNumber("Encoder distance", eDistance);
 		SmartDashboard.putBoolean("Direction", eDirection);
+		
+		SmartDashboard.putBoolean("left open", leftOpen);
+		SmartDashboard.putBoolean("right open", rightOpen);
+		
 		
 	}
 
