@@ -65,8 +65,7 @@ public class Turret extends Subsystem{
 			//options
 			//option one
 			if (isOpen(leftLim)== false || isOpen(rightLim)== false){ //hit left or right limit switch
-				dir = e.getDirection();
-				//check if running repetitively!!!!!! If doesn't, use while loop
+				dir = e.getDirection();//check if running repetitively!!!!!! If doesn't, use while loop
 				if (dir == e.getDirection()){ //don't move unless direction is changed
 					t.set(0);
 				}
