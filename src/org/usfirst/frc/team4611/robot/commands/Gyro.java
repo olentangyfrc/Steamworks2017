@@ -21,6 +21,7 @@ public class Gyro {
     
     public void gyroMeasure()
     {
+    	gyro.update();
     	angle = gyro.getAngle();
     	correctionAngle = -angle * Kp;
     	
