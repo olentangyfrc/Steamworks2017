@@ -60,46 +60,19 @@ public class Turret extends Subsystem{
 		//keep
 			if(isOpen(leftLim) && isOpen(rightLim)){ //if both limit switches are open
 			t.set(speed); //proceed to turn
-		}
-		//if one is closed
-			//options
-			//option one
-			if (isOpen(leftLim)== false || isOpen(rightLim)== false){ //hit left or right limit switch
-				dir = e.getDirection();//check if running repetitively!!!!!! If doesn't, use while loop
-				if (dir == e.getDirection()){ //don't move unless direction is changed
-					t.set(0);
-				}
-				else{
-					t.set(speed);
-				}
 			}
-			//if both the lim is closed and speed is negative/positive, stop moving	
-		}
-		//end
-		//option two
-		/* if (isOpen(leftLim)==false && speed < 0){
+		if (isOpen(leftLim) == false && speed < 0){
 			t.set(0);
 		}
-		if (isOpen(rightLim)== false && speed > 0){
+		else if (isOpen(rightLim) == false && speed > 0){
 			t.set(0);
 		}
 		else{
 		t.set(speed);
-		}*/
+		}
+		
 			
-	//Baru's original code
-		//else{ //when switch is hit
-			//e.reset();
-			//if(speed < 0 && e.getDirection() == true){
-				//t.set(0); 
-			//}
-			//if(speed > 0 && e.getDirection() == false){
-				//t.set(0);
-			//}
-		//}
-	
-	
-	
+	}
 	public boolean isOpen(DigitalInput d){
 		return d.get();
 	}
