@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static DualWheels dw;
 	public UltrasonicRange ultra;
+	public static measureEncoder me;
 
 	// public static Motor m = new Motor();
 	// public static ButtonOLS n = new ButtonOLS();

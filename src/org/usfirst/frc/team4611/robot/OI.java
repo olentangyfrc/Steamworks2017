@@ -25,12 +25,14 @@ public class OI {
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Button shootbut;
+    public Button adjustBut;
 
     
     public OI() {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
         shootbut = new JoystickButton(leftJoy, 1);
+        adjustBut = new JoystickButton(leftJoy, 5);
     	//shootbut.whileHeld (new DualWheelShooter());
     	
 
