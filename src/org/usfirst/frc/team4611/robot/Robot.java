@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
 	public static leftSide leftS; 
 	public static rightSide rightS;
 	public static DualWheels dw;
-	public static SingleWheel sw;
+	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
 	
 
@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot {
 		leftS = new leftSide();
 		rightS = new rightSide();
 		dw = new DualWheels();
-		sw = new SingleWheel();
+		sw = new SingleWheelShooter();
 		oi = new OI();
 
 		prefs = Preferences.getInstance();

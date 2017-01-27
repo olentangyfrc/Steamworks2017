@@ -31,10 +31,7 @@ public class OI {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
         shootbut = new JoystickButton(leftJoy, 1);
-    	//shootbut.whileHeld (new DualWheelShooter());
-    	
-
-
+    	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

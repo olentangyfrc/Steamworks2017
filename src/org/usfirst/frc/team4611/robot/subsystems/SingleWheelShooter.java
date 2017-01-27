@@ -2,25 +2,25 @@ package org.usfirst.frc.team4611.robot.subsystems;
 
 import org.usfirst.frc.team4611.robot.RobotMap;
 import org.usfirst.frc.team4611.robot.commands.DualWheelShooter;
-import org.usfirst.frc.team4611.robot.commands.SingleWheelShooter;
+import org.usfirst.frc.team4611.robot.commands.SingleWheelShoot;
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class SingleWheel extends Subsystem{
+public class SingleWheelShooter extends Subsystem{
 	
 	private Victor singleWheelShooter;
 	
-	public SingleWheel(){
+	public SingleWheelShooter(){
 		this.singleWheelShooter = new Victor (RobotMap.singleShooter);
 	}
-	public void move (double speed){
-		this.singleWheelShooter.set(speed);	//-speed?
+	public void shoot (double speed){
+		this.singleWheelShooter.set(speed);
 	}
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	this.setDefaultCommand(new SingleWheelShooter());
+    	//this.setDefaultCommand(new SingleWheelShoot());
 
     }
 	}
