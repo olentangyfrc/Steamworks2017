@@ -15,6 +15,10 @@ public class turnEncoder extends Command{
 		Robot.me.adjust(deg);
 		
 	}
+	
+	protected void end(){
+		Robot.me.adjust(0);
+	}
 
 	@Override
 	protected boolean isFinished() {
