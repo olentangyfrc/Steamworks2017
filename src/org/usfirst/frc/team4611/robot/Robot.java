@@ -64,6 +64,7 @@ public class Robot extends IterativeRobot {
 		rightS = new rightSide();
 		dw = new DualWheels();
 		oi = new OI();
+		me = new measureEncoder();
 
 		prefs = Preferences.getInstance();
 		 
@@ -138,6 +139,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
+		me.displayVal();
 	}
 
 	/**

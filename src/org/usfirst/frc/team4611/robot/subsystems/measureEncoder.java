@@ -28,8 +28,12 @@ public class measureEncoder extends Subsystem {
 	
 	public void adjust(double deg){
 		tur.set(deg);
-		SmartDashboard.putNumber("raw", deg);
-		SmartDashboard.putNumber("degree", deg);
+		
+	}
+	
+	public void displayVal(){
+		SmartDashboard.putNumber("raw", enc.getDistance());
+		SmartDashboard.putNumber("degree", enc.getDistance());
 	}
 
     // Put methods for controlling this subsystem

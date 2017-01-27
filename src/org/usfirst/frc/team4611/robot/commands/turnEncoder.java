@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class turnEncoder extends Command{
 	
-	public turnEncoder(){
+	public turnEncoder(double deg){
 		this.requires(Robot.me);
 	}
 	

@@ -35,6 +35,8 @@ public class OI {
         adjustBut = new JoystickButton(leftJoy, 5);
     	//shootbut.whileHeld (new DualWheelShooter());
     	
+        
+        adjustBut.whenPressed(new turnEncoder(30));
 
 
     }
