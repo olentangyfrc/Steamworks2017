@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.turnEncoder;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +36,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static DualWheels dw;
 	public UltrasonicRange ultra;
+	public static turnEncoder turnE;
 	public static measureEncoder me;
 
 	// public static Motor m = new Motor();
@@ -128,6 +130,7 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
+		turnE = new turnEncoder(30);
 
 	}
 
