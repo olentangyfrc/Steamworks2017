@@ -37,9 +37,6 @@ public class Robot extends IterativeRobot {
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
 	
-
-	// public static Motor m = new Motor();
-	// public static ButtonOLS n = new ButtonOLS();
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
