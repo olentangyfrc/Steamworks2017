@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static DualWheels dw;
 	public UltrasonicRange ultra;
-	public static turnEncoder turnE;
+	//public static turnEncoder turnE;
 	public static measureEncoder me;
 
 	// public static Motor m = new Motor();
@@ -65,8 +65,10 @@ public class Robot extends IterativeRobot {
 		leftS = new leftSide();
 		rightS = new rightSide();
 		dw = new DualWheels();
-		oi = new OI();
 		me = new measureEncoder();
+		oi = new OI();
+		
+		
 
 		prefs = Preferences.getInstance();
 		 
@@ -130,7 +132,8 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
-		turnE = new turnEncoder(30);
+		
+		//turnE = new turnEncoder(30);
 
 	}
 
@@ -143,6 +146,7 @@ public class Robot extends IterativeRobot {
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		me.displayVal();
+		
 	}
 
 	/**

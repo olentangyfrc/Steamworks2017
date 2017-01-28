@@ -2,6 +2,8 @@ package org.usfirst.frc.team4611.robot.subsystems;
 
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
+import org.usfirst.frc.team4611.robot.commands.leftTank;
+import org.usfirst.frc.team4611.robot.commands.turnEncoder;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
@@ -15,7 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class measureEncoder extends Subsystem {
 
-	private Encoder enc;
+	public Encoder enc;
 	private Victor tur;
 	
 	
@@ -42,6 +44,7 @@ public class measureEncoder extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	this.setDefaultCommand(new turnEncoder(30));
     }
 }
 

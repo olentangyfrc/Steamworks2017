@@ -36,7 +36,8 @@ public class OI {
     	//shootbut.whileHeld (new DualWheelShooter());
     	
         
-        adjustBut.whenPressed(Robot.turnE);
+        //adjustBut.whenPressed(Robot.turnE);
+        this.adjustBut.whenPressed(new turnEncoder(30));
 
 
     }

@@ -19,17 +19,17 @@ public class turnEncoder extends Command{
 	
 	public void execute(double deg){
 		Robot.me.adjust(this.deg);
-		
+	}
+	
+	
+	
+	@Override
+	protected boolean isFinished() {
+		return false;
 	}
 	
 	protected void end(){
-		Robot.me.adjust(0);
-	}
-
-	@Override
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		//Robot.me.adjust(0);
 	}
 
 }
