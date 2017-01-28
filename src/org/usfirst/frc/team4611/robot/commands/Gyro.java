@@ -10,7 +10,7 @@ public class Gyro {
     int angleRound;
     int heading;
     int rotations;
-    
+    boolean direction;//true is clockwise
     
     
     public Gyro() {
@@ -21,18 +21,25 @@ public class Gyro {
     {
     	raw = gyro.getAngle();//get's the angle of the gyro relative to the set angle 0
     	//negative values counter clockwise, positive values clockwise
-    	angleRound = (int)(raw + .5);
+    	angleRound = (int)Math.round(raw);
     	heading = angleRound;
-    	if(heading < -360 || heading > 360)
+    	if(heading <= -360)
     	{
-    		heading = 0;
+    		direction = false;
+    		heading %= 360;
     	}
-    	rotations %= angleRound;
+    	if(heading >= 360)
+    	{
+    		direction = true;
+    		heading %= 360;
+    	}
+    	rotations = angleRound / 360;
     	
     	SmartDashboard.putNumber("Raw Heading", raw);
     	SmartDashboard.putNumber("Rounded Heading", angleRound);
     	SmartDashboard.putNumber("Heading [-360,360]", heading);
     	SmartDashboard.putNumber("# of roations", rotations);
+    	SmartDashboard.putBoolean("Clockwise?", direction);
     	
     }
 
