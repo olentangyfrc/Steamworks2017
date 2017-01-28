@@ -1,9 +1,5 @@
 package org.usfirst.frc.team4611.robot;
 
-
-//import org.usfirst.frc.team4611.robot.commands.ButtonFast;
-//import org.usfirst.frc.team4611.robot.commands.ButtonMed;
-
 import org.usfirst.frc.team4611.robot.commands.*;
 
 
@@ -34,7 +30,7 @@ public class OI {
         shootbut = new JoystickButton(leftJoy, 1);
         retractTestSole = new JoystickButton(rightJoy, 1);
     	//shootbut.whileHeld (new DualWheelShooter());
-        this.retractTestSole.whenPressed(new MoveTestSolenoid());
+        //this.retractTestSole.whenPressed(new MoveTestSolenoid());
 
 
     }
