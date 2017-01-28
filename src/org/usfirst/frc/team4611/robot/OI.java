@@ -20,17 +20,19 @@ public class OI {
 
     public Joystick leftJoy;
     public Joystick rightJoy;
-    public Button shootbut;
-    public Button retractTestSole;
+    public Button shootBut;
+    public Button shootPiston;
 
     
     public OI() {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
-        shootbut = new JoystickButton(leftJoy, 1);
-        retractTestSole = new JoystickButton(rightJoy, 1);
+        shootBut = new JoystickButton(leftJoy, 1);
+        shootPiston = new JoystickButton(this.rightJoy, 1);
+        //retractTestSole = new JoystickButton(rightJoy, 1);
     	//shootbut.whileHeld (new DualWheelShooter());
         //this.retractTestSole.whenPressed(new MoveTestSolenoid());
+        this.shootPiston.whenPressed(new FeedPush()); //when pressed, shoot piston
 
 
     }
