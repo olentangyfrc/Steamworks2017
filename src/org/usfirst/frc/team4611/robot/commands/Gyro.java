@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4611.robot.commands;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro; //uses acceleration to measure the horizontal position of the gyro relative to angle measure 0
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -40,6 +41,7 @@ public class Gyro {
     	SmartDashboard.putNumber("Heading [-360,360]", heading);
     	SmartDashboard.putNumber("# of roations", rotations);
     	SmartDashboard.putBoolean("Clockwise?", direction);
+    	LiveWindow.addSensor("Gyro", "gyroscope", gyro);
     	
     }
 
