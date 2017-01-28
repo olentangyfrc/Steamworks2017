@@ -9,11 +9,12 @@ import org.usfirst.frc.team4611.robot.subsystems.CimMotor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
-
+import org.usfirst.frc.team4611.robot.OI;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -22,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -143,6 +145,14 @@ public class Robot extends IterativeRobot {
         //LiveWindow.run();
         ultra.ultrasonicMeasurement();
         gy.gyroMeasure();
+        
+        /* if(OI.light.())){
+        	spike.set(Relay.Value.kOn);
+        }
+        else{
+        	spike.set(Relay.Value.kOff);
+        }*/
+
         
     }
 
