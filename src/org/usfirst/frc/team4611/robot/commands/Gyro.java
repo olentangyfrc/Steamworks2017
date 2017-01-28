@@ -35,8 +35,8 @@ public class Gyro {
     	}
     	rotations = angleRound / 360;
     	
-    	SmartDashboard.putNumber("Raw Heading", raw);
-    	SmartDashboard.putNumber("Rounded Heading", angleRound);
+    	//SmartDashboard.putNumber("Raw Heading", raw);
+    	//SmartDashboard.putNumber("Rounded Heading", angleRound);
     	SmartDashboard.putNumber("Heading [-360,360]", heading);
     	SmartDashboard.putNumber("# of roations", rotations);
     	SmartDashboard.putBoolean("Clockwise?", direction);
