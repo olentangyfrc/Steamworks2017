@@ -8,9 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Gyro {
 	
     private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-    double Kp = 0.03; // how fast the turns are, Too fast = oscillation, too slow = may not reach destination
-    double angle;
-    double correctionAngle;
+    double raw;
     
     
     
@@ -20,11 +18,8 @@ public class Gyro {
     
     public void gyroMeasure()
     {
-    	angle = gyro.getAngle();
-    	correctionAngle = -angle * Kp;
-    	
-    	SmartDashboard.putNumber("Current Heading", angle);
-    	SmartDashboard.putNumber("Correction Angle?", correctionAngle);
+    	raw = gyro.getAngle();    	
+    	SmartDashboard.putNumber("Raw Heading", raw);
     	
     }
 
