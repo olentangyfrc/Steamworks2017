@@ -38,10 +38,10 @@ public class Gyro {
     	
     	//SmartDashboard.putNumber("Raw Heading", raw);
     	//SmartDashboard.putNumber("Rounded Heading", angleRound);
-    	SmartDashboard.putNumber("Heading [-360,360]", heading);
-    	SmartDashboard.putNumber("# of roations", rotations);
-    	SmartDashboard.putBoolean("Clockwise?", direction);
-    	LiveWindow.addSensor("Gyro", "gyroscope", gyro);
+    	SmartDashboard.putNumber("Heading [-360,360]", heading);//Shows accurate angle
+    	//SmartDashboard.putNumber("# of roations", rotations);
+    	//SmartDashboard.putBoolean("Clockwise?", direction);
+    	//LiveWindow.addSensor("Gyro", "gyroscope", gyro);
     	
     }
 
