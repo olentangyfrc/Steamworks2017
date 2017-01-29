@@ -38,7 +38,7 @@ public class UltrasonicRange  {
     	double rangeInInches = 39.587242 * (averageVoltage) + 1.049719;
     	double roundedInches = rangeInInches + .5;
     	
-    	SmartDashboard.putNumber("Ultrasonic Range", (int)roundedInches);
+    	SmartDashboard.putNumber("Ultrasonic Range (inches)", (int)roundedInches);
     	
     }
     
