@@ -33,7 +33,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
-	public static DualWheels dw;
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
 	
@@ -60,7 +59,6 @@ public class Robot extends IterativeRobot {
 		// server.startAutomaticCapture("cam1");
 		leftS = new leftSide();
 		rightS = new rightSide();
-		dw = new DualWheels();
 		sw = new SingleWheelShooter();
 		oi = new OI();
 
