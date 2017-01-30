@@ -13,15 +13,8 @@ public class MoveTestSolenoid extends Command {
 
     public MoveTestSolenoid() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.testDSole);
+        requires(Robot.testSol);
     }
-    
-    
-    /* Tutorial from the FRC website
-      	exampleDouble.set(DoubleSolenoid.Value.kOff);
-		exampleDouble.set(DoubleSolenoid.Value.kForward);
-		exampleDouble.set(DoubleSolenoid.Value.kReverse);
-     */
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -29,7 +22,7 @@ public class MoveTestSolenoid extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.testDSole.move(Value.kReverse);
+    	Robot.testSol.move(Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +32,7 @@ public class MoveTestSolenoid extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.testDSole.move(Value.kForward);
+        Robot.testSol.move(Value.kOff);
     }
 
     // Called when another command which requires one or more of the same

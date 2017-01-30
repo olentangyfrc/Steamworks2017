@@ -18,7 +18,7 @@ public class TestSolenoid extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public TestSolenoid() {
-		this.testDSole = new DoubleSolenoid(RobotMap.testSolenoidForward, RobotMap.testSolenoidReverse);
+		this.testDSole = new DoubleSolenoid(RobotMap.testSolenoidForward, RobotMap.testSolenoidReverse); 
     }
 	
 	public void move(Value v) {
@@ -27,7 +27,7 @@ public class TestSolenoid extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	this.setDefaultCommand(new MoveTestSolenoid());
+    	//this.setDefaultCommand(new MoveTestSolenoid());
     }
 }
 

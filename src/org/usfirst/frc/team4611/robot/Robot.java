@@ -34,8 +34,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static DualWheels dw;
 	public UltrasonicRange ultra;
-	
-	//public static TestSolenoid testDSole = new TestSolenoid(); //Get us that dank testSolenoid
+	public static TestSolenoid testSol;
 	
 	public static boolean dir = false;
 
@@ -61,9 +60,8 @@ public class Robot extends IterativeRobot {
 		leftS = new leftSide();
 		rightS = new rightSide();
 		dw = new DualWheels();
+		testSol = new TestSolenoid(); 
 		oi = new OI();
-		
-
 		prefs = Preferences.getInstance();
 		 
 		this.chooser = new SendableChooser(); //SmartDashboard

@@ -29,10 +29,7 @@ public class OI {
         rightJoy = new Joystick(1);
         shootBut = new JoystickButton(leftJoy, 1);
         shootPiston = new JoystickButton(this.rightJoy, 1);
-        //retractTestSole = new JoystickButton(rightJoy, 1);
-    	//shootbut.whileHeld (new DualWheelShooter());
-        //this.retractTestSole.whenPressed(new MoveTestSolenoid());
-        this.shootPiston.whenPressed(new FeedPush()); //when pressed, shoot piston
+        this.shootPiston.whenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
 
 
     }
