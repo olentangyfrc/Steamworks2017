@@ -27,7 +27,7 @@ public class TestSolenoid extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	//this.setDefaultCommand(new MoveTestSolenoid());
+    	this.setDefaultCommand(new MoveTestSolenoid());
     }
 }
 
