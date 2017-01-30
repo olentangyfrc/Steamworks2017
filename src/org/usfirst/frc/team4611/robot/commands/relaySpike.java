@@ -2,22 +2,22 @@ package org.usfirst.frc.team4611.robot.commands;
 
 import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class relaySpike extends Command{
 
-	public void light(boolean x)
+	/*public void light(boolean poweredOn)
 	{
-		if(x = true)
-			OI.spike.set(Relay.Value.kOn);
-		if(x = false)
-			OI.spike.set(Relay.Value.kOff);
-	}
+		if(poweredOn = true)
+			
+		if(poweredOn = false)
+			
+	}*/
 	
 	protected void execute(){
-		light(true);
+		OI.spike.set(Relay.Value.kOn);
+		//light(true);
 	}
 	
 	@Override
@@ -27,6 +27,7 @@ public class relaySpike extends Command{
 	}
 	
 	protected void end(){
-		light(false);
+		//light(false);
+		OI.spike.set(Relay.Value.kOff);
 	}
 }
