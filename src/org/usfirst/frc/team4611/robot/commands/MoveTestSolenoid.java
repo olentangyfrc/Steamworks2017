@@ -10,7 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MoveTestSolenoid extends Command {
-
+	/*The state of the valve can then be set to kOff (neither output activated), 
+	 * kForward (forward channel enabled) or kReverse (reverse channel enabled).
+	 */
     public MoveTestSolenoid() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.testSol);
@@ -22,7 +24,7 @@ public class MoveTestSolenoid extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.testSol.move(Value.kForward);
+    	Robot.testSol.move(DoubleSolenoid.Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +34,7 @@ public class MoveTestSolenoid extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.testSol.move(Value.kOff);
+        Robot.testSol.move(DoubleSolenoid.Value.kOff);
     }
 
     // Called when another command which requires one or more of the same
