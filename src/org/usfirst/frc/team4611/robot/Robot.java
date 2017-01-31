@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
+	public static talonTurret turretMotor;
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
 	
@@ -59,6 +60,7 @@ public class Robot extends IterativeRobot {
 		// server.startAutomaticCapture("cam1");
 		leftS = new leftSide();
 		rightS = new rightSide();
+		turretMotor = new talonTurret();
 		sw = new SingleWheelShooter();
 		oi = new OI();
 
@@ -135,6 +137,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
+		turretMotor.getEncoderMeasure();
 	}
 
 	/**

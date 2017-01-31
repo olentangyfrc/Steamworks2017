@@ -24,12 +24,14 @@ public class OI {
 
     public Joystick leftJoy;
     public Joystick rightJoy;
+    public Joystick turretJoy; 
     public Button shootbut;
 
     
     public OI() {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
+        turretJoy = new Joystick(2);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     }
