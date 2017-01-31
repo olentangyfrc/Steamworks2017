@@ -9,6 +9,17 @@ import com.ctre.CANTalon.FeedbackDevice;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * READ THIS FIRST  
+ * Okay, hello non CANTalon people, you're gonna need to import a library if you wanna get rid of these 
+ * errors. Find the library at http://www.ctr-electronics.com/control-system/hro.html#product_tabs_technical_resources
+ * click on CTRE Toolsuite Installer and download the zip. Extract and install the libraries.
+ * Now you'll have CTRELib.jar under "Referenced Libraries" in all your new projects. Notice "new"
+ * Steamworks2017 was created before you installed this so Steamworks isn't gonna automatically import 
+ * this library you gotta point to the .jar file yourself. Right click the project, go to properties, then 
+ * Java Build Path, Libraries, add JAR. C:>Users>name>wpilib>user>java>lib
+ */
+
 public class talonTurret extends Subsystem {
 	private CANTalon turretMotor; //Create CANTalon "turretMotor"
 	private FeedbackDevice turretEncoder; //Create a CTRE FeedbackDevice and name it "turretEncoder"
@@ -68,13 +79,12 @@ public class talonTurret extends Subsystem {
     	   double eVelocity = turretMotor.getEncVelocity();
     	   double eCurrent = turretMotor.getOutputCurrent();
     	   double eVoltage = turretMotor.getOutputVoltage();
+    	   
     	   double eRawDegrees = ePosition/8192;  
     	   double eDegrees = eRawDegrees*360; 
-    	   double eRotations = 0;
     	   
     	   if (Math.abs(ePosition) >= (8192)){
     		  turretMotor.setPosition(0);
-    		  eRotations ++;
     	   }
     	   
     	   SmartDashboard.putNumber("Ecoder Speed", eSpeed);
@@ -83,13 +93,11 @@ public class talonTurret extends Subsystem {
     	   SmartDashboard.putNumber("Ecoder Current", eCurrent);
     	   SmartDashboard.putNumber("Ecoder Voltage", eVoltage);
     	   SmartDashboard.putNumber("Encoder Degrees", eDegrees);
-    	   SmartDashboard.putNumber("Motor Roations", eRotations);
     }
 
 	@Override
 	protected void initDefaultCommand() {
-		this.setDefaultCommand(new turretMove());
-		
+		this.setDefaultCommand(new turretMove());		
 	}
 	
 }
