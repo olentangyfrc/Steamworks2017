@@ -1,9 +1,8 @@
 package org.usfirst.frc.team4611.robot.subsystems;
 
-
 import org.usfirst.frc.team4611.robot.RobotMap;
+import org.usfirst.frc.team4611.robot.commands.CloseTestSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
-
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -27,7 +26,7 @@ public class TestSolenoid extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	this.setDefaultCommand(new MoveTestSolenoid());
+    	this.setDefaultCommand(new CloseTestSolenoid());
     }
 }
 
