@@ -1,6 +1,8 @@
 //Ultrasonic rangefinder V3 it works
 
 package org.usfirst.frc.team4611.robot.commands;
+import org.usfirst.frc.team4611.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 
 import edu.wpi.first.wpilibj.smartdashboard.*; 
@@ -13,7 +15,7 @@ public class UltrasonicRange  {
 	
 
 	//public double raw_range;
-	public static AnalogInput ultrasonicAnalog = new AnalogInput(3); //port number
+	public static AnalogInput ultrasonicAnalog = new AnalogInput(RobotMap.ultraSonicPort); //port number
 	
 	public int raw_range;
 	public double raw_rangeVoltage;
@@ -21,12 +23,6 @@ public class UltrasonicRange  {
 	public double voltsPerInch = suppliedVolt / 512;
 	public double rangeInches;
 	
-    /*public void Init() 
-    {
-    	ultra.setAutomaticMode(true); // turns on automatic mode
-    	ultra.startLiveWindowMode();
-    	   	
-    }*/
 	public UltrasonicRange()
 	{
 		ultrasonicAnalog.setOversampleBits(8);
