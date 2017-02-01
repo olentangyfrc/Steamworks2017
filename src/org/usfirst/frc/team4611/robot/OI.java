@@ -18,9 +18,11 @@ public class OI {
     //Instantiate Joysticks on ports 0 and 1.
 
 
+
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Button shootbut;
+
 
     
     public OI() {

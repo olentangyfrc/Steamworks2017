@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team4611.robot;
 
+
 import org.usfirst.frc.team4611.robot.subsystems.*;
+
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
@@ -18,7 +20,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-
+import org.usfirst.frc.team4611.robot.commands.Gyro;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -35,7 +37,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
-	
+	public Gyro gy;
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
@@ -124,6 +126,7 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
+		gy = new Gyro();
 
 	}
 
