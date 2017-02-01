@@ -12,7 +12,7 @@ public class turretMove extends Command{
 	
 	public void execute(){
 		double turretMove = Robot.oi.filter(Robot.oi.turretJoy.getY());
-		Robot.turretMotor.move(turretMove/-1);
+		Robot.turretMotor.move(turretMove);
 	}
 	
 	protected void end(){

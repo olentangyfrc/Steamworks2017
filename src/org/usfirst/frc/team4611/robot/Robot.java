@@ -126,6 +126,7 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
+		
 
 	}
 
