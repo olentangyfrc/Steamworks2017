@@ -1,9 +1,5 @@
 package org.usfirst.frc.team4611.robot;
 
-
-//import org.usfirst.frc.team4611.robot.commands.ButtonFast;
-//import org.usfirst.frc.team4611.robot.commands.ButtonMed;
-
 import org.usfirst.frc.team4611.robot.commands.*;
 
 
