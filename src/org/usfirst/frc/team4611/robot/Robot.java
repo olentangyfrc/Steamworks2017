@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
-	public static Feeder fe;
+	public static FeederSub fe;
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
@@ -63,7 +63,7 @@ public class Robot extends IterativeRobot {
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
 		oi = new OI();
-		fe = new Feeder();
+		fe = new FeederSub();
 		prefs = Preferences.getInstance();
 		 
 		this.chooser = new SendableChooser(); //SmartDashboard

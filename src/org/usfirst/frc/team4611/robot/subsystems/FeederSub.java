@@ -7,25 +7,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class FeederSub extends Subsystem {
 
+	private Victor Feeder;
+	
+	public FeederSub(){
+		this.Feeder= new Victor (RobotMap.Feeder );
+	}
+ 
+	public void feed (double feed){
+		this.Feeder.set(feed);
+	}
+	
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		}
-		private Victor Feeder;
-		public FeederSub(){
-			this.Feeder= new Victor (RobotMap.Feeder );
-		}
- 
-		public void feed (double feed){
-			this.Feeder.set(feed);
-		}
+		//this.setDefaultCommand(new SingleWheelShoot())
+	}
 		
-
-
-
-
-
-
-
 
 }
