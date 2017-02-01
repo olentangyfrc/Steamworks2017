@@ -62,8 +62,10 @@ public class Robot extends IterativeRobot {
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
-		oi = new OI();
 		fe = new FeederSub();
+		
+		oi = new OI();
+		
 		prefs = Preferences.getInstance();
 		 
 		this.chooser = new SendableChooser(); //SmartDashboard
