@@ -9,7 +9,7 @@ public class PressureSense
 {
 	public void init()
 	{
-		AnalogInput exampleAnalog = new AnalogInput(1);
+		AnalogInput exampleAnalog = new AnalogInput(2);
 		int bits = 0;
 		exampleAnalog.setOversampleBits(4);
 		bits = exampleAnalog.getOversampleBits();

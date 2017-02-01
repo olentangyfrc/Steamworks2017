@@ -131,7 +131,7 @@ public class Robot extends IterativeRobot {
             this.autonomousCommand.cancel();
             }
         ultra = new UltrasonicRange();
-        gy = new Gyro();
+       // gy = new Gyro();
     }
 
     /**
