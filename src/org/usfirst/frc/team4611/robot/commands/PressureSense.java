@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4611.robot.commands;
 
+import org.usfirst.frc.team4611.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.AccumulatorResult;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -9,7 +11,7 @@ public class PressureSense
 {
 	public void init()
 	{
-		AnalogInput exampleAnalog = new AnalogInput(1);
+		AnalogInput exampleAnalog = new AnalogInput(RobotMap.PressurePort);
 		int bits = 0;
 		exampleAnalog.setOversampleBits(4);
 		bits = exampleAnalog.getOversampleBits();
