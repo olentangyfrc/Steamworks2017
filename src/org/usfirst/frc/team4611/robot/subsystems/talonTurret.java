@@ -27,31 +27,57 @@ public class talonTurret extends Subsystem {
 	public talonTurret(){
 		this.turretMotor = new CANTalon(RobotMap.turretcim); //attach "turretMotor" to the port on RobotMap
 		turretMotor.enableLimitSwitch(true, true); //Enable the limit switches on CANTalon "fwd , rev"
+		
 		turretEncoder = (FeedbackDevice.QuadEncoder); //Declare the "FeedbackDevice" as a QuadEncoder
 		turretMotor.setFeedbackDevice(turretEncoder); //Set the "FeedbackDevice" turretEncoder to the CANTalon
 		turretMotor.setPosition(0); //set "encoder's" starting position to 0
 		turretMotor.reverseSensor(true); //Reverses the sensor. Duh.
 		
-	}
-	
-    public void move(double speed) {
-    	turretMotor.setForwardSoftLimit(4096);
+		turretMotor.setForwardSoftLimit(4096);
 		turretMotor.enableForwardSoftLimit(true);
 		turretMotor.setReverseSoftLimit(-4096);
 		turretMotor.enableReverseSoftLimit(true);
-    	this.turretMotor.set(speed);
-     		
-    }
+	}
+	
+	double ePosition = turretMotor.getEncPosition();
+	double eRawDegrees = ePosition/8192;  
+	double eDegrees = eRawDegrees*360; 
+	
+	/*public void move(double speed){ //Normal movement of the turret
+		this.turretMotor.set(speed); 
+	}*/ 
+	   
+	public void auto(){ //Auto pilot (I hope)
+		double inputDegrees = -15; //Connor's VA input
+		final double moveDegrees = eDegrees + inputDegrees; //Current position plus his input
+		
+		if(inputDegrees >= 0){ //If input degrees are postive
+			if (moveDegrees == eDegrees){ 
+				turretMotor.set(0);
+			}
+			else{
+				turretMotor.set(1); //Move until your input degrees + original degrees are equal
+			}
+		}
+		else{
+			if (moveDegrees == eDegrees){  //If input degrees are negative
+				turretMotor.set(0);
+			}
+			else{
+				turretMotor.set(-1); //Move until your input degrees + original degrees are equal
+			}
+		}
+	}
     
     public void getEncoderMeasure(){
     	   double eSpeed = turretMotor.getSpeed();
-    	   double ePosition = turretMotor.getEncPosition();
+    	   //double ePosition = turretMotor.getEncPosition();
     	   double eVelocity = turretMotor.getEncVelocity();
     	   double eCurrent = turretMotor.getOutputCurrent();
     	   double eVoltage = turretMotor.getOutputVoltage();
     	   
-    	   double eRawDegrees = ePosition/8192;  
-    	   double eDegrees = eRawDegrees*360; 
+    	   //double eRawDegrees = ePosition/8192;  
+    	   //double eDegrees = eRawDegrees*360; 
     	   
     	   if (Math.abs(ePosition) >= (8192)){
     		  turretMotor.setPosition(0);
@@ -60,14 +86,14 @@ public class talonTurret extends Subsystem {
     	   SmartDashboard.putNumber("Encoder Speed", eSpeed);
     	   SmartDashboard.putNumber("Encoder Position", ePosition);
     	   SmartDashboard.putNumber("Encoder Velocity", eVelocity);
-    	   SmartDashboard.putNumber("Ecoder Current", eCurrent);
+    	   SmartDashboard.putNumber("Encoder Current", eCurrent);
     	   SmartDashboard.putNumber("Enncoder Voltage", eVoltage);
     	   SmartDashboard.putNumber("Encoder Degrees", eDegrees);
     }
 
 	@Override
 	protected void initDefaultCommand() {
-		this.setDefaultCommand(new turretMove());		
+		//this.setDefaultCommand(new turretMove());		
 	}
 	
 }

@@ -11,8 +11,9 @@ public class turretMove extends Command{
 	}
 	
 	public void execute(){
-		double turretMove = Robot.oi.filter(Robot.oi.turretJoy.getY());
-		Robot.turretMotor.move(turretMove);
+		//double turretMove = Robot.oi.filter(Robot.oi.turretJoy.getY());
+		//Robot.turretMotor.move(turretMove);
+		Robot.turretMotor.auto();
 	}
 	
 	protected void end(){
