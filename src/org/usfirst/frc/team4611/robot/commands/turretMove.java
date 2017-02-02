@@ -16,9 +16,9 @@ public class turretMove extends Command{
 		Robot.turretMotor.auto();
 	}
 	
-	protected void end(){
+	/*protected void end(){
 		Robot.turretMotor.move(0);
-	}
+	}*/
 	
 	@Override
 	protected boolean isFinished() {
