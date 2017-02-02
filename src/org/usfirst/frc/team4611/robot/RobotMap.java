@@ -17,7 +17,7 @@ public class RobotMap {
     public static int rightShooter = 5;
     
     //Pneumatic Ports. Two ports are required for a double solenoid
-    public static int testSolenoidForward = 0;
-    public static int testSolenoidReverse = 1;
+    public static int testSolenoidForward = 1; //check ports
+    public static int testSolenoidReverse = 0;
     
 }
