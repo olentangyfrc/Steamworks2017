@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
 		this.chooser = new SendableChooser(); //SmartDashboard
 
 		// this.autonomousCommand = new autonomousCommandGroup();
-		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
+		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use
 	}
 
@@ -132,9 +132,21 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		double [] value = table.getNumberArray("centerX",new double [1]);
+		if (value.length != 0){
+			SmartDashboard.putNumber("centerX: ", value[0]);
+		}
 		Scheduler.getInstance().run();
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
+		//double value = table.getNumber("centerX",-1);
+		//SmartDashboard.putNumber("centerX: ", value);
+		}
+	public void printArray (String name, double[] ar){
+		System.out.print(name + ", ");
+		for (int s = 0; s< ar.length; s++)
+			System.out.print(ar[s]+", ");
+		System.out.println();		
 	}
 
 	/**
