@@ -14,10 +14,9 @@ public class RobotMap {
     public static int backLeftWheel = 2;
     public static int frontLeftWheel = 3;
     //shooter ports
-    public static int leftShooter = 4;
-    public static int rightShooter = 5;
-    public static int singleShooter = 6;
-    public static int Feeder= 7;
+    public static int Feeder= 4;
+    public static int singleShooter = 5;
+
     //speed variables
     public static final double singleShooterSpeed = -0.5;
     public static final double Feederspeed = -0.5;
