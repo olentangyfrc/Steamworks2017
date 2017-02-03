@@ -36,7 +36,8 @@ public class talonTurret extends Subsystem {
 		turretMotor.setForwardSoftLimit(2048); //Motor can no longer move forward when it reaches this position
 		turretMotor.enableForwardSoftLimit(true);
 		turretMotor.setReverseSoftLimit(-2048);
-		turretMotor.enableReverseSoftLimit(true); //Motor can no longer move reverse when it reaches this position
+		turretMotor.enableReverseSoftLimit(false
+				); //Motor can no longer move reverse when it reaches this position
 	}
 	
 	double ePosition = turretMotor.getEncPosition(); 
