@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class talonTurret extends Subsystem {
 	private CANTalon turretMotor; //Create CANTalon "turretMotor"
-	private FeedbackDevice turretEncoder; //Create a CTRE FeedbackDevice and name it "turretEncoder"
+	private FeedbackDevice turretEncoder; //Create a FeedbackDevice and name it "turretEncoder"
 	
 	public talonTurret(){
 		this.turretMotor = new CANTalon(RobotMap.turretcim); //attach "turretMotor" to the port on RobotMap
@@ -33,19 +33,19 @@ public class talonTurret extends Subsystem {
 		turretMotor.setPosition(0); //set "encoder's" starting position to 0
 		turretMotor.reverseSensor(true); //Reverses the sensor. Duh.
 		
-		turretMotor.setForwardSoftLimit(4096);
+		turretMotor.setForwardSoftLimit(2048); //Motor can no longer move forward when it reaches this position
 		turretMotor.enableForwardSoftLimit(true);
-		turretMotor.setReverseSoftLimit(-4096);
-		turretMotor.enableReverseSoftLimit(true);
+		turretMotor.setReverseSoftLimit(-2048);
+		turretMotor.enableReverseSoftLimit(true); //Motor can no longer move reverse when it reaches this position
 	}
 	
-	double ePosition = turretMotor.getEncPosition();
-	double eRawDegrees = ePosition/8192;  
-	double eDegrees = eRawDegrees*360; 
+	double ePosition = turretMotor.getEncPosition(); 
+	double eRawDegrees = ePosition/8192; //Divide positon by to resloution (2048) times encoding method (4x) here
+	double eDegrees = eRawDegrees*360; //Multiply ^ by 360 to get degrees
 	
-	/*public void move(double speed){ //Normal movement of the turret
+	public void move(double speed){ //Normal movement of the turret
 		this.turretMotor.set(speed); 
-	}*/ 
+	}
 	   
 	public void auto(){ //Auto pilot (I hope)
 		double inputDegrees = -15; //Connor's VA input
@@ -71,13 +71,9 @@ public class talonTurret extends Subsystem {
     
     public void getEncoderMeasure(){
     	   double eSpeed = turretMotor.getSpeed();
-    	   //double ePosition = turretMotor.getEncPosition();
     	   double eVelocity = turretMotor.getEncVelocity();
     	   double eCurrent = turretMotor.getOutputCurrent();
-    	   double eVoltage = turretMotor.getOutputVoltage();
-    	   
-    	   //double eRawDegrees = ePosition/8192;  
-    	   //double eDegrees = eRawDegrees*360; 
+    	   double eVoltage = turretMotor.getOutputVoltage();    	   
     	   
     	   if (Math.abs(ePosition) >= (8192)){
     		  turretMotor.setPosition(0);
@@ -93,7 +89,7 @@ public class talonTurret extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		//this.setDefaultCommand(new turretMove());		
+		this.setDefaultCommand(new turretMove());		
 	}
 	
 }

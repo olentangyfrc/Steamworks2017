@@ -36,7 +36,7 @@ public class OI {
         turretBut = new JoystickButton(turretJoy, 1);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
-    	turretBut.whileHeld(new turretMove());
+    	turretBut.whileHeld(new turretAuto());
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

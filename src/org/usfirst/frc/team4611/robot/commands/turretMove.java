@@ -11,14 +11,13 @@ public class turretMove extends Command{
 	}
 	
 	public void execute(){
-		//double turretMove = Robot.oi.filter(Robot.oi.turretJoy.getY());
-		//Robot.turretMotor.move(turretMove);
-		Robot.turretMotor.auto();
+		double turretMove = Robot.oi.filter(Robot.oi.turretJoy.getY());
+		Robot.turretMotor.move(turretMove);
 	}
 	
-	/*protected void end(){
+	protected void end(){
 		Robot.turretMotor.move(0);
-	}*/
+	}
 	
 	@Override
 	protected boolean isFinished() {
