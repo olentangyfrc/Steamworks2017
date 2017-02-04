@@ -16,9 +16,9 @@ public class RobotMap {
     //shooter ports (motor-PWM)
     public static int leftShooter = 4;
     public static int rightShooter = 5;
-    public static int singleShooter = 6;
+    public static int singleShooter = 48;
     //speed variables
-    public static final double singleShooterSpeed = -0.5; //tentative
+    //public static final double singleShooterSpeed = -0.5; //tentative
     //Ultrasonic Sensor Port
     public static int ultraSonicPort = 3;
     //Pressure Sensor Port
