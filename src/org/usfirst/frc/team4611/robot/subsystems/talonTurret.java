@@ -36,19 +36,17 @@ public class talonTurret extends Subsystem {
 		turretMotor.setForwardSoftLimit(2048); //Motor can no longer move forward when it reaches this position
 		turretMotor.enableForwardSoftLimit(true);
 		turretMotor.setReverseSoftLimit(-2048);
-		turretMotor.enableReverseSoftLimit(false
-				); //Motor can no longer move reverse when it reaches this position
+		turretMotor.enableReverseSoftLimit(false); //Motor can no longer move reverse when it reaches this position
 	}
-	
-	double ePosition = turretMotor.getEncPosition(); 
-	double eRawDegrees = ePosition/8192; //Divide positon by to resloution (2048) times encoding method (4x) here
-	double eDegrees = eRawDegrees*360; //Multiply ^ by 360 to get degrees
 	
 	public void move(double speed){ //Normal movement of the turret
 		this.turretMotor.set(speed); 
 	}
 	   
 	public void auto(){ //Auto pilot (I hope)
+		double ePosition = turretMotor.getEncPosition(); 
+		double eRawDegrees = ePosition/8192; //Divide positon by to resloution (2048) times encoding method (4x) here
+		double eDegrees = eRawDegrees*360; //Multiply ^ by 360 to get degrees
 		double inputDegrees = -15; //Connor's VA input
 		final double moveDegrees = eDegrees + inputDegrees; //Current position plus his input
 		
@@ -71,10 +69,14 @@ public class talonTurret extends Subsystem {
 	}
     
     public void getEncoderMeasure(){
+    	   double ePosition = turretMotor.getEncPosition(); 
     	   double eSpeed = turretMotor.getSpeed();
     	   double eVelocity = turretMotor.getEncVelocity();
     	   double eCurrent = turretMotor.getOutputCurrent();
-    	   double eVoltage = turretMotor.getOutputVoltage();    	   
+    	   double eVoltage = turretMotor.getOutputVoltage();    
+    	   
+    	   double eRawDegrees = ePosition/8192; //Divide positon by to resloution (2048) times encoding method (4x) here
+       		double eDegrees = eRawDegrees*360; //Multiply ^ by 360 to get degrees
     	   
     	   if (Math.abs(ePosition) >= (8192)){
     		  turretMotor.setPosition(0);
