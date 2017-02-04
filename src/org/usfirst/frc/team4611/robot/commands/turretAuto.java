@@ -11,7 +11,7 @@ public class turretAuto extends Command{
 	}
 	
 	public void execute(){
-		Robot.turretMotor.auto();
+		//Robot.turretMotor.auto();
 	}
 	
 	protected void end(){

@@ -135,12 +135,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();	
-		// LiveWindow.run();
-		ultra.ultrasonicMeasurement();
-		turretMotor.getEncoderMeasure();
-		}
-	public void getVisValues(){
 		double [] value = table.getNumberArray("centerX",new double [1]);
 		printArray("centerX",value);
 		double [] value2 = table.getNumberArray("centerY",new double [1]);
@@ -151,7 +145,21 @@ public class Robot extends IterativeRobot {
 		printArray("height",value4);
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
-		
+		moveContours(value[0], value[1]);
+		Scheduler.getInstance().run();	
+		// LiveWindow.run();
+		ultra.ultrasonicMeasurement();
+		turretMotor.getEncoderMeasure();
+		}
+	
+	public void moveContours(double x1, double x2){
+		double ave = (x1+x2)/2;
+		if (ave < 160)
+			turretMotor.move(-0.5);
+		else if (ave > 160)
+			turretMotor.move(0.5);
+		else
+			turretMotor.move(0);		
 	}
 	
 	public void printArray (String name, double[] ar){

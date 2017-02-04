@@ -43,7 +43,7 @@ public class talonTurret extends Subsystem {
 		this.turretMotor.set(speed); 
 	}
 	   
-	public void auto(){ //Auto pilot (I hope)
+	/*public void auto(){ //Auto pilot (I hope)
 		double ePosition = turretMotor.getEncPosition(); 
 		double eRawDegrees = ePosition/8192; //Divide positon by to resloution (2048) times encoding method (4x) here
 		double eDegrees = eRawDegrees*360; //Multiply ^ by 360 to get degrees
@@ -66,7 +66,7 @@ public class talonTurret extends Subsystem {
 				turretMotor.set(-1); //Move until your input degrees + original degrees are equal
 			}
 		}
-	}
+	}*/
     
     public void getEncoderMeasure(){
     	   double ePosition = turretMotor.getEncPosition(); 
