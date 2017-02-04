@@ -132,21 +132,32 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		double [] value = table.getNumberArray("centerX",new double [1]);
-		printArray("centerX: ",value);
-		if (value.length != 0){
-			SmartDashboard.putNumber("centerX: ", value[0]);
-		}
 		Scheduler.getInstance().run();
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
-		//double value = table.getNumber("centerX",-1);
-		//SmartDashboard.putNumber("centerX: ", value);
 		}
+	public void getVisValues(){
+		double [] value = table.getNumberArray("centerX",new double [1]);
+		printArray("centerX",value);
+		double [] value2 = table.getNumberArray("centerY",new double [1]);
+		printArray("centerY",value2);
+		double [] value3 = table.getNumberArray("width",new double [1]);
+		printArray("width",value3);
+		double [] value4 = table.getNumberArray("height",new double [1]);
+		printArray("height",value4);
+		double [] value5 = table.getNumberArray("area",new double [1]);
+		printArray("area",value5);
+		
+	}
+	
 	public void printArray (String name, double[] ar){
-		System.out.print(name + ", ");
-		for (int s = 0; s< ar.length; s++)
-			System.out.print(ar[s]+", ");
+		System.out.print(name + ",");
+		for (int s = 0; s< ar.length; s++){
+			System.out.print(ar[s]);
+			if (s!= ar.length-1){
+				System.out.print(",");
+			}
+		}
 		System.out.println();		
 	}
 
