@@ -37,6 +37,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
+	public UltrasonicRange ultra2;
 	public Gyro gy;
 	public static boolean dir = false;
 
@@ -125,7 +126,8 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-		ultra = new UltrasonicRange();
+		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1");
+		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2");
 		gy = new Gyro();
 
 	}
@@ -138,6 +140,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
+		ultra2.ultrasonicMeasurement();
 	}
 
 	/**

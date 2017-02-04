@@ -15,7 +15,6 @@ public class UltrasonicRange  {
 	
 
 	//public double raw_range;
-	public static AnalogInput ultrasonicAnalog = new AnalogInput(RobotMap.ultraSonicPort); //port number
 	
 	public int raw_range;
 	public double raw_rangeVoltage;
@@ -23,18 +22,20 @@ public class UltrasonicRange  {
 	public double voltsPerInch = suppliedVolt / 512;
 	public double rangeInches;
 	public boolean inRange;
-	final public String label = "Distance from wall: ";
-	final public String units = "inches";
+	public AnalogInput ultrasonicAnalog;
+	public String smartLabel;
 	
-	public UltrasonicRange()
+	public UltrasonicRange(int port, String label)
 	{
+		ultrasonicAnalog = new AnalogInput(port); //port number
 		ultrasonicAnalog.setOversampleBits(8);
 		ultrasonicAnalog.setAverageBits(5);
 		inRange= false;
+		smartLabel = label;
 	}
     public void ultrasonicMeasurement() 
     {
-    	double averageVoltage = ultrasonicAnalog.getAverageVoltage();	
+    	double averageVoltage = this.ultrasonicAnalog.getAverageVoltage();	
     	double rangeInInches = 39.587242 * (averageVoltage) + 1.049719;
     	double roundedInches = rangeInInches + .5;
     	
@@ -44,10 +45,8 @@ public class UltrasonicRange  {
     		inRange = false;
     		
     	
-    	SmartDashboard.putNumber("Ultrasonic Range (inches)", (int)roundedInches);
+    	SmartDashboard.putNumber(smartLabel, (int)roundedInches);
     	SmartDashboard.putBoolean("in range", inRange);
-    	SmartDashboard.putString("ultra label", label);
-    	SmartDashboard.putString("units", units);
     	
     }
     
