@@ -133,6 +133,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		double [] value = table.getNumberArray("centerX",new double [1]);
+		printArray("centerX: ",value);
 		if (value.length != 0){
 			SmartDashboard.putNumber("centerX: ", value[0]);
 		}
