@@ -5,7 +5,7 @@ package org.usfirst.frc.team4611.robot;
 //import org.usfirst.frc.team4611.robot.commands.ButtonMed;
 
 import org.usfirst.frc.team4611.robot.commands.*;
-
+import org.usfirst.frc.team4611.robot.subsystems.talonTurret;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -24,14 +24,19 @@ public class OI {
 
     public Joystick leftJoy;
     public Joystick rightJoy;
+    public Joystick turretJoy; 
     public Button shootbut;
+    public Button turretBut;
 
     
     public OI() {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
+        turretJoy = new Joystick(2);
+        turretBut = new JoystickButton(turretJoy, 1);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
+    	turretBut.whileHeld(new turretAuto());
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
