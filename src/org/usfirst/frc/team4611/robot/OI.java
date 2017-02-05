@@ -29,7 +29,7 @@ public class OI {
         rightJoy = new Joystick(1);
         shootBut = new JoystickButton(leftJoy, 1);
         shootPiston = new JoystickButton(rightJoy, 1);
-        this.shootPiston.whenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
+        this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
 
 
     }
