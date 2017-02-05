@@ -47,7 +47,8 @@ public class talonTurret extends Subsystem {
 		double ePosition = turretMotor.getEncPosition(); 
 		double eRawDegrees = ePosition/8192; //Divide positon by to resloution (2048) times encoding method (4x) here
 		double eDegrees = eRawDegrees*360; //Multiply ^ by 360 to get degrees
-	    double inputDegrees = -15; //Connor's VA input
+		
+	    double inputDegrees = 90; //Connor's VA input
 		final double moveDegrees = eDegrees + inputDegrees; //Current position plus his input
 		
 		if(inputDegrees >= 0){ //If input degrees are postive
@@ -55,7 +56,7 @@ public class talonTurret extends Subsystem {
 				turretMotor.set(0);
 			}
 			else{
-				turretMotor.set(1); //Move until your input degrees + original degrees are equal
+				turretMotor.set(0.25); //Move until your input degrees + original degrees are equal
 			}
 		}
 		else{
@@ -63,7 +64,7 @@ public class talonTurret extends Subsystem {
 				turretMotor.set(0);
 			}
 			else{
-				turretMotor.set(-1); //Move until your input degrees + original degrees are equal
+				turretMotor.set(-0.25); //Move until your input degrees + original degrees are equal
 			}
 		}
 	}
