@@ -147,8 +147,11 @@ public class Robot extends IterativeRobot {
 		printArray("area",value5);
 		if (value.length ==2)
 		moveContours(value[0], value[1]);
-		else 
-			moveContours(value[0]);
+		else {
+			printArray ("centerX", value);
+			System.out.println("Don't have two contour values");
+		}
+			//moveContours(value[0]);
 		Scheduler.getInstance().run();	
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
