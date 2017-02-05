@@ -145,7 +145,10 @@ public class Robot extends IterativeRobot {
 		printArray("height",value4);
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
+		if (value.length ==2)
 		moveContours(value[0], value[1]);
+		else 
+			moveContours(value[0]);
 		Scheduler.getInstance().run();	
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
@@ -154,13 +157,21 @@ public class Robot extends IterativeRobot {
 	
 	public void moveContours(double x1, double x2){
 		double ave = (x1+x2)/2;
-		if (ave < 160)
-			turretMotor.move(-0.5); //theoretically move left
-		else if (ave > 160)
-			turretMotor.move(0.5);
+		if (ave < 158)
+			turretMotor.move(-1.0); //theoretically move left
+		else if (ave > 162)
+			turretMotor.move(1.0);
 		else
 			turretMotor.move(0);		
 	}
+	public void moveContours(double x3){
+		if (x3 < 158)
+			turretMotor.move(-1.0); //theoretically move left
+		else if (x3 > 162)
+			turretMotor.move(1.0);
+		else
+			turretMotor.move(0);	
+		}
 	
 	public void printArray (String name, double[] ar){
 		System.out.print(name + ",");
