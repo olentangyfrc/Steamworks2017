@@ -3,21 +3,20 @@ package org.usfirst.frc.team4611.robot.commands;
 import org.usfirst.frc.team4611.robot.OI;
 import org.usfirst.frc.team4611.robot.RobotMap;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Direction;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class relaySpike extends Command{
-
-	/*public void light(boolean poweredOn)
-	{
-		if(poweredOn = true)
-			
-		if(poweredOn = false)
-			
-	}*/
+	
+	public static Relay spike;
+	
+	public relaySpike(int p,Direction d){//p is port
+		spike = new Relay(p, d);
+	}
 	
 	protected void execute(){
-		OI.spike.set(Relay.Value.kOn);
-		//light(true);
+		spike.set(Relay.Value.kOn);
+		//turns light on? connor needs to work on commenting
 	}
 	
 	@Override
@@ -27,7 +26,7 @@ public class relaySpike extends Command{
 	}
 	
 	protected void end(){
-		//light(false);
-		OI.spike.set(Relay.Value.kOff);
+		spike.set(Relay.Value.kOff);
+		//turns light off? connor needs to work on commenting
 	}
 }

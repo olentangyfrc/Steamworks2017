@@ -22,7 +22,7 @@ public class OI {
     //INSTANTIATING JOYSTICKS AND BUTTONS
 
     //Instantiate Joysticks on ports 0 and 1.
-	public static Relay spike = new Relay(RobotMap.relayPort, Direction.kForward);
+	public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward);
 	public static Joystick leftJoy = new Joystick(0);
     public Joystick rightJoy = new Joystick(1);
     public Joystick cimStick = new Joystick(2);
@@ -35,7 +35,7 @@ public class OI {
     	//this.slow.whileHeld(new ButtonSlow());
 		//this.med.whileHeld(new ButtonMed());
 		//this.fast.whileHeld(new ButtonFast());
-    	light.toggleWhenPressed(new relaySpike());
+    	light.toggleWhenPressed(lightSpike);
     }
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
     {
