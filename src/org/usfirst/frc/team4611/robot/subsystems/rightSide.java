@@ -18,8 +18,8 @@ public class rightSide extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public void move(double speed) {
-        this.frontR.set(-speed);			//Each side has 2 motors, so we've gotta set them individually
-        this.backR.set(-speed);				//The geartrain requires this side to run backwards, hence the negative
+        this.frontR.set(speed);			//Each side has 2 motors, so we've gotta set them individually
+        this.backR.set(speed);
     }
 
 

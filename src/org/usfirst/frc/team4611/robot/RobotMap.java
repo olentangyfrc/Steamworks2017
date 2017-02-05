@@ -7,21 +7,26 @@ package org.usfirst.frc.team4611.robot;
  * floating around.
  */
 public class RobotMap {
-    //Drive motor ports. They're numbered clockwise, starting with zero at the front right.
+    
+	//Drive motor ports. They're numbered clockwise, starting with zero at the front right.
     public static int frontRightWheel = 0;
     public static int backRightWheel = 1;
     public static int backLeftWheel = 2;
     public static int frontLeftWheel = 3;
 
-    //shooter ports (motor-PWM)
-    public static int leftShooter = 4;
-    public static int rightShooter = 5;
-    public static int singleShooter = 6;
-    //speed variables
-    public static final double singleShooterSpeed = -0.5; //tentative
     //Ultrasonic Sensor Port
     public static int ultraSonicPort = 3;
     //Pressure Sensor Port
     public static int PressurePort = 1;
 
+    //shooter ports
+    public static int Feeder= 4;
+    public static int singleShooter = 5;
+
+    //speed variables
+    public static final double singleShooterSpeed = 0.5;
+    public static final double Feederspeed = -0.5;
+
+
 }
+	

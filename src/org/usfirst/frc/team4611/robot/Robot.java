@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4611.robot.commands.Feeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
 /**
@@ -37,7 +39,11 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
+
 	public Gyro gy;
+
+	public static FeederSub fe;
+
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
@@ -62,8 +68,10 @@ public class Robot extends IterativeRobot {
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
+		fe = new FeederSub();
+		
 		oi = new OI();
-
+		
 		prefs = Preferences.getInstance();
 		 
 		this.chooser = new SendableChooser(); //SmartDashboard
