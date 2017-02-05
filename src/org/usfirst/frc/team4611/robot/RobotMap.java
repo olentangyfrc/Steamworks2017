@@ -18,7 +18,7 @@ public class RobotMap {
     public static int singleShooter = 5;
 
     //speed variables
-    public static final double singleShooterSpeed = -0.5;
+    public static final double singleShooterSpeed = 0.5;
     public static final double Feederspeed = -0.5;
 
 }
