@@ -5,11 +5,11 @@ import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Feeder extends Command {
+public class MoveFeeder extends Command {
 	
 	private double speed;
 		
-	public Feeder(double inputspeed){
+	public MoveFeeder(double inputspeed){
 		this.speed = inputspeed;
 		this.requires(Robot.fe);
 	}

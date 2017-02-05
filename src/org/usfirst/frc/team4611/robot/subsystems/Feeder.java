@@ -5,11 +5,11 @@ import org.usfirst.frc.team4611.robot.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class FeederSub extends Subsystem {
+public class Feeder extends Subsystem {
 
 	private Victor Feeder;
 	
-	public FeederSub(){
+	public Feeder(){
 		this.Feeder= new Victor (RobotMap.Feeder );
 	}
  

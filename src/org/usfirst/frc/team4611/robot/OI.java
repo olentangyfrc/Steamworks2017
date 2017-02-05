@@ -32,7 +32,7 @@ public class OI {
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     	feedbut = new JoystickButton(rightJoy, 1);
-    	feedbut.toggleWhenPressed(new Feeder(RobotMap.Feederspeed));
+    	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

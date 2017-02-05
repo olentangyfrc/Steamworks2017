@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4611.robot.commands.Feeder;
+import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
 /**
@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot {
 
 	public Gyro gy;
 
-	public static FeederSub fe;
+	public static Feeder fe;
 
 	public static boolean dir = false;
 
@@ -68,7 +68,7 @@ public class Robot extends IterativeRobot {
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
-		fe = new FeederSub();
+		fe = new Feeder();
 		
 		oi = new OI();
 		
