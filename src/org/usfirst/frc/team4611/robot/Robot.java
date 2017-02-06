@@ -161,17 +161,17 @@ public class Robot extends IterativeRobot {
 	public void moveContours(double x1, double x2){
 		double ave = (x1+x2)/2;
 		if (ave < 158)
-			turretMotor.move(-1.0); //theoretically move left
+			turretMotor.move(-0.5); //theoretically move left
 		else if (ave > 162)
-			turretMotor.move(1.0);
+			turretMotor.move(0.5);
 		else
 			turretMotor.move(0);		
 	}
 	public void moveContours(double x3){
 		if (x3 < 158)
-			turretMotor.move(-1.0); //theoretically move left
+			turretMotor.move(-0.5); //theoretically move left
 		else if (x3 > 162)
-			turretMotor.move(1.0);
+			turretMotor.move(0.5);
 		else
 			turretMotor.move(0);	
 		}
