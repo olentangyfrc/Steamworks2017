@@ -17,6 +17,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import java.util.Timer;
+
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 
 /**
@@ -37,6 +40,7 @@ public class Robot extends IterativeRobot {
 	public static SingleWheelShooter sw;
 	public UltrasonicRange ultra;
 	
+	
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
@@ -44,6 +48,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser chooser;
 
 	public static NetworkTable table;
+	public static NetworkTable table2;
 
 	CameraServer server;
 
@@ -70,6 +75,7 @@ public class Robot extends IterativeRobot {
 
 		// this.autonomousCommand = new autonomousCommandGroup();
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
+		 table2 = NetworkTable.getTable("GRIP");
 		// VA data to roborio. Not currently in use
 	}
 
@@ -126,15 +132,20 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
-		
-
+		time.start();
 	}
 
 	/**
 	 * This function is called periodically during operator control
 	 */
+	public static edu.wpi.first.wpilibj.Timer time;
+	public static int tracker = 0;
+	double lastFrame = 0;
+	public static double lastTime = 0;
 	@Override
 	public void teleopPeriodic() {
+		
+			
 		double [] value = table.getNumberArray("centerX",new double [1]);
 		printArray("centerX",value);
 		double [] value2 = table.getNumberArray("centerY",new double [1]);
@@ -145,11 +156,32 @@ public class Robot extends IterativeRobot {
 		printArray("height",value4);
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
-		if (value.length ==2)
-		moveContours(value[0], value[1]);
+		double currentFrame = table2.getNumber("FrameRate", 0.0);
+		if(lastFrame != currentFrame) {
+			lastFrame = currentFrame;
+			lastTime = time.get(); 
+		}
 		else {
+			double differentTime = time.get() - lastTime;
+			if(differentTime > 5)
+				SmartDashboard.putString("Kangaroo", "Dead");
+		}
+		
+		
+		
+			
+		if (value.length ==2)
+			moveContours(value[0], value[1]);
+		else if(value.length == 1) {
 			printArray ("centerX", value);
 			System.out.println("Don't have two contour values");
+		}
+		else
+		{
+			if(value.length >= 3)
+				System.out.println("To many X values");
+			else
+				System.out.println("To few X values");
 		}
 			//moveContours(value[0]);
 		Scheduler.getInstance().run();	
