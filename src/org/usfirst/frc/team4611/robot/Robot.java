@@ -141,6 +141,7 @@ public class Robot extends IterativeRobot {
 	public static edu.wpi.first.wpilibj.Timer time;
 	public static int tracker = 0;
 	double lastFrame = 0;
+	public static double lastTime = 0;
 	@Override
 	public void teleopPeriodic() {
 		
@@ -156,13 +157,18 @@ public class Robot extends IterativeRobot {
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
-		
-		double lastTime = time.get()%30;
-		if(lastTime == 0)
+		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
-		if(currentFrame == lastFrame && lastTime > .5) {
-			SmartDashboard.putString("Kangaroo", "Dead");
+			lastTime = time.get(); 
 		}
+		else {
+			double differentTime = time.get() - lastTime;
+			if(differentTime > 5)
+				SmartDashboard.putString("Kangaroo", "Dead");
+		}
+		
+		
+		
 			
 		if (value.length ==2)
 			moveContours(value[0], value[1]);
