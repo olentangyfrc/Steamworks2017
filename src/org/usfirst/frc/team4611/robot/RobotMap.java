@@ -18,4 +18,6 @@ public class RobotMap {
     public static int shooter = 5;
 	public static int cimMotor = 4;
 	public static int relayPort = 3;
+	public static int fancyPort1 = 0;
+	public static int fancyPort2 = 1;
 }

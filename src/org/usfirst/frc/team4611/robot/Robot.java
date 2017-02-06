@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
 
 /**
@@ -39,7 +40,9 @@ public class Robot extends IterativeRobot {
     public static rightSide rightS;
     public static CimMotor s;
     public UltrasonicRange ultra;
-    public Gyro gy;
+    //public Gyro gy;
+    public FancyLightSet fl;
+    public boolean lightsGreen;
     //public static Motor m = new Motor();
 	//public static ButtonOLS n = new ButtonOLS();
 	public static boolean dir = false;
@@ -69,6 +72,7 @@ public class Robot extends IterativeRobot {
         rightS = new rightSide();
         s = new CimMotor();
         prefs = Preferences.getInstance();
+        fl = new FancyLightSet();
        
         
         this.chooser = new SendableChooser();
@@ -133,7 +137,7 @@ public class Robot extends IterativeRobot {
             this.autonomousCommand.cancel();
             }
         ultra = new UltrasonicRange();
-        gy = new Gyro();
+        //gy = new Gyro();
     }
 
     /**
@@ -144,7 +148,9 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         //LiveWindow.run();
         ultra.ultrasonicMeasurement();
-        gy.gyroMeasure();
+        //gy.gyroMeasure();
+        lightsGreen = SmartDashboard.getBoolean("lights green", false);
+        fl.show(lightsGreen);
         
         /* if(OI.light.())){
         	spike.set(Relay.Value.kOn);
