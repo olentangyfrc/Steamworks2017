@@ -22,7 +22,7 @@ public class OI {
     //INSTANTIATING JOYSTICKS AND BUTTONS
 
     //Instantiate Joysticks on ports 0 and 1.
-	public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward);
+	public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
 	public static Joystick leftJoy = new Joystick(0);
     public Joystick rightJoy = new Joystick(1);
     public Joystick cimStick = new Joystick(2);

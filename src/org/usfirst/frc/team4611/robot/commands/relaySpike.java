@@ -10,13 +10,18 @@ public class relaySpike extends Command{
 	
 	public static Relay spike;
 	
+	/*	kOff - Turns both relay outputs off
+		kForward - Sets the relay to forward (M+ @ 12V, M- @ GND)
+		kReverse - Sets the relay to reverse (M+ @ GND, M- @ 12V)
+		kOn - Sets both relay outputs on (M+ @ 12V, M- @ 12V).
+	*/
+	
 	public relaySpike(int p,Direction d){//p is port
-		spike = new Relay(p, d);
+		spike = new Relay(p, d); //instantiation of a new spike
 	}
 	
 	protected void execute(){
-		spike.set(Relay.Value.kOn);
-		//turns light on? connor needs to work on commenting
+		spike.set(Relay.Value.kOn); //sets both relay outputs on
 	}
 	
 	@Override
@@ -26,7 +31,6 @@ public class relaySpike extends Command{
 	}
 	
 	protected void end(){
-		spike.set(Relay.Value.kOff);
-		//turns light off? connor needs to work on commenting
+		spike.set(Relay.Value.kOff); //turns both relay out puts off
 	}
 }
