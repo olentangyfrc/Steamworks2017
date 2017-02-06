@@ -132,7 +132,7 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		ultra = new UltrasonicRange();
-		time.start();
+		//time.start();
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class Robot extends IterativeRobot {
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
-		if(lastFrame != currentFrame) {
+		/*if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
 			lastTime = time.get(); 
 		}
@@ -166,7 +166,7 @@ public class Robot extends IterativeRobot {
 			if(differentTime > 5)
 				SmartDashboard.putString("Kangaroo", "Dead");
 		}
-		
+		*/
 		
 		
 			
@@ -193,17 +193,17 @@ public class Robot extends IterativeRobot {
 	public void moveContours(double x1, double x2){
 		double ave = (x1+x2)/2;
 		if (ave < 158)
-			turretMotor.move(-0.5); //theoretically move left
+			turretMotor.move(0.75); //theoretically move left
 		else if (ave > 162)
-			turretMotor.move(0.5);
+			turretMotor.move(-0.75);
 		else
 			turretMotor.move(0);		
 	}
 	public void moveContours(double x3){
 		if (x3 < 158)
-			turretMotor.move(-0.5); //theoretically move left
+			turretMotor.move(0.75); //theoretically move left
 		else if (x3 > 162)
-			turretMotor.move(0.5);
+			turretMotor.move(-0.75);
 		else
 			turretMotor.move(0);	
 		}
