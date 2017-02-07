@@ -13,41 +13,55 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class UltrasonicRange  {
 	
-
-	//public double raw_range;
-	public static AnalogInput ultrasonicAnalog = new AnalogInput(RobotMap.ultraSonicPort); //port number
-	
 	public int raw_range;
 	public double raw_rangeVoltage;
 	public double suppliedVolt = 5;
 	public double voltsPerInch = suppliedVolt / 512;
 	public double rangeInches;
 	public boolean inRange;
-	final public String label = "Distance from wall: ";
-	final public String units = "inches";
+	public AnalogInput ultrasonicAnalog;
+	public String smartLabel;
+	public boolean showInRange;
 	
-	public UltrasonicRange()
-	{
+	public UltrasonicRange(int port, String label, boolean show){
+		//port should be from robot map to declare the port the instance of the sensor's analog port on the roborio
+		//label is what old smartdashboard uses as the number's label, and what new smartdashboard uses in path
+		//show determines which sensor is used for changing the box's colors
+		ultrasonicAnalog = new AnalogInput(port); //sensor declared
+		if(show){
+			showInRange = true;
+		}
+		else{
+			showInRange = false;
+		}
 		ultrasonicAnalog.setOversampleBits(8);
 		ultrasonicAnalog.setAverageBits(5);
 		inRange= false;
+		smartLabel = label;
 	}
-    public void ultrasonicMeasurement() 
-    {
-    	double averageVoltage = ultrasonicAnalog.getAverageVoltage();	
+    public void ultrasonicMeasurement() {
+    	double averageVoltage = this.ultrasonicAnalog.getAverageVoltage();	
     	double rangeInInches = 39.587242 * (averageVoltage) + 1.049719;
     	double roundedInches = rangeInInches + .5;
     	
-    	if(roundedInches > 4 && roundedInches < 5)
-    		inRange = true;
-    	else
-    		inRange = false;
+    	//receives range for shooting from the dashboard, then changes color box (red = not in range, green = in range)
+    	if(showInRange){
+    		double x = SmartDashboard.getNumber("low end", 40);
+    		double y = SmartDashboard.getNumber("high end", 50);
+    		//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
+    		//replace x & y with values for shooting once known
+    		if(roundedInches > x && roundedInches < y){
+    			inRange = true;
+    		}
+    		else{
+    			inRange = false;
+    		}
+    	}
     		
     	
-    	SmartDashboard.putNumber("Ultrasonic Range (inches)", (int)roundedInches);
-    	SmartDashboard.putBoolean("in range", inRange);
-    	SmartDashboard.putString("ultra label", label);
-    	SmartDashboard.putString("units", units);
+    	SmartDashboard.putNumber(smartLabel, (int)roundedInches);
+    	if(showInRange)
+    		SmartDashboard.putBoolean("in range", inRange);
     	
     }
     

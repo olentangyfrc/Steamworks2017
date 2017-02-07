@@ -16,6 +16,7 @@ public class RobotMap {
 
     //Ultrasonic Sensor Port
     public static int ultraSonicPort = 3;
+    public static int ultraSonicPort2 = 2;
     //Pressure Sensor Port
     public static int PressurePort = 1;
 
