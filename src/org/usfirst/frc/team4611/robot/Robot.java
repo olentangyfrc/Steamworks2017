@@ -170,9 +170,9 @@ public class Robot extends IterativeRobot {
 		
 		
 			
-		if (value.length ==2)
-			moveContours(value[0], value[1]);
-		else if(value.length == 1) {
+		//if (value.length ==2)
+			//moveContours(value[0], value[1]);
+		if(value.length == 1) {
 			printArray ("centerX", value);
 			System.out.println("Don't have two contour values");
 		}
@@ -188,24 +188,6 @@ public class Robot extends IterativeRobot {
 		// LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		turretMotor.getEncoderMeasure();
-		}
-	
-	public void moveContours(double x1, double x2){
-		double ave = (x1+x2)/2;
-		if (ave < 158)
-			turretMotor.move(0.75); //theoretically move left
-		else if (ave > 162)
-			turretMotor.move(-0.75);
-		else
-			turretMotor.move(0);		
-	}
-	public void moveContours(double x3){
-		if (x3 < 158)
-			turretMotor.move(0.75); //theoretically move left
-		else if (x3 > 162)
-			turretMotor.move(-0.75);
-		else
-			turretMotor.move(0);	
 		}
 	
 	public void printArray (String name, double[] ar){

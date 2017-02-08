@@ -27,6 +27,7 @@ public class OI {
     public Joystick turretJoy; 
     public Button shootbut;
     public Button turretBut;
+    public Button activateVision;
 
     
     public OI() {
@@ -35,6 +36,8 @@ public class OI {
         turretJoy = new Joystick(2);
         turretBut = new JoystickButton(turretJoy, 1);
         shootbut = new JoystickButton(leftJoy, 1);
+        activateVision = new JoystickButton (rightJoy, 1);
+        activateVision.toggleWhenPressed(new MoveContours());
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     	turretBut.whileHeld(new turretAuto());
     }
