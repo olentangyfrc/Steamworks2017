@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
     public static rightSide rightS;
     public static CimMotor s;
     public UltrasonicRange ultra;
-    //public Gyro gy;
+    public Gyro gy;
     public FancyLightSet fl;
     public boolean lightsGreen;
     //public static Motor m = new Motor();
@@ -137,7 +137,7 @@ public class Robot extends IterativeRobot {
             this.autonomousCommand.cancel();
             }
         ultra = new UltrasonicRange();
-        //gy = new Gyro();
+        gy = new Gyro();
     }
 
     /**
@@ -146,18 +146,11 @@ public class Robot extends IterativeRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        //LiveWindow.run();
+        LiveWindow.run();
         ultra.ultrasonicMeasurement();
-        //gy.gyroMeasure();
+        gy.gyroMeasure();
         lightsGreen = SmartDashboard.getBoolean("lights green", false);
         fl.show(lightsGreen);
-        
-        /* if(OI.light.())){
-        	spike.set(Relay.Value.kOn);
-        }
-        else{
-        	spike.set(Relay.Value.kOff);
-        }*/
 
         
     }
