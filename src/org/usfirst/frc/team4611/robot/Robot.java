@@ -138,8 +138,8 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
-		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
+		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", "in range 2");
 		//gy = new Gyro();
 
 	}
@@ -161,7 +161,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
-		lightsGreen = SmartDashboard.getBoolean("lights green", false);
+		lightsGreen = ultra.getInRange() && ultra2.getInRange();
         fl.show(lightsGreen);
 	}
 }
