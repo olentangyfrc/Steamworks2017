@@ -157,7 +157,7 @@ public class Robot extends IterativeRobot {
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
-		/*if(lastFrame != currentFrame) {
+		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
 			lastTime = time.get(); 
 		}
@@ -166,7 +166,7 @@ public class Robot extends IterativeRobot {
 			if(differentTime > 5)
 				SmartDashboard.putString("Kangaroo", "Dead");
 		}
-		*/
+		
 		
 		
 			
@@ -179,9 +179,9 @@ public class Robot extends IterativeRobot {
 		else
 		{
 			if(value.length >= 3)
-				System.out.println("To many X values");
+				System.out.println("Too many X values");
 			else
-				System.out.println("To few X values");
+				System.out.println("Too few X values");
 		}
 			//moveContours(value[0]);
 		Scheduler.getInstance().run();	
