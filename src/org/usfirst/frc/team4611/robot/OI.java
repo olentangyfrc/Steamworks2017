@@ -2,8 +2,12 @@ package org.usfirst.frc.team4611.robot;
 
 import org.usfirst.frc.team4611.robot.commands.*;
 
+import org.usfirst.frc.team4611.robot.commands.relaySpike;
+
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Direction;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -16,14 +20,13 @@ public class OI {
     //INSTANTIATING JOYSTICKS AND BUTTONS
 
     //Instantiate Joysticks on ports 0 and 1.
-
-
-
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Button shootbut;
+    public Button light = new JoystickButton(leftJoy, 6);
 
     public Button feedbut;
+    public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
 
     
     public OI() {
@@ -33,8 +36,9 @@ public class OI {
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     	feedbut = new JoystickButton(rightJoy, 1);
     	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
-    }
+    	light.toggleWhenPressed(lightSpike);
 
+    }
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
     {
         if (Math.abs(raw) < .15) {

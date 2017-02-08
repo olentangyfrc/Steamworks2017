@@ -8,11 +8,12 @@ import org.usfirst.frc.team4611.robot.subsystems.*;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
-
+import org.usfirst.frc.team4611.robot.OI;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -22,7 +23,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -41,6 +44,8 @@ public class Robot extends IterativeRobot {
 	public UltrasonicRange ultra;
 	public UltrasonicRange ultra2;
 	public Gyro gy;
+	public FancyLightSet fl;
+    public boolean lightsGreen;
 
 	public static Feeder fe;
 
@@ -69,7 +74,7 @@ public class Robot extends IterativeRobot {
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
-		
+		fl = new FancyLightSet();
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();
@@ -156,5 +161,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+		lightsGreen = SmartDashboard.getBoolean("lights green", false);
+        fl.show(lightsGreen);
 	}
 }

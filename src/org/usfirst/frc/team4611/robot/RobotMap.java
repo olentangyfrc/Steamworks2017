@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4611.robot;
 
+import edu.wpi.first.wpilibj.Relay;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -27,7 +29,10 @@ public class RobotMap {
     //speed variables
     public static final double singleShooterSpeed = 0.5;
     public static final double Feederspeed = -0.5;
-
+    
+    public static int relayPort = 3;
+	public static int fancyPort1 = 0;
+	public static int fancyPort2 = 1;
 
 }
 	
