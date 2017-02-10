@@ -36,6 +36,7 @@ public class Robot extends IterativeRobot {
 	public static rightSide rightS;
 	public static talonTurret turretMotor;
 	public static SingleWheelShooter sw;
+	public static Timer time;
 	public UltrasonicRange ultra;
 	
 	
@@ -129,6 +130,7 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
+		time = new Timer();
 		ultra = new UltrasonicRange();
 		//time.start();
 	}
@@ -137,7 +139,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public static int tracker = 0;
-	public static Timer time;
+	
 	double lastFrame = 0;
 	public static double lastTime = 0;
 	@Override
@@ -155,7 +157,7 @@ public class Robot extends IterativeRobot {
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
-		/*if(lastFrame != currentFrame) {
+		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
 			lastTime = time.get(); 
 		}
@@ -164,13 +166,14 @@ public class Robot extends IterativeRobot {
 			if(differentTime > 5)
 				SmartDashboard.putString("Kangaroo", "Dead");
 		}
-		*/
+		
 		
 		
 			
-		//if (value.length ==2)
-			//moveContours(value[0], value[1]);
-		if(value.length == 1) {
+		if (value.length ==2){
+			moveContours(value[0], value[1]);
+		}
+		else if(value.length == 1) {
 			printArray ("centerX", value);
 			System.out.println("Don't have two contour values");
 		}
@@ -187,6 +190,22 @@ public class Robot extends IterativeRobot {
 		ultra.ultrasonicMeasurement();
 		turretMotor.getEncoderMeasure();
 		}
+	public void moveContours(double x1, double x2){
+	double ave = (x1+x2)/2;
+	System.out.println("THIS IS AVERAGE:" + ave);
+	if (ave < 158){
+		Robot.rightS.move(0.75);//theoretically move left
+		System.out.println("MOVED WRONG WAY");
+	}
+	else if (ave > 162){
+		Robot.leftS.move(0.75);
+		System.out.println("MOVED RIGHT WAY");
+	}
+	else{
+		Robot.leftS.move(0);	
+		Robot.rightS.move(0);
+	}
+	}
 	
 	public void printArray (String name, double[] ar){
 		System.out.print(name + ",");
