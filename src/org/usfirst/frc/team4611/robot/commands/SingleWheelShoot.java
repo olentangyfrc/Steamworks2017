@@ -14,6 +14,9 @@ public class SingleWheelShoot extends Command{
 		this.speed = inputSpeed;
 		this.requires(Robot.sw);
 	}
+	public SingleWheelShoot(){
+		this.requires(Robot.sw);
+	}
 	 protected void initialize() {
 	    }
 	 protected void execute() {
