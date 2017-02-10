@@ -153,6 +153,8 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
+		lightsGreen = ultra.getInRange() && ultra2.getInRange();
+        fl.show(lightsGreen);
 	}
 
 	/**
@@ -161,7 +163,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
-		lightsGreen = ultra.getInRange() && ultra2.getInRange();
-        fl.show(lightsGreen);
+		
 	}
 }

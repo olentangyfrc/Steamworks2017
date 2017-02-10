@@ -23,7 +23,7 @@ public class OI {
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Button shootbut;
-    public Button light = new JoystickButton(leftJoy, 6);
+    //public Button light = new JoystickButton(leftJoy, 6);
 
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
@@ -36,7 +36,7 @@ public class OI {
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     	feedbut = new JoystickButton(rightJoy, 1);
     	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
-    	light.toggleWhenPressed(lightSpike);
+    	//light.toggleWhenPressed(lightSpike);
 
     }
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
