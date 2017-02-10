@@ -11,16 +11,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class TestSolenoid extends Subsystem {
-	DoubleSolenoid testDSole;
+	DoubleSolenoid Sole1;
+	DoubleSolenoid Sole2;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public TestSolenoid() {
-		this.testDSole = new DoubleSolenoid(RobotMap.testSolenoidForward, RobotMap.testSolenoidReverse); 
+		this.Sole1 = new DoubleSolenoid(RobotMap.sole1Open, RobotMap.sole1Close);
+		this.Sole2 = new DoubleSolenoid(RobotMap.sole2Open, RobotMap.sole2Close); 
     }
 	
 	public void move(Value v) {
-        this.testDSole.set(v);
+        this.Sole1.set(v);
+        this.Sole2.set(v);
     }
 
     public void initDefaultCommand() {
