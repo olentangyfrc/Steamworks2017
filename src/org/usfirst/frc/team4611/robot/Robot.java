@@ -6,7 +6,7 @@ import org.usfirst.frc.team4611.robot.subsystems.*;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
@@ -17,8 +17,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import java.util.Timer;
 
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 
@@ -138,8 +136,8 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during operator control
 	 */
-	public static edu.wpi.first.wpilibj.Timer time;
 	public static int tracker = 0;
+	public static Timer time;
 	double lastFrame = 0;
 	public static double lastTime = 0;
 	@Override
