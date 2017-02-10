@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
 
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
 	public Gyro gy;
 	public FancyLightSet fl;
     public boolean lightsGreen;
+    public AccelMeasure accel;
 
 	public static Feeder fe;
 
@@ -141,6 +143,7 @@ public class Robot extends IterativeRobot {
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
 		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
 		//gy = new Gyro();
+		accel = new AccelMeasure();
 
 	}
 
@@ -163,5 +166,6 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		lightsGreen = SmartDashboard.getBoolean("lights green", false);
         fl.show(lightsGreen);
+        accel.accelMeasurement();
 	}
 }
