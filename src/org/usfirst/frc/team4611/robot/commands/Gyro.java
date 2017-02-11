@@ -13,8 +13,16 @@ public class Gyro {
     
     
     public Gyro() {
-    	gyro.reset();//angle set to 0 when restarted
-    }
+        
+        try{
+               gyro = new ADXRS450_Gyro();
+               gyro.reset();//angle set to 0 when restarted
+           }
+        catch(NullPointerException ex){
+               System.out.println("No gyro found");
+           }
+   }
+    
     
     public void gyroMeasure(){
     	raw = gyro.getAngle();//gets the angle of the gyro relative to the set angle 0
