@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
-	public static DualWheels dw;
+	//public static DualWheels dw;
 	public UltrasonicRange ultra;
 	public static TestSolenoid testSol;
 	
@@ -59,7 +59,7 @@ public class Robot extends IterativeRobot {
 		// server.startAutomaticCapture("cam1");
 		leftS = new leftSide();
 		rightS = new rightSide();
-		dw = new DualWheels();
+		//dw = new DualWheels();
 		testSol = new TestSolenoid(); 
 		oi = new OI();
 		prefs = Preferences.getInstance();
