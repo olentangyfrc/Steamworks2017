@@ -26,12 +26,14 @@ public class RobotMap {
     public static int Feeder= 4;
     public static int singleShooter = 5;
     public static int Climber = 6;
+    public static int Agitator = 7;
 
     //speed variables
 
     public static double Feederspeed;
     public static double singleShooterSpeed;
     public static double climberSpeed;
+    public static double agitateSpeed;
     
 
     public static int relayPort = 3;

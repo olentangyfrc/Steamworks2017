@@ -14,6 +14,9 @@ public class MoveClimber extends Command { //Thanks again hannah
 		this.speed = inputspeed;
 		this.requires(Robot.cl);
 	}
+	public MoveClimber(){
+		this.requires(Robot.cl);
+	}
 
 	protected void initialize(){
 		//Runs once, on initialization.

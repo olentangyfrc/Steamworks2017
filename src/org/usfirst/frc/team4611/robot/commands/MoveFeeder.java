@@ -14,7 +14,9 @@ public class MoveFeeder extends Command {
 		this.speed = inputspeed;
 		this.requires(Robot.fe);
 	}
-
+	public MoveFeeder(){
+		this.requires(Robot.fe);
+	}
 	protected void initialize(){
 		//Runs once, on initialization.
 	}
