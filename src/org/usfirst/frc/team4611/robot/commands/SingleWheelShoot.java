@@ -5,6 +5,7 @@ import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SingleWheelShoot extends Command{
 	
@@ -22,7 +23,8 @@ public class SingleWheelShoot extends Command{
 	 protected void execute() {
 	    double joyVal = (Robot.oi.rightJoy.getZ()); //port one //no filter on this (run 40%) //Use the 'filter' function on the raw joystick input
 	     Robot.sw.shoot(joyVal); //Actually pass that value to the motors
-	     //Robot.sw.shoot(RobotMap.singleShooterSpeed); //button only
+	     RobotMap.singleShooterSpeed = (SmartDashboard.getNumber("shoot speed", 80)) / 100;
+	     Robot.sw.shoot(RobotMap.singleShooterSpeed); //button only
 	    }
 	@Override
 	protected boolean isFinished() {
