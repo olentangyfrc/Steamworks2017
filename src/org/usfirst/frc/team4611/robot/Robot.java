@@ -86,7 +86,6 @@ public class Robot extends IterativeRobot {
 		fe = new Feeder();
 		fl = new FancyLightSet();
 		cl = new Climber();
-		oi = new OI();
 		testSol = new TestSolenoid(); 
 		oi = new OI();
 
