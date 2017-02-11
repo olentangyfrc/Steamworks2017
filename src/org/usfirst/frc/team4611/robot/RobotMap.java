@@ -29,11 +29,9 @@ public class RobotMap {
 
     //speed variables
 
-    public static final double Feederspeed = -0.75;
+    public static double Feederspeed;
     public static double singleShooterSpeed;
-
-
-    public static final double ClimberSpeed = 0.5;
+    public static double climberSpeed;
     
 
     public static int relayPort = 3;

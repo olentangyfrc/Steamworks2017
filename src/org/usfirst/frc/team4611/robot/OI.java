@@ -41,7 +41,7 @@ public class OI {
     	feedbut = new JoystickButton(rightJoy, 7);
     	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
     	climbButton = new JoystickButton(shootJoy, 1);
-    	climbButton.whileHeld(new MoveClimber(RobotMap.ClimberSpeed));
+    	climbButton.whileHeld(new MoveClimber(RobotMap.climberSpeed));
     	light = new JoystickButton(leftJoy, 7);
     	light.toggleWhenPressed(lightSpike);
     	shootPiston = new JoystickButton(rightJoy, 1);

@@ -4,6 +4,7 @@ import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class MoveFeeder extends Command {
 	
@@ -19,6 +20,7 @@ public class MoveFeeder extends Command {
 	}
 	
 	protected void execute(){
+		RobotMap.Feederspeed = (SmartDashboard.getNumber("feed speed", 0)) / 100;
 		Robot.fe.feed(RobotMap.Feederspeed);
 	}
 	

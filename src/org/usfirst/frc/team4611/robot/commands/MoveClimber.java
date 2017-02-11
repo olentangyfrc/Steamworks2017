@@ -4,6 +4,7 @@ import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class MoveClimber extends Command { //Thanks again hannah
 	
@@ -19,7 +20,8 @@ public class MoveClimber extends Command { //Thanks again hannah
 	}
 	
 	protected void execute(){
-		Robot.cl.climb(RobotMap.Feederspeed);
+		RobotMap.climberSpeed = (SmartDashboard.getNumber("climb speed", 0)) / 100;
+		Robot.cl.climb(RobotMap.climberSpeed);
 	}
 	
 	@Override
