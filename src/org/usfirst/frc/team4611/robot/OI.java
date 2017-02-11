@@ -22,6 +22,7 @@ public class OI {
     //Instantiate Joysticks on ports 0 and 1.
     public Joystick leftJoy;
     public Joystick rightJoy;
+    public Joystick shootJoy;
     public Button shootbut;
     public Button climbButton;
     public Button light;
@@ -33,12 +34,13 @@ public class OI {
     public OI() {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
+        shootJoy = new Joystick(2);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     	feedbut = new JoystickButton(rightJoy, 1);
     	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
-    	climbButton = new JoystickButton(leftJoy, 6);
-    	climbButton.toggleWhenPressed(new MoveClimber(RobotMap.ClimberSpeed));
+    	climbButton = new JoystickButton(shootJoy, 1);
+    	climbButton.whileHeld(new MoveClimber(RobotMap.ClimberSpeed));
     	light = new JoystickButton(leftJoy, 7);
     	light.toggleWhenPressed(lightSpike);
 
