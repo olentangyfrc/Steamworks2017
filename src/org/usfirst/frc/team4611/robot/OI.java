@@ -34,7 +34,7 @@ public class OI {
         rightJoy = new Joystick(1);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot());
-    	feedbut = new JoystickButton(rightJoy, 1);
+    	feedbut = new JoystickButton(rightJoy, 7);
     	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
     	light.toggleWhenPressed(lightSpike);
 
