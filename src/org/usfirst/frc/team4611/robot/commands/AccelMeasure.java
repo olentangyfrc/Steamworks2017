@@ -23,6 +23,10 @@ public class AccelMeasure {
 		yVal = accel.getY();
 		zVal = accel.getZ();
 		
+		xVal = (int)(Math.round(xVal));
+		yVal = (int)(Math.round(yVal));
+		zVal = (int)(Math.round(zVal));
+		
 		SmartDashboard.putNumber("x acceleration", xVal);
 		SmartDashboard.putNumber("y acceleration", yVal);
 		SmartDashboard.putNumber("z acceleration", zVal);

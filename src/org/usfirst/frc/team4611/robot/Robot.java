@@ -78,6 +78,7 @@ public class Robot extends IterativeRobot {
 		fe = new Feeder();
 		fl = new FancyLightSet();
 		oi = new OI();
+		accel = new AccelMeasure();
 		
 		prefs = Preferences.getInstance();
 		 
@@ -156,6 +157,7 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
+		accel.accelMeasurement();
 	}
 
 	/**
@@ -166,6 +168,6 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		lightsGreen = SmartDashboard.getBoolean("lights green", false);
         fl.show(lightsGreen);
-        accel.accelMeasurement();
+        
 	}
 }
