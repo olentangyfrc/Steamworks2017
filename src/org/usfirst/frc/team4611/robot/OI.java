@@ -29,7 +29,6 @@ public class OI {
 
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
-    public Button shootBut;
     public Button shootPiston;
 
     
@@ -45,7 +44,6 @@ public class OI {
     	climbButton.whileHeld(new MoveClimber(RobotMap.ClimberSpeed));
     	light = new JoystickButton(leftJoy, 7);
     	light.toggleWhenPressed(lightSpike);
-        shootBut = new JoystickButton(leftJoy, 1);
         shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
 
