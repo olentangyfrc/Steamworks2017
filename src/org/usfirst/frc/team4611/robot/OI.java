@@ -22,8 +22,10 @@ public class OI {
     //Instantiate Joysticks on ports 0 and 1.
     public Joystick leftJoy;
     public Joystick rightJoy;
+    public Joystick shootJoy;
     public Button shootbut;
-    public Button light = new JoystickButton(leftJoy, 6);
+    public Button climbButton;
+    public Button light;
 
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
@@ -32,10 +34,14 @@ public class OI {
     public OI() {
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
+        shootJoy = new Joystick(2);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot());
     	feedbut = new JoystickButton(rightJoy, 7);
     	feedbut.toggleWhenPressed(new MoveFeeder(RobotMap.Feederspeed));
+    	climbButton = new JoystickButton(shootJoy, 1);
+    	climbButton.whileHeld(new MoveClimber(RobotMap.ClimberSpeed));
+    	light = new JoystickButton(leftJoy, 7);
     	light.toggleWhenPressed(lightSpike);
 
     }

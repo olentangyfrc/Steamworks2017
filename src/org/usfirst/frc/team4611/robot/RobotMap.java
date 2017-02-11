@@ -25,10 +25,12 @@ public class RobotMap {
     //shooter ports
     public static int Feeder= 4;
     public static int singleShooter = 5;
+    public static int Climber = 6;
 
     //speed variables
     public static final double singleShooterSpeed = 0.5;
     public static final double Feederspeed = -0.5;
+    public static final double ClimberSpeed = 0.5;
     
     public static int relayPort = 3;
 	public static int fancyPort1 = 0;

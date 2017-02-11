@@ -41,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public static leftSide leftS; 
 	public static rightSide rightS;
 	public static SingleWheelShooter sw;
+	public static Climber cl;
 	public UltrasonicRange ultra;
 	public UltrasonicRange ultra2;
 	public Gyro gy;
@@ -75,6 +76,7 @@ public class Robot extends IterativeRobot {
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
+		cl = new Climber();
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();
