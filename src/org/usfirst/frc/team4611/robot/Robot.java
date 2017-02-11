@@ -4,11 +4,13 @@ package org.usfirst.frc.team4611.robot;
 
 import org.usfirst.frc.team4611.robot.subsystems.*;
 
+
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 import org.usfirst.frc.team4611.robot.OI;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
@@ -26,6 +28,10 @@ import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
 
+//import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
+//import org.usfirst.frc.team4611.robot.subsystems.TestSolenoid;
+
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -40,6 +46,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
+
 	public static SingleWheelShooter sw;
 	public static Climber cl;
 	public UltrasonicRange ultra;
@@ -49,6 +56,8 @@ public class Robot extends IterativeRobot {
     public boolean lightsGreen;
 
 	public static Feeder fe;
+	public static TestSolenoid testSol;
+	
 
 	public static boolean dir = false;
 
@@ -78,7 +87,9 @@ public class Robot extends IterativeRobot {
 		fl = new FancyLightSet();
 		cl = new Climber();
 		oi = new OI();
-		
+		testSol = new TestSolenoid(); 
+		oi = new OI();
+
 		prefs = Preferences.getInstance();
 		 
 		this.chooser = new SendableChooser(); //SmartDashboard
