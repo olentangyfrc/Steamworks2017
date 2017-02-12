@@ -33,7 +33,7 @@ public class RobotMap {
     public static double Feederspeed;
     public static double singleShooterSpeed;
     public static double climberSpeed;
-    public static double agitateSpeed;
+    public static double agitateSpeed = 0.5;
     
 
     public static int relayPort = 3;

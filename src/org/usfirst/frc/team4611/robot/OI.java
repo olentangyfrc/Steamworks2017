@@ -40,8 +40,8 @@ public class OI {
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot());
     	feedbut = new JoystickButton(rightJoy, 7);
-    	//feedbut.toggleWhenPressed(new MoveFeeder());
-    	feedbut.whileHeld(new MoveFeeder());
+    	feedbut.toggleWhenPressed(new MoveFeeder());
+    	//feedbut.whileHeld(new MoveFeeder());
     	climbButton = new JoystickButton(shootJoy, 1);
     	climbButton.whileHeld(new MoveClimber());
     	light = new JoystickButton(leftJoy, 7);
@@ -49,7 +49,7 @@ public class OI {
     	shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
         agitateButton = new JoystickButton(rightJoy, 6);
-        agitateButton.toggleWhenPressed(new MoveAgitator());
+        agitateButton.whileHeld(new MoveAgitator());
 
 
     }
