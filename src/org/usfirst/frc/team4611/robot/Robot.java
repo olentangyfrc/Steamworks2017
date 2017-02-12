@@ -9,6 +9,7 @@ import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
@@ -147,16 +148,17 @@ public class Robot extends IterativeRobot {
 		
 			
 		double [] value = table.getNumberArray("centerX",new double [1]);
-		printArray("centerX",value);
+		//printArray("centerX",value);
 		double [] value2 = table.getNumberArray("centerY",new double [1]);
-		printArray("centerY",value2);
+		//printArray("centerY",value2);
 		double [] value3 = table.getNumberArray("width",new double [1]);
-		printArray("width",value3);
+		//printArray("width",value3);
 		double [] value4 = table.getNumberArray("height",new double [1]);
-		printArray("height",value4);
+		//printArray("height",value4);
 		double [] value5 = table.getNumberArray("area",new double [1]);
-		printArray("area",value5);
+		//printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
+		
 		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
 			lastTime = time.get(); 
@@ -169,20 +171,14 @@ public class Robot extends IterativeRobot {
 		
 		
 		
-			
-		if (value.length ==2){
-			moveContours(value[0], value[1]);
-		}
-		else if(value.length == 1) {
-			printArray ("centerX", value);
-			System.out.println("Don't have two contour values");
-		}
-		else
-		{
-			if(value.length >= 3)
-				System.out.println("Too many X values");
-			else
-				System.out.println("Too few X values");
+		System.out.println("Number of contours" + value.length);
+		//System.out.println("Boolean" + OI.leftJoy.getRawButton(7));
+		if (oi.leftJoy.getRawButton(7) && value.length == 2){
+				moveContours(value[0], value[1]);
+			}
+		else {
+			Robot.leftS.move(0);
+			Robot.rightS.move(0);
 		}
 			//moveContours(value[0]);
 		Scheduler.getInstance().run();	
@@ -190,16 +186,25 @@ public class Robot extends IterativeRobot {
 		ultra.ultrasonicMeasurement();
 		turretMotor.getEncoderMeasure();
 		}
+	
+	
 	public void moveContours(double x1, double x2){
-	double ave = (x1+x2)/2;
-	System.out.println("THIS IS AVERAGE:" + ave);
-	if (ave < 158){
-		Robot.rightS.move(0.75);//theoretically move left
-		System.out.println("MOVED WRONG WAY");
+	//double ave = (x1+x2)/2;
+	double targetNum = 0;
+	targetNum = Math.abs(x1 - x2) + Math.max(x1, x2);
+	double visionSpeed = .55; //oi.leftJoy.getAxis(AxisType.kZ);
+	double visionSpeedPercent = 1.3;
+	System.out.println("Vision Speed:" + visionSpeed);
+	System.out.println("THIS IS target number:" + targetNum);
+	if (targetNum > 160 + 10){
+		Robot.leftS.move(-visionSpeed*visionSpeedPercent);
+		Robot.rightS.move(visionSpeed);//theoretically move right
+		System.out.println("MOVED Right");
 	}
-	else if (ave > 162){
-		Robot.leftS.move(0.75);
-		System.out.println("MOVED RIGHT WAY");
+	else if (targetNum < 160 - 10){
+		Robot.leftS.move(visionSpeed*visionSpeedPercent);
+		Robot.rightS.move(-visionSpeed);
+		System.out.println("MOVED LEFT");
 	}
 	else{
 		Robot.leftS.move(0);	

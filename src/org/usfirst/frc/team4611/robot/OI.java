@@ -38,7 +38,7 @@ public class OI {
         shootbut = new JoystickButton(leftJoy, 1);
         activateVision = new JoystickButton (rightJoy, 1);
         activateVision.toggleWhenPressed(new MoveContours());
-    	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
+    	//shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
     	turretBut.whileHeld(new turretAuto());
     }
 
