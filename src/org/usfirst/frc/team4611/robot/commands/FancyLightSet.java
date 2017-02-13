@@ -22,6 +22,17 @@ public class FancyLightSet {
 			makeRed();
 		}
 	}
+	public void showPickUp(boolean inRange){
+		if(inRange){
+			makeYellow();
+		}else{
+			makeRed();
+		}
+	}
+	public void makeYellow(){
+		fancyLights1.set(Relay.Value.kReverse);
+		fancyLights2.set(Relay.Value.kForward);
+	}
 	
 	public void makeGreen(){
 		fancyLights1.set(Relay.Value.kReverse);

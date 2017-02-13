@@ -23,14 +23,14 @@ public class OI {
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Button shootbut;
-    public Button light = new JoystickButton(leftJoy, 6);
-
+    public Button light;
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
 
     
-    public OI() {
+    public OI() {  	
     	leftJoy = new Joystick(0);
+    	light = new JoystickButton(leftJoy, 6);
         rightJoy = new Joystick(1);
         shootbut = new JoystickButton(leftJoy, 1);
     	shootbut.whileHeld (new SingleWheelShoot(RobotMap.singleShooterSpeed));
