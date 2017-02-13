@@ -27,7 +27,7 @@ public class OI {
     public Button climbButton;
     public Button light;
     public Button agitateButton;
-
+    public Button LinearButton;
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
@@ -50,7 +50,7 @@ public class OI {
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
         agitateButton = new JoystickButton(rightJoy, 6);
         agitateButton.toggleWhenPressed(new MoveAgitator());
-
+        LinearButton.whileHeld(new LinearActuator());
 
     }
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

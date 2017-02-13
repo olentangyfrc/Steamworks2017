@@ -27,6 +27,7 @@ import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
+import org.usfirst.frc.team4611.robot.commands.LinearActuator;
 
 //import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
 //import org.usfirst.frc.team4611.robot.subsystems.TestSolenoid;
@@ -55,7 +56,7 @@ public class Robot extends IterativeRobot {
 	public Gyro gy;
 	public FancyLightSet fl;
     public boolean lightsGreen;
-
+    public static LinearActuator la;
 	public static Feeder fe;
 	public static TestSolenoid testSol;
 	
@@ -81,7 +82,7 @@ public class Robot extends IterativeRobot {
 		// server = CameraServer.getInstance();
 		// server.setQuality(50);
 		// server.startAutomaticCapture("cam1");
-		leftS = new leftSide();
+		leftS = new leftSide();limber
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
@@ -89,6 +90,7 @@ public class Robot extends IterativeRobot {
 		cl = new Climber();
 		testSol = new TestSolenoid(); 
 		ag = new Agitator();
+		la = new LinearActuator();
 		oi = new OI();
 
 		prefs = Preferences.getInstance();
