@@ -153,13 +153,12 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
-<<<<<<< HEAD
+
 		//fl.showPickUp(true);
 		fl.show(lightsGreen);
-=======
+
 		lightsGreen = ultra.getInRange() && ultra2.getInRange();
         fl.show(lightsGreen);
->>>>>>> 9877868ee617f2fa0520c0300380a129f88e8851
 	}
 
 	/**
@@ -168,12 +167,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
-<<<<<<< HEAD
+
 		lightsGreen = ultra.getInRange() && ultra2.getInRange();
 		
         //fl.show(lightsGreen);
-=======
+
 		
->>>>>>> 9877868ee617f2fa0520c0300380a129f88e8851
+
 	}
 }

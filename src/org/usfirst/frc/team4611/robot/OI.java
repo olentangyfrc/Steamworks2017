@@ -23,12 +23,11 @@ public class OI {
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Button shootbut;
-<<<<<<< HEAD
     public Button light;
-=======
+
     //public Button light = new JoystickButton(leftJoy, 6);
 
->>>>>>> 9877868ee617f2fa0520c0300380a129f88e8851
+
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
 
