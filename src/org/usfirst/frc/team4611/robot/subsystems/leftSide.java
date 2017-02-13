@@ -14,8 +14,8 @@ public class leftSide extends Subsystem {
     private Victor backL;
 
     public leftSide() {
-        this.frontL = new Victor(RobotMap.frontLeftWheel);		//Tell the robot that there's a motor there, and name it
-        this.backL = new Victor(RobotMap.backLeftWheel);		//Tell the robot that there's a motor there, and name it
+        //this.frontL = new Victor(RobotMap.frontLeftWheel);		//Tell the robot that there's a motor there, and name it
+        //this.backL = new Victor(RobotMap.backLeftWheel);		//Tell the robot that there's a motor there, and name it
     }
 
     // Put methods for controlling this subsystem

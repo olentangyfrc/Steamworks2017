@@ -10,11 +10,17 @@ import edu.wpi.first.wpilibj.Relay;
  */
 public class RobotMap {
     
-	//Drive motor ports. They're numbered clockwise, starting with zero at the front right.
-    public static int frontRightWheel = 0;
-    public static int backRightWheel = 1;
-    public static int backLeftWheel = 2;
-    public static int frontLeftWheel = 3;
+	//Tank drive motor ports. They're numbered clockwise, starting with zero at the front right.
+    //public static int frontRightWheel = 0;
+    //public static int backRightWheel = 1;
+    //public static int backLeftWheel = 2;
+    //public static int frontLeftWheel = 3;
+    
+    //Mecanum drive ports, connected to PWMs
+    public static int mech1 = 3;//front left
+    public static int mech2 = 2;//rear left
+    public static int mech3 = 0;//front right
+    public static int mech4 = 1;//rear right
 
     //Ultrasonic Sensor Port
     public static int ultraSonicPort = 3;

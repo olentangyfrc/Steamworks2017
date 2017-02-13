@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -46,6 +47,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
+	
+	public static RobotDrive mecDrive;
 
 	public static SingleWheelShooter sw;
 	public static Climber cl;
@@ -81,8 +84,9 @@ public class Robot extends IterativeRobot {
 		// server = CameraServer.getInstance();
 		// server.setQuality(50);
 		// server.startAutomaticCapture("cam1");
-		leftS = new leftSide();
-		rightS = new rightSide();
+		//leftS = new leftSide();
+		//rightS = new rightSide();
+		mecDrive = new RobotDrive(RobotMap.mech1, RobotMap.mech2, RobotMap.mech3, RobotMap.mech4);
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
@@ -167,6 +171,7 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
+		mecDrive.mecanumDrive_Cartesian(oi.leftJoy.getX(), oi.leftJoy.getY(), oi.leftJoy.getTwist(),0);
 	}
 
 	/**
