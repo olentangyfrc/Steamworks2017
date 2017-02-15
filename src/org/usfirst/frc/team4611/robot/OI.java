@@ -50,7 +50,9 @@ public class OI {
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
         agitateButton = new JoystickButton(rightJoy, 6);
         agitateButton.toggleWhenPressed(new MoveAgitator());
-        LinearButton.whileHeld(new LinearActuator());
+        LinearButton= new JoystickButton(rightJoy, 5);
+        LinearButton= new JoystickButton(leftJoy, 5);
+        LinearButton.whileHeld(new MoveLinearActuator());
 
     }
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

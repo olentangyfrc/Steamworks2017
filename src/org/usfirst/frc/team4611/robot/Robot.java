@@ -27,7 +27,7 @@ import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.Gyro;
-import org.usfirst.frc.team4611.robot.commands.LinearActuator;
+import org.usfirst.frc.team4611.robot.subsystems.LinearActuator;
 
 //import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
 //import org.usfirst.frc.team4611.robot.subsystems.TestSolenoid;
@@ -68,7 +68,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser chooser;
 
 	public static NetworkTable table;
-
+	
 	CameraServer server;
 
 	/**
@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
 		// server = CameraServer.getInstance();
 		// server.setQuality(50);
 		// server.startAutomaticCapture("cam1");
-		leftS = new leftSide();limber
+		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
 		fe = new Feeder();

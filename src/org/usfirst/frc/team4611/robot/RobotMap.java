@@ -29,7 +29,6 @@ public class RobotMap {
     public static int Agitator = 7;
     public static int LinearActuator = 8;
     //speed variables
-    LinearActuator
     public static double Feederspeed;
     public static double singleShooterSpeed;
     public static double climberSpeed;

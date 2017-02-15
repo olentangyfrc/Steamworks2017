@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class MoveLinearActuator extends Command {
 
-	private double distance;
+	private int distance;
 	private double speed;
+	public double actuate;
+	
 	public MoveLinearActuator(double inputspeed){
 		this.speed = inputspeed;
 		this. requires(Robot.la);
@@ -18,30 +20,22 @@ public class MoveLinearActuator extends Command {
 		this.requires(Robot.la);
 	}
 	public void initialize(){
-	
 	}
 	protected void execute(){
 		RobotMap.actuateSpeed =(SmartDashboard.getNumber("linear distance", distance));
-		Robot.la.actuate(RobotMap.actuateSpeed);
+		Robot.la.setActuate(RobotMap.actuateSpeed);
 	}
 	
+	
 	protected void end(){
-		Robot.la.actuate(0);
+		Robot.la.setActuate(0);
 	}
 	
 	protected void interupted(){
 		this.end();
 	}
-	
-	
-	
-
-
-	
-	
-
-@Override
-protected boolean isFinished() {
+	@Override
+	protected boolean isFinished() {
 	// TODO Auto-generated method stub
 	return false;
 

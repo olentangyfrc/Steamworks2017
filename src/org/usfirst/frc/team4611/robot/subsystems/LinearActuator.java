@@ -9,6 +9,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class LinearActuator extends Subsystem {
 	public double actuate;
+	public double getActuate() {
+		return actuate;
+	}
+	public void setActuate(double actuate) {
+		this.actuate = actuate;
+	}
 	private double speed;
 	private Victor LinearActuator;
 	
@@ -17,6 +23,9 @@ public class LinearActuator extends Subsystem {
 	}
 	public void Linear(double push){
 		this.LinearActuator.set(push);
+	}
+	public void LinearActuator(double pull){
+	    this.LinearActuator.set(pull);	
 	}
 	@Override
 	protected void initDefaultCommand() {
