@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.startRight;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -68,11 +69,12 @@ public class Robot extends IterativeRobot {
 		turretMotor = new talonTurret();
 		sw = new SingleWheelShooter();
 		oi = new OI();
+		
 
 		prefs = Preferences.getInstance();
 		 
 		this.chooser = new SendableChooser(); //SmartDashboard
-
+		this.autonomousCommand = new startRight();
 		// this.autonomousCommand = new autonomousCommandGroup();
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		 table2 = NetworkTable.getTable("GRIP");
@@ -107,12 +109,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-
-		this.autonomousCommand = (Command) this.chooser.getSelected();
+		if (autonomousCommand != null) autonomousCommand.start();
+		/*this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
-			this.autonomousCommand.start();
+			this.autonomousCommand.start();*/
 		}
-	}
+		//}
 
 	/**
 	 * This function is called periodically during autonomous
