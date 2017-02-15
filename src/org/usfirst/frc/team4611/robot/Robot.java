@@ -87,6 +87,7 @@ public class Robot extends IterativeRobot {
 		//leftS = new leftSide();
 		//rightS = new rightSide();
 		mecDrive = new RobotDrive(RobotMap.mech1, RobotMap.mech2, RobotMap.mech3, RobotMap.mech4);
+		gy = new Gyro();
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
@@ -156,8 +157,8 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
-		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
+		//ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
+		//ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
 		//gy = new Gyro();
 
 	}
@@ -169,9 +170,10 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
-		ultra.ultrasonicMeasurement();
-		ultra2.ultrasonicMeasurement();
-		mecDrive.mecanumDrive_Cartesian(oi.leftJoy.getX(), oi.leftJoy.getY(), oi.leftJoy.getTwist(),0);
+		//ultra.ultrasonicMeasurement();
+		//ultra2.ultrasonicMeasurement();
+		gy.gyroMeasure();
+		mecDrive.mecanumDrive_Cartesian((oi.shootJoy.getX() * 0.5), (oi.shootJoy.getY() * 0.5), (oi.shootJoy.getTwist() * 0.5),0);
 	}
 
 	/**

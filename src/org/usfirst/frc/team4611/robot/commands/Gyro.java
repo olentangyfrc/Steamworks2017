@@ -34,6 +34,14 @@ public class Gyro {
     	SmartDashboard.putNumber("Heading [-360,360]", heading);//Shows accurate angle
     	
     }
+    
+    public int getAngleRound(){
+    	return angleRound;
+    }
+    
+    public double getAngle(){
+    	return raw;
+    }
 
    
    }
