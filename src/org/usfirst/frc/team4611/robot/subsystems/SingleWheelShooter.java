@@ -15,7 +15,7 @@ public class SingleWheelShooter extends Subsystem{
 	private FeedbackDevice shooterEncoder;
 	
 	public SingleWheelShooter(){
-		this.singleWheelShooter = new CANTalon (RobotMap.singleShooter);
+		//this.singleWheelShooter = new CANTalon (RobotMap.singleShooter);
 		
 		shooterEncoder = (FeedbackDevice.QuadEncoder);
 		singleWheelShooter.setFeedbackDevice(shooterEncoder);
