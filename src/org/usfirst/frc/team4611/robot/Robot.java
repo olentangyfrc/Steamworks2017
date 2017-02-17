@@ -60,7 +60,6 @@ public class Robot extends IterativeRobot {
 	public static TestSolenoid testSol;
 	
 
-	public static boolean dir = false;
 
 	public static Preferences prefs ;
 	Command autonomousCommand;
@@ -90,6 +89,9 @@ public class Robot extends IterativeRobot {
 		testSol = new TestSolenoid(); 
 		ag = new Agitator();
 		oi = new OI();
+		
+		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
+		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
 
 		prefs = Preferences.getInstance();
 		 
@@ -152,8 +154,7 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
-		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
+		
 		//gy = new Gyro();
 
 	}
