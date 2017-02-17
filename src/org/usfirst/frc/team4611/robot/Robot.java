@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 
 /**
@@ -70,10 +71,13 @@ public class Robot extends IterativeRobot {
 		sw = new SingleWheelShooter();
 		oi = new OI();
 		
+		//this.chooser = new SendableChooser();
+        //this.chooser.addDefault("Starting from right", new startRight());
+		
 
 		prefs = Preferences.getInstance();
 		 
-		this.chooser = new SendableChooser(); //SmartDashboard
+		//this.chooser = new SendableChooser(); //SmartDashboard
 		this.autonomousCommand = new startRight();
 		// this.autonomousCommand = new autonomousCommandGroup();
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
@@ -109,11 +113,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null) autonomousCommand.start();
-		/*this.autonomousCommand = (Command) this.chooser.getSelected();
-		if (this.autonomousCommand != null) {
-			this.autonomousCommand.start();*/
-		}
+		
+		//if (autonomousCommand != null) autonomousCommand.start();
+		//this.autonomousCommand = (Command) this.chooser.getSelected();
+		//if (this.autonomousCommand != null) {
+		this.autonomousCommand.start();
+		//}
+	}
 		//}
 
 	/**
