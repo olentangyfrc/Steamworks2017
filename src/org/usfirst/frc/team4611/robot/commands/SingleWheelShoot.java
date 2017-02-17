@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class SingleWheelShoot extends Command{
 	
-	private double speed;
-
 	public SingleWheelShoot(){
 		//this.speed = inputSpeed;
 		this.requires(Robot.sw);
@@ -17,11 +15,12 @@ public class SingleWheelShoot extends Command{
 	 protected void initialize() {
 	    }
 	 protected void execute() {
-	    // double joyVal = (Robot.oi.rightJoy.getZ()*0.4); //port one //no filter on this (run 40%) //Use the 'filter' function on the raw joystick input
+	     //double joyVal = (Robot.oi.rightJoy.getZ()*0.4); //port one //no filter on this (run 40%) //Use the 'filter' function on the raw joystick input
 	     //Robot.sw.shoot(Robot.oi.leftJoy.getZ()); //Actually pass that value to the motors
 	     //Robot.sw.shoot(RobotMap.singleShooterSpeed); //button only
-		 double joyVal = (Robot.oi.leftJoy.getZ());
-		 Robot.sw.shoot(joyVal);
+		 //double joyVal = (Robot.oi.leftJoy.getZ());
+		 double targetSpeed = -1500;
+		 Robot.sw.shoot(targetSpeed);
 	    }
 	@Override
 	protected boolean isFinished() {
