@@ -9,6 +9,18 @@ public class FancyLightSet {
 	public Relay fancyLights1;
 	public Relay fancyLights2;
 	
+	/*	kOff - Turns both relay outputs off
+	kForward - Sets the relay to forward (M+ @ 12V, M- @ GND)
+	kReverse - Sets the relay to reverse (M+ @ GND, M- @ 12V)
+	kOn - Sets both relay outputs on (M+ @ 12V, M- @ 12V).
+	 */
+	
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+	
 	public FancyLightSet(){
 		fancyLights1 = new Relay(RobotMap.fancyPort1, Direction.kBoth);
 		fancyLights2 = new Relay(RobotMap.fancyPort2, Direction.kBoth);
@@ -33,6 +45,8 @@ public class FancyLightSet {
 		fancyLights1.set(Relay.Value.kReverse);
 		fancyLights2.set(Relay.Value.kForward);
 	}
+	
+	
 	
 	public void makeGreen(){
 		fancyLights1.set(Relay.Value.kReverse);
