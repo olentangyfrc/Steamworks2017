@@ -5,6 +5,7 @@ import org.usfirst.frc.team4611.robot.commands.*;
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
 
 
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Direction;
@@ -58,7 +59,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  raw * 0.7;		//Cut power output down to 70%, to make drive happy
+            return  Math.pow(raw, 3);		//Cut power output down to 70%, to make drive happy
         }
     }
 
