@@ -24,6 +24,7 @@ public class MoveAgitator extends Command {
 	protected void execute(){
 		RobotMap.agitateSpeed = (SmartDashboard.getNumber("agitate speed", 0)) / 100;
 		Robot.ag.agitate(RobotMap.agitateSpeed);
+		SmartDashboard.putBoolean("agitate is on", true);
 	}
 	
 	@Override
@@ -34,6 +35,7 @@ public class MoveAgitator extends Command {
 	
 	protected void end(){
 		Robot.ag.agitate(0); //ALEX CAN'T COPY AND PASTE 2/12/2017
+		SmartDashboard.putBoolean("agitate is on", false);
 	}
 
 	protected void interupted(){

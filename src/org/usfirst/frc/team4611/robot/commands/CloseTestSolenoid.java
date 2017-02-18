@@ -5,6 +5,7 @@ import org.usfirst.frc.team4611.robot.Robot;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -25,6 +26,8 @@ public class CloseTestSolenoid extends Command {
     @Override
     protected void execute() {
     	Robot.testSol.move(DoubleSolenoid.Value.kReverse);
+    	SmartDashboard.putBoolean("is closed", true);
+    	SmartDashboard.putString("gear state", "closed");
     }
 
     // Make this return true when this Command no longer needs to run execute()

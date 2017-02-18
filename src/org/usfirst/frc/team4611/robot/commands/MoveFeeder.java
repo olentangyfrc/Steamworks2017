@@ -24,6 +24,7 @@ public class MoveFeeder extends Command {
 	protected void execute(){
 		RobotMap.Feederspeed = (SmartDashboard.getNumber("feed speed", 0)) / 100;
 		Robot.fe.feed(RobotMap.Feederspeed);
+		SmartDashboard.putBoolean("feed is on", true);
 	}
 	
 	@Override
@@ -34,6 +35,7 @@ public class MoveFeeder extends Command {
 	
 	protected void end(){
 		Robot.fe.feed(0);
+		SmartDashboard.putBoolean("feed is on", false);
 	}
 
 	protected void interupted(){
