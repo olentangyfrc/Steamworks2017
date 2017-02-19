@@ -16,9 +16,15 @@ public class FancyLightSet {
 	 */
 	
 	/**
-	 * 
-	 * 
-	 * 
+	 *  M- for fancyLights1 must be powered for any lights to turn on
+	 *  Each color has a specific pin to be grounded to turn on
+	 *  Colors are red, green, blue
+	 *  If all 3 are grounded lights = white
+	 *  The colors that need to be off should be powered
+	 *  
+	 *  M+ on fancyLights1 is Green
+	 *  M- on fancyLights2 is Red
+	 *  M+ on fancyLights2 is Blue
 	 */
 	
 	public FancyLightSet(){
@@ -41,12 +47,6 @@ public class FancyLightSet {
 			makeRed();
 		}
 	}
-	public void makeYellow(){
-		fancyLights1.set(Relay.Value.kReverse);
-		fancyLights2.set(Relay.Value.kForward);
-	}
-	
-	
 	
 	public void makeGreen(){
 		fancyLights1.set(Relay.Value.kReverse);
@@ -62,6 +62,23 @@ public class FancyLightSet {
 		fancyLights1.set(Relay.Value.kOn);
 		fancyLights2.set(Relay.Value.kReverse);
 	}
+	
+
+	public void makeYellow(){
+		fancyLights1.set(Relay.Value.kReverse);
+		fancyLights2.set(Relay.Value.kForward);
+	}
+	
+	public void makeCyan(){
+		fancyLights1.set(Relay.Value.kReverse);
+		fancyLights1.set(Relay.Value.kReverse);
+	}
+	
+	public void makePurple(){
+		fancyLights1.set(Relay.Value.kOn);
+		fancyLights2.set(Relay.Value.kOff);
+	}
+	
 	
 	public void makeAmericaGreatAgain(){
 		fancyLights1.set(Relay.Value.kReverse);
