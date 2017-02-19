@@ -21,6 +21,8 @@ public class startMiddle extends CommandGroup{
     // arm.
 	public startMiddle(){
 	addSequential(new driveAuto(0.5), 2);
+	addSequential(new autoAim(0.5), 1);
+	addSequential(new driveAuto(0), .1);
 	//addSequential(new turnAuto(5.0, 1, 5.0));
 	}
 

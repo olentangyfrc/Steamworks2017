@@ -9,8 +9,6 @@ import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
-import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 
 /**
