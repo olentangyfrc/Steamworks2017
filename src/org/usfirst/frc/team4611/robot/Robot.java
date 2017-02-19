@@ -11,11 +11,17 @@ import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 import org.usfirst.frc.team4611.robot.OI;
 
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -26,11 +32,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
-import org.usfirst.frc.team4611.robot.commands.Gyro;
 
 //import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
 //import org.usfirst.frc.team4611.robot.subsystems.TestSolenoid;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -52,14 +56,12 @@ public class Robot extends IterativeRobot {
 	public static Agitator ag;
 	public UltrasonicRange ultra;
 	public UltrasonicRange ultra2;
-	public Gyro gy;
 	public FancyLightSet fl;
     public boolean lightsGreen;
 
 	public static Feeder fe;
 	public static TestSolenoid testSol;
-	
-
+	public static boolean dir = false;
 
 	public static Preferences prefs ;
 	Command autonomousCommand;
@@ -99,7 +101,7 @@ public class Robot extends IterativeRobot {
 
 		// this.autonomousCommand = new autonomousCommandGroup();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
-		// VA data to roborio. Not currently in use
+		// VA data to roborio. Not currently in use		
 	}
 
 	/**
@@ -154,9 +156,6 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-		
-		//gy = new Gyro();
-
 	}
 
 	/**
@@ -168,7 +167,8 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
-	}
+		sw.getEncoderMeasure();
+    }
 
 	/**
 	 * This function is called periodically during test mode

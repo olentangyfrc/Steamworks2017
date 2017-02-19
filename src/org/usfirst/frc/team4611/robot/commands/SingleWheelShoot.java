@@ -8,21 +8,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SingleWheelShoot extends Command{
 	
-	private double speed;
-
-	public SingleWheelShoot(double inputSpeed){
-		this.speed = inputSpeed;
-		this.requires(Robot.sw);
-	}
 	public SingleWheelShoot(){
+		//this.speed = inputSpeed;
 		this.requires(Robot.sw);
 	}
 	 protected void initialize() {
 	    }
 	 protected void execute() {
-
-	     RobotMap.singleShooterSpeed = (SmartDashboard.getNumber("shoot speed", 0)) / 100;
-	     Robot.sw.shoot(RobotMap.singleShooterSpeed); //button only
+		 
+		 RobotMap.shooterTargetSpeed = (SmartDashboard.getNumber("shoot speed", 0)) / 100;
+		 Robot.sw.shoot(RobotMap.shooterTargetSpeed);
 	    }
 	@Override
 	protected boolean isFinished() {

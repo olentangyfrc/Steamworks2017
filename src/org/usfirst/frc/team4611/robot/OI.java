@@ -28,7 +28,6 @@ public class OI {
     public Button climbButton;
     public Button light;
     public Button agitateButton;
-
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
@@ -39,10 +38,9 @@ public class OI {
         rightJoy = new Joystick(1);
         shootJoy = new Joystick(2);
         shootbut = new JoystickButton(leftJoy, 1);
-    	shootbut.whileHeld (new SingleWheelShoot());
+        shootbut.toggleWhenPressed(new SingleWheelShoot());
     	feedbut = new JoystickButton(rightJoy, 7);
     	feedbut.toggleWhenPressed(new MoveFeeder());
-    	//feedbut.whileHeld(new MoveFeeder());
     	climbButton = new JoystickButton(shootJoy, 1);
     	climbButton.whileHeld(new MoveClimber());
     	light = new JoystickButton(leftJoy, 7);
@@ -51,9 +49,8 @@ public class OI {
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
         agitateButton = new JoystickButton(rightJoy, 6);
         agitateButton.toggleWhenPressed(new MoveAgitator());
-
-
     }
+
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
     {
         if (Math.abs(raw) < .15) {
