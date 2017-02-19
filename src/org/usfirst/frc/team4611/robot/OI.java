@@ -42,7 +42,7 @@ public class OI {
         shootbut = new JoystickButton(leftJoy, 1);
         shootbut.toggleWhenPressed(new SingleWheelShoot());
         //feeder button
-    	feedbut = new JoystickButton(rightJoy, 7);
+    	feedbut = new JoystickButton(shootJoy, 4);
     	feedbut.toggleWhenPressed(new MoveFeeder());
     	//climber button
     	climbButton = new JoystickButton(shootJoy, 1);
@@ -54,7 +54,7 @@ public class OI {
     	shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
         //agitate button
-        agitateButton = new JoystickButton(rightJoy, 6);
+        agitateButton = new JoystickButton(shootJoy, 5);
         agitateButton.toggleWhenPressed(new MoveAgitator());
     }
 

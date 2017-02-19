@@ -169,7 +169,7 @@ public class Robot extends IterativeRobot {
 		ultra2.ultrasonicMeasurement();
 		sw.getEncoderMeasure();
 		lightsGreen = ultra.getInRange() || ultra2.getInRange();
-        fl.show(lightsGreen);
+        fl.show(lightsGreen, false);
     }
 
 	/**
