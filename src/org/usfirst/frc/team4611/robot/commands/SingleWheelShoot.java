@@ -19,7 +19,8 @@ public class SingleWheelShoot extends Command{
 	     //Robot.sw.shoot(Robot.oi.leftJoy.getZ()); //Actually pass that value to the motors
 	     //Robot.sw.shoot(RobotMap.singleShooterSpeed); //button only
 		 //double joyVal = (Robot.oi.leftJoy.getZ());
-		 double targetSpeed = -1500;
+		// double targetSpeed = -1500;
+		 double targetSpeed= -2000;
 		 Robot.sw.shoot(targetSpeed);
 	    }
 	@Override

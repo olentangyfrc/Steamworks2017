@@ -11,5 +11,6 @@
 			<attribute name="javadoc_location" value="file:/C:/Users/seths/wpilib/user/java/docs/CTRLib/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="var" path="USERLIBS_DIR/CTRLib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

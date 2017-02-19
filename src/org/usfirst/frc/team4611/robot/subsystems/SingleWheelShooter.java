@@ -22,12 +22,14 @@ public class SingleWheelShooter extends Subsystem{
 		shooterEncoder = (FeedbackDevice.QuadEncoder);
 		singleWheelShooter.setFeedbackDevice(shooterEncoder);
 		singleWheelShooter.setPosition(0);
-		singleWheelShooter.reverseSensor(true);
+		singleWheelShooter.reverseSensor(false);
 		singleWheelShooter.configEncoderCodesPerRev(20);
 		
         singleWheelShooter.setProfile(0);
+        //singleWheelShooter.setF(1.942405063);
+        //singleWheelShooter.setP(15);
         singleWheelShooter.setF(1.942405063);
-        singleWheelShooter.setP(15);
+        singleWheelShooter.setP(7);
         singleWheelShooter.setI(0.0); 
         singleWheelShooter.setD(0.0);
         
