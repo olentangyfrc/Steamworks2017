@@ -21,19 +21,14 @@ public class UltrasonicRange  {
 	public boolean inRange;
 	public AnalogInput ultrasonicAnalog;
 	public String smartLabel;
-	public boolean showInRange;
+	public String showInRange;
 	
-	public UltrasonicRange(int port, String label, boolean show){
+	public UltrasonicRange(int port, String label, String nameShow){
 		//port should be from robot map to declare the port the instance of the sensor's analog port on the roborio
 		//label is what old smartdashboard uses as the number's label, and what new smartdashboard uses in path
 		//show determines which sensor is used for changing the box's colors
 		ultrasonicAnalog = new AnalogInput(port); //sensor declared
-		if(show){
-			showInRange = true;
-		}
-		else{
-			showInRange = false;
-		}
+		showInRange = nameShow;//name of SmartDashboard field
 		ultrasonicAnalog.setOversampleBits(8);
 		ultrasonicAnalog.setAverageBits(5);
 		inRange= false;
@@ -45,24 +40,24 @@ public class UltrasonicRange  {
     	double roundedInches = rangeInInches + .5;
     	
     	//receives range for shooting from the dashboard, then changes color box (red = not in range, green = in range)
-    	if(showInRange){
-    		double x = SmartDashboard.getNumber("low end", 40);
-    		double y = SmartDashboard.getNumber("high end", 50);
-    		//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
-    		//replace x & y with values for shooting once known
-    		if(roundedInches > x && roundedInches < y){
-    			inRange = true;
+    	double x = SmartDashboard.getNumber("low end", 40);
+    	double y = SmartDashboard.getNumber("high end", 50);
+    	//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
+    	//replace x & y with values for shooting once known
+    	if(roundedInches > x && roundedInches < y){
+    			this.inRange = true;
     		}
     		else{
-    			inRange = false;
+    			this.inRange = false;
     		}
-    	}
-    		
     	
     	SmartDashboard.putNumber(smartLabel, (int)roundedInches);
-    	if(showInRange)
-    		SmartDashboard.putBoolean("in range", inRange);
+    	SmartDashboard.putBoolean(showInRange, inRange);
     	
+    }
+    
+    public boolean getInRange(){
+    	return inRange;
     }
     
 
