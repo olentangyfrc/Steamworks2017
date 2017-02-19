@@ -34,19 +34,26 @@ public class OI {
 
     
     public OI() {
+    	//joysticks
     	leftJoy = new Joystick(0);
         rightJoy = new Joystick(1);
         shootJoy = new Joystick(2);
+        //shooter button
         shootbut = new JoystickButton(leftJoy, 1);
         shootbut.toggleWhenPressed(new SingleWheelShoot());
+        //feeder button
     	feedbut = new JoystickButton(rightJoy, 7);
     	feedbut.toggleWhenPressed(new MoveFeeder());
+    	//climber button
     	climbButton = new JoystickButton(shootJoy, 1);
     	climbButton.whileHeld(new MoveClimber());
+    	//activate lights
     	light = new JoystickButton(leftJoy, 7);
     	light.toggleWhenPressed(lightSpike);
+    	//piston button
     	shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
+        //agitate button
         agitateButton = new JoystickButton(rightJoy, 6);
         agitateButton.toggleWhenPressed(new MoveAgitator());
     }

@@ -17,6 +17,7 @@ public class RobotMap {
     public static int frontLeftWheel = 3;
 
     public static int singleShooter = 48;
+
     //speed variables
     public static double shooterTargetSpeed = -3000.0;
     //Ultrasonic Sensor Port

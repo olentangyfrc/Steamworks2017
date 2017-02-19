@@ -16,8 +16,9 @@ public class SingleWheelShoot extends Command{
 	    }
 	 protected void execute() {
 		 
-		 RobotMap.shooterTargetSpeed = (SmartDashboard.getNumber("shoot speed", 0)) / 100;
+		 RobotMap.shooterTargetSpeed = (SmartDashboard.getNumber("shoot speed", 0));
 		 Robot.sw.shoot(RobotMap.shooterTargetSpeed);
+		 
 	    }
 	@Override
 	protected boolean isFinished() {
