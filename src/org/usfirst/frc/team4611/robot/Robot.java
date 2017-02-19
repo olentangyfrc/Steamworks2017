@@ -75,6 +75,8 @@ public class Robot extends IterativeRobot {
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
+		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", "in range 2");
 		oi = new OI();
 		
 		prefs = Preferences.getInstance();
@@ -138,9 +140,6 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", "in range 2");
-		//gy = new Gyro();
 
 	}
 
@@ -154,11 +153,8 @@ public class Robot extends IterativeRobot {
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
 
-		//fl.showPickUp(true);
-		fl.show(lightsGreen);
-
 		lightsGreen = ultra.getInRange() && ultra2.getInRange();
-        fl.show(lightsGreen);
+        	fl.show(lightsGreen);
 	}
 
 	/**
