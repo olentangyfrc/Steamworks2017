@@ -9,8 +9,6 @@ import org.usfirst.frc.team4611.robot.subsystems.rightSide;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
-import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -71,10 +69,13 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
 		
+		//this.chooser = new SendableChooser();
+        //this.chooser.addDefault("Starting from right", new startRight());
+		
 
 		prefs = Preferences.getInstance();
 		 
-		this.chooser = new SendableChooser(); //SmartDashboard
+		//this.chooser = new SendableChooser(); //SmartDashboard
 		this.autonomousCommand = new startRight();
 		// this.autonomousCommand = new autonomousCommandGroup();
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
@@ -111,11 +112,13 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		
+
 		if (autonomousCommand != null) autonomousCommand.start();
 		/*this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.start();*/
 		}
+
 		//}
 
 	/**
