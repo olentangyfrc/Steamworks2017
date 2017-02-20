@@ -27,24 +27,15 @@ public class SingleWheelShooter extends Subsystem{
 		singleWheelShooter.configEncoderCodesPerRev(20);
 		
         singleWheelShooter.setProfile(0);
-        //singleWheelShooter.setF(1.942405063);
-        //singleWheelShooter.setP(15);
-        /*singleWheelShooter.setF(1.942405063);
-        singleWheelShooter.setP(7);
+        singleWheelShooter.setF(1.942405063);
+        singleWheelShooter.setP(7.5);
         singleWheelShooter.setI(0.0); 
-        singleWheelShooter.setD(0.0);*/
+        singleWheelShooter.setD(0.0);
         
         singleWheelShooter.configNominalOutputVoltage(+0f, -0f);
         singleWheelShooter.configPeakOutputVoltage(+12f, -12f);
 	}
-	public void setPID(){
-		singleWheelShooter.setF(1.942405063);
-        singleWheelShooter.setP(SmartDashboard.getNumber("P-value", 0));
-        singleWheelShooter.setI(SmartDashboard.getNumber("I-value", 0)); 
-        singleWheelShooter.setD(0);
-	}
 	public void shoot(double targetSpeed){
-		setPID();
 		double motorOutput = singleWheelShooter.getOutputVoltage() / singleWheelShooter.getBusVoltage();
 		
 		_sb.append("\tout:");

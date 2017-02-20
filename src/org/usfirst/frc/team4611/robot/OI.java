@@ -40,7 +40,7 @@ public class OI {
         shootJoy = new Joystick(2);
         //shooter button
         shootbut = new JoystickButton(leftJoy, 1);
-        shootbut.toggleWhenPressed(new SingleWheelShoot());
+        shootbut.whileHeld(new SingleWheelShoot());
         //feeder button
     	feedbut = new JoystickButton(shootJoy, 4);
     	feedbut.toggleWhenPressed(new MoveFeeder());
@@ -63,7 +63,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  Math.pow(raw, 3);		//Cut power output down to 70%, to make drive happy
+            return  Math.pow(raw, 3);		
         }
     }
 
