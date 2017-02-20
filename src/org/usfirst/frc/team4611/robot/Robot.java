@@ -69,6 +69,7 @@ public class Robot extends IterativeRobot {
 		turretMotor = new talonTurret();
 		sw = new SingleWheelShooter();
 		oi = new OI();
+		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
 		
 
 		prefs = Preferences.getInstance();
@@ -109,6 +110,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		
 		if (autonomousCommand != null) autonomousCommand.start();
 		/*this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
@@ -122,6 +124,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		ultra.ultrasonicMeasurement();
 	}
 
 	@Override
@@ -134,7 +137,6 @@ public class Robot extends IterativeRobot {
 			this.autonomousCommand.cancel();
 		}
 		time = new Timer();
-		ultra = new UltrasonicRange();
 		//time.start();
 	}
 

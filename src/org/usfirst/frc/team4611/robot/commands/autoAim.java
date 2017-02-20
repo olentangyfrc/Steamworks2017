@@ -16,7 +16,7 @@ public class autoAim extends Command {
 	
 	public void moveContours(double x1, double x2){
 		double targetNum = 0;
-		targetNum = (Math.abs(x1 - x2)*0.75) + Math.max(x1, x2);
+		targetNum = (Math.abs(x1 - x2)*0.625) + Math.max(x1, x2);
 		System.out.println("Vision Speed:" + visionSpeed);
 		System.out.println("THIS IS target number:" + targetNum);
 		if (targetNum > 160){
