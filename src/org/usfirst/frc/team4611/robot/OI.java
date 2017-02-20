@@ -31,6 +31,7 @@ public class OI {
     public Button feedbut;
     public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
+    public Button onePiston;
 
     
     public OI() {
@@ -53,6 +54,9 @@ public class OI {
     	//piston button
     	shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
+        //move only one piston button
+        onePiston = new JoystickButton(rightJoy, 4);
+        this.onePiston.toggleWhenPressed(new MoveOneSolenoid(Robot.testSol.Sole1));
         //agitate button
         agitateButton = new JoystickButton(shootJoy, 5);
         agitateButton.toggleWhenPressed(new MoveAgitator());

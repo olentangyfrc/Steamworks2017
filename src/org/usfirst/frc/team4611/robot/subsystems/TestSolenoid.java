@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class TestSolenoid extends Subsystem {
-	DoubleSolenoid Sole1;
-	DoubleSolenoid Sole2;
+	public DoubleSolenoid Sole1;
+	public DoubleSolenoid Sole2;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
