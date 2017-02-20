@@ -23,7 +23,7 @@ public class MoveFeeder extends Command {
 	
 	protected void execute(){
 		//RobotMap.Feederspeed = (SmartDashboard.getNumber("feed speed", 0)) / 100;
-		Robot.fe.feed(-0.75);
+		Robot.fe.feed(-0.75); //speed: 100
 	}
 	
 	@Override

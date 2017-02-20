@@ -16,7 +16,7 @@ public class RobotMap {
     public static int backLeftWheel = 2;
     public static int frontLeftWheel = 3;
 
-    public static int singleShooter = 48;
+    public static int singleShooter = 61; //talon port
 
     //speed variables
     //public static double shooterTargetSpeed = -3000.0;

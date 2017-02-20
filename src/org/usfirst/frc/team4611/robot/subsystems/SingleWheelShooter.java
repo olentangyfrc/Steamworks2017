@@ -15,8 +15,6 @@ public class SingleWheelShooter extends Subsystem{
 	
 	private CANTalon singleWheelShooter;
 	private FeedbackDevice shooterEncoder;
-	StringBuilder _sb = new StringBuilder();
-	int _loops = 0;
 	
 	public SingleWheelShooter(){
 		this.singleWheelShooter = new CANTalon (RobotMap.singleShooter);		
@@ -35,47 +33,13 @@ public class SingleWheelShooter extends Subsystem{
         singleWheelShooter.configNominalOutputVoltage(+0f, -0f);
         singleWheelShooter.configPeakOutputVoltage(+12f, -12f);
 	}
-	public void shoot(double targetSpeed){
-		double motorOutput = singleWheelShooter.getOutputVoltage() / singleWheelShooter.getBusVoltage();
-		
-		_sb.append("\tout:");
-		_sb.append(motorOutput);
-        _sb.append("\tspd:");
-        _sb.append(singleWheelShooter.getSpeed());
-        
+	public void shoot(double targetSpeed){   
 		singleWheelShooter.changeControlMode(TalonControlMode.Speed);
 		singleWheelShooter.set(targetSpeed);
-		
-		_sb.append("\terr:");
-    	_sb.append(singleWheelShooter.getClosedLoopError());
-    	_sb.append("\ttrg:");
-    	_sb.append(targetSpeed);
-    	
-    	  if(++_loops >= 10) {
-	        	_loops = 0;
-	        	System.out.println(_sb.toString());
-	        }
-	        _sb.setLength(0);
-	    }
-	
-	public void getEncoderMeasure() {
-		double ePosition = singleWheelShooter.getEncPosition();
-		double eSpeed = singleWheelShooter.getSpeed();
-		double eVelocity = singleWheelShooter.getEncVelocity();
-		double eCurrent = singleWheelShooter.getOutputCurrent();
-		double eVoltage = singleWheelShooter.getOutputVoltage();
-		
-		SmartDashboard.putNumber("Encoder Positon", ePosition);
-		SmartDashboard.putNumber("Encoder Speed", eSpeed);
-		SmartDashboard.putNumber("Encoder Velocity", eVelocity);
-		SmartDashboard.putNumber("Encoder Current", eCurrent);
-		SmartDashboard.putNumber("Encoder Voltage", eVoltage);		
 	}
+	
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	//this.setDefaultCommand(new SingleWheelShoot());
-
     }
-	}
-
+}

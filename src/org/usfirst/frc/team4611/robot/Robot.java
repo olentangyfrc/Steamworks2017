@@ -177,7 +177,6 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
 		ultra2.ultrasonicMeasurement();
-		sw.getEncoderMeasure();
 		lightsGreen = ultra.getInRange() || ultra2.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
     }
