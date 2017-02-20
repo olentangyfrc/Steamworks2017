@@ -16,8 +16,8 @@ public class SingleWheelShoot extends Command{
 	    }
 	 protected void execute() {
 		 
-		 double targetSpeed = (SmartDashboard.getNumber("shoot speed", 0));
-		 Robot.sw.shoot(targetSpeed);
+		 //double targetSpeed = (SmartDashboard.getNumber("shoot speed", 0));
+		 Robot.sw.shoot(-3600);
 		 
 	    }
 	@Override

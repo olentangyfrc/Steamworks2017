@@ -23,8 +23,8 @@ public class MoveClimber extends Command { //Thanks again hannah
 	}
 	
 	protected void execute(){
-		RobotMap.climberSpeed = (SmartDashboard.getNumber("climb speed", 0)) / 100;
-		Robot.cl.climb(RobotMap.climberSpeed);
+		//RobotMap.climberSpeed = (SmartDashboard.getNumber("climb speed", 0)) / 100;
+		Robot.cl.climb(-0.75);
 	}
 	
 	@Override
