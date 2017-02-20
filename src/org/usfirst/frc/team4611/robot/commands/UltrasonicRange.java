@@ -22,6 +22,7 @@ public class UltrasonicRange  {
 	public AnalogInput ultrasonicAnalog;
 	public String smartLabel;
 	public String showInRange;
+	public double roundedInches;
 	
 	public UltrasonicRange(int port, String label, String nameShow){
 		//port should be from robot map to declare the port the instance of the sensor's analog port on the roborio
@@ -37,11 +38,11 @@ public class UltrasonicRange  {
     public void ultrasonicMeasurement() {
     	double averageVoltage = this.ultrasonicAnalog.getAverageVoltage();	
     	double rangeInInches = 39.587242 * (averageVoltage) + 1.049719;
-    	double roundedInches = rangeInInches + .5;
+    	roundedInches = rangeInInches + .5;
     	
     	//receives range for shooting from the dashboard, then changes color box (red = not in range, green = in range)
-    	double x = SmartDashboard.getNumber("low end", 40);
-    	double y = SmartDashboard.getNumber("high end", 50);
+    	double x = 90;
+    	double y = 96;
     	//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
     	//replace x & y with values for shooting once known
     	if(roundedInches > x && roundedInches < y){

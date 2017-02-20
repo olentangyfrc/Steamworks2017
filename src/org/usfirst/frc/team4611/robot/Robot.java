@@ -156,6 +156,16 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
+		
+		/*fl.makeRed();
+		delay(50);
+		fl.makeYellow();
+		
+		fl.makeGreen();
+		fl.makeCyan();
+		fl.makeBlue();
+		fl.makePurple();
+		fl.makeAmericaGreatAgain();*/
 	}
 
 	/**
@@ -169,7 +179,7 @@ public class Robot extends IterativeRobot {
 		ultra2.ultrasonicMeasurement();
 		sw.getEncoderMeasure();
 		lightsGreen = ultra.getInRange() || ultra2.getInRange();
-        fl.show(lightsGreen, false);
+        fl.show(lightsGreen, ultra.roundedInches < 90);
     }
 
 	/**
