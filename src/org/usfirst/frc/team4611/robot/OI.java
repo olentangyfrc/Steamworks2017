@@ -63,7 +63,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  Math.pow(raw, 3);		
+            return  raw;		
         }
     }
 
