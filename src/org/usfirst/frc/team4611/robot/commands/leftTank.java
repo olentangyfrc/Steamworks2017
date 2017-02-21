@@ -24,7 +24,7 @@ public class leftTank extends Command {
     @Override
     protected void execute() {
         double joyVal = Robot.oi.filter(Robot.oi.leftJoy.getY());	//Use the 'filter' function on the raw joystick input
-        //Robot.leftS.move(joyVal);									//Actually pass that value to the motors
+        Robot.leftS.move(joyVal);									//Actually pass that value to the motors
     }
 
     // Make this return true when this Command no longer needs to run execute()
