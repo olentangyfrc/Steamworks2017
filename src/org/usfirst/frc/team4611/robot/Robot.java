@@ -2,13 +2,9 @@
 package org.usfirst.frc.team4611.robot;
 
 
-import org.usfirst.frc.team4611.robot.subsystems.*;
-
-
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
-import org.usfirst.frc.team4611.robot.subsystems.leftSide;
-import org.usfirst.frc.team4611.robot.subsystems.rightSide;
+import org.usfirst.frc.team4611.robot.subsystems.*;
 import org.usfirst.frc.team4611.robot.OI;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -58,7 +54,7 @@ public class Robot extends IterativeRobot {
 	public Gyro gy;
 	public FancyLightSet fl;
     public boolean lightsGreen;
-
+    public static MecanumShooter MS;
 	public static Feeder fe;
 	public static TestSolenoid testSol;
 	

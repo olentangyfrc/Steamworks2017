@@ -33,12 +33,13 @@ public class RobotMap {
     public static int singleShooter = 5;
     public static int Climber = 6;
     public static int Agitator = 7;
-
+    public static int MecanumShooter= 8;
     //speed variables
 
     public static double Feederspeed;
     public static double singleShooterSpeed;
     public static double climberSpeed;
+    public static double MecanumShooterSpeed;
     public static double agitateSpeed = 0.5;
     
 
