@@ -49,7 +49,7 @@ public class RobotMap {
     public static double feederSpeed = -0.75;
     public static double singleShooterSpeed = -3600;
     public static double climberSpeed = -0.75;
-    public static double agitateSpeed = 5;
+    //public static double agitateSpeed = 5;
     
     
     //Range values for ultrasonic sensor

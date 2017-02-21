@@ -27,8 +27,10 @@ public class OI {
     public Button shootbut;
     public Button climbButton;
     public Button light;
-    public Button agitateButton;
-    public Button feedbut;
+    public Button agitateButtonForward;
+    public Button agitateButtonBackward;
+    public Button feedbutForward;
+    public Button feedbutBackward;
     public static relaySpike lightSpike = new relaySpike(RobotMap.lightSpike, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
     public Button onePiston;
@@ -43,8 +45,10 @@ public class OI {
         shootbut = new JoystickButton(leftJoy, 1);
         shootbut.whileHeld(new SingleWheelShoot());
         //feeder button
-    	feedbut = new JoystickButton(shootJoy, 4);
-    	feedbut.toggleWhenPressed(new MoveFeeder());
+    	feedbutForward = new JoystickButton(shootJoy, 4);
+    	feedbutForward.toggleWhenPressed(new MoveFeeder(1));
+    	feedbutBackward = new JoystickButton(shootJoy, 5);
+    	feedbutBackward.toggleWhenPressed(new MoveFeeder(-1));
     	//climber button
     	climbButton = new JoystickButton(shootJoy, 1);
     	climbButton.whileHeld(new MoveClimber());
@@ -58,8 +62,11 @@ public class OI {
         onePiston = new JoystickButton(rightJoy, 4);
         this.onePiston.toggleWhenPressed(new MoveOneSolenoid(Robot.testSol.Sole1));
         //agitate button
-        agitateButton = new JoystickButton(shootJoy, 5);
-        agitateButton.toggleWhenPressed(new MoveAgitator());
+        agitateButtonForward = new JoystickButton(shootJoy, 3);
+        agitateButtonForward.toggleWhenPressed(new MoveAgitator(1));
+        agitateButtonBackward = new JoystickButton(shootJoy,2);
+        agitateButtonBackward.toggleWhenPressed(new MoveAgitator(-1));
+        
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

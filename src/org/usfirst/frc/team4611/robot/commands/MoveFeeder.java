@@ -14,16 +14,16 @@ public class MoveFeeder extends Command {
 		this.speed = inputspeed;
 		this.requires(Robot.fe);
 	}
-	public MoveFeeder(){
-		this.requires(Robot.fe);
-	}
+	//public MoveFeeder(){
+		//this.requires(Robot.fe);
+	//}
 	protected void initialize(){
 		//Runs once, on initialization.
 	}
 	
 	protected void execute(){
 		//RobotMap.Feederspeed = (SmartDashboard.getNumber("feed speed", 0)) / 100;
-		Robot.fe.feed(RobotMap.feederSpeed); //speed: 100
+		Robot.fe.feed(speed); 
 	}
 	
 	@Override

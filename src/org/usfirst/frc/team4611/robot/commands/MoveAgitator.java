@@ -14,16 +14,16 @@ public class MoveAgitator extends Command {
 		this.speed = inputspeed;
 		this.requires(Robot.ag);
 	}
-	public MoveAgitator(){
-		this.requires(Robot.ag);
-	}
+	//public MoveAgitator(){
+		//this.requires(Robot.ag);
+	//}
 	protected void initialize(){
 		//Runs once, on initialization.
 	}
 	
 	protected void execute(){
 		//RobotMap.agitateSpeed = (SmartDashboard.getNumber("agitate speed", 0)) / 100;
-		Robot.ag.agitate(RobotMap.agitateSpeed);
+		Robot.ag.agitate(speed);
 	}
 	
 	@Override
