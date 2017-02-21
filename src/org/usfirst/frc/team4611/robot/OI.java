@@ -46,9 +46,9 @@ public class OI {
         shootbut.whileHeld(new SingleWheelShoot());
         //feeder button
     	feedbutForward = new JoystickButton(shootJoy, 4);
-    	feedbutForward.toggleWhenPressed(new MoveFeeder(1));
+    	feedbutForward.toggleWhenPressed(new MoveFeeder(RobotMap.feederSpeed));
     	feedbutBackward = new JoystickButton(shootJoy, 5);
-    	feedbutBackward.toggleWhenPressed(new MoveFeeder(-1));
+    	feedbutBackward.toggleWhenPressed(new MoveFeeder(-RobotMap.feederSpeed));
     	//climber button
     	climbButton = new JoystickButton(shootJoy, 1);
     	climbButton.whileHeld(new MoveClimber());
@@ -63,9 +63,9 @@ public class OI {
         this.onePiston.toggleWhenPressed(new MoveOneSolenoid(Robot.testSol.Sole1));
         //agitate button
         agitateButtonForward = new JoystickButton(shootJoy, 3);
-        agitateButtonForward.toggleWhenPressed(new MoveAgitator(1));
+        agitateButtonForward.toggleWhenPressed(new MoveAgitator(RobotMap.agitateSpeed));
         agitateButtonBackward = new JoystickButton(shootJoy,2);
-        agitateButtonBackward.toggleWhenPressed(new MoveAgitator(-1));
+        agitateButtonBackward.toggleWhenPressed(new MoveAgitator(-RobotMap.agitateSpeed));
         
     }
 
