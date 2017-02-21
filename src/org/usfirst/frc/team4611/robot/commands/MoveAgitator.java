@@ -23,7 +23,7 @@ public class MoveAgitator extends Command {
 	
 	protected void execute(){
 		//RobotMap.agitateSpeed = (SmartDashboard.getNumber("agitate speed", 0)) / 100;
-		Robot.ag.agitate(1);
+		Robot.ag.agitate(RobotMap.agitateSpeed);
 	}
 	
 	@Override
