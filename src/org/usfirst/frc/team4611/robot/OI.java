@@ -29,7 +29,7 @@ public class OI {
     public Button light;
     public Button agitateButton;
     public Button feedbut;
-    public static relaySpike lightSpike = new relaySpike(RobotMap.relayPort, Direction.kForward); //kForward uses only forward pin
+    public static relaySpike lightSpike = new relaySpike(RobotMap.lightSpike, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
     public Button onePiston;
 
@@ -67,7 +67,7 @@ public class OI {
         if (Math.abs(raw) < .15) {
             return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  raw * 0.85;		
+            return  raw * 0.85;
         }
     }
 

@@ -30,19 +30,12 @@ public class RobotMap {
     public static int Feeder= 4;
     public static int Climber = 6;
     public static int Agitator = 7;
-
-    //speed variables
-
-    public static double feederSpeed = -0.75;
-    public static double singleShooterSpeed = -3600;
-    public static double climberSpeed = -0.75;
-    public static double agitateSpeed = 5;
     
 
-    public static int relayPort = 3;
 	public static int fancyPort1 = 0;
 	public static int fancyPort2 = 1;
-
+    public static int lightSpike = 3;
+    
 
     //Pneumatic Ports. Two ports are required for a double solenoid
     public static int sole1Open = 1; //check ports
@@ -51,5 +44,12 @@ public class RobotMap {
     public static int sole2Open = 2;
     public static int sole2Close = 3;
     
+    
+    //speed variables
+
+    public static double feederSpeed = -0.75;
+    public static double singleShooterSpeed = -3600;
+    public static double climberSpeed = -0.75;
+    public static double agitateSpeed = 5;
 }
 	
