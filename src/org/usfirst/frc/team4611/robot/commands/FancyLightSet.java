@@ -38,7 +38,7 @@ public class FancyLightSet {
 			makeGreen();
 		}
 		else if (gear){
-			makePurple();
+			makeAmericaGreatAgain();
 		}
 		else{
 			makeBlue();
