@@ -4,10 +4,7 @@ import org.usfirst.frc.team4611.robot.commands.*;
 
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
 
-
-
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Direction;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -33,7 +30,7 @@ public class OI {
     public Button feedbutBackward;
     public static relaySpike lightSpike = new relaySpike(RobotMap.lightSpike, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
-    public Button onePiston;
+
 
     
     public OI() {
@@ -59,14 +56,12 @@ public class OI {
     	shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
         //move only one piston button
-        onePiston = new JoystickButton(rightJoy, 4);
-        this.onePiston.toggleWhenPressed(new MoveOneSolenoid(Robot.testSol.Sole1));
         //agitate button
         agitateButtonForward = new JoystickButton(shootJoy, 3);
         agitateButtonForward.toggleWhenPressed(new MoveAgitator(RobotMap.agitateSpeed));
         agitateButtonBackward = new JoystickButton(shootJoy,2);
         agitateButtonBackward.toggleWhenPressed(new MoveAgitator(-RobotMap.agitateSpeed));
-        
+
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

@@ -55,5 +55,6 @@ public class RobotMap {
     //Range values for ultrasonic sensor
     public static double ultraLowerBound = 90;
     public static double ultraUpperBound = 96;
+
 }
 	

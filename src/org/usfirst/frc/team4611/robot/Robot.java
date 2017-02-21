@@ -9,19 +9,21 @@ import org.usfirst.frc.team4611.robot.subsystems.*;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
+
 import org.usfirst.frc.team4611.robot.OI;
 
 import com.ctre.CANTalon;
-import com.ctre.CANTalon.FeedbackDevice;
-import com.ctre.CANTalon.TalonControlMode;
+
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.NamedSendable;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,13 +31,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
+import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.startRight;
 
-//import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
-//import org.usfirst.frc.team4611.robot.subsystems.TestSolenoid;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -52,16 +53,19 @@ public class Robot extends IterativeRobot {
 	public static leftSide leftS; 
 	public static rightSide rightS;
 
+
 	public static SingleWheelShooter sw;
 	public static Climber cl;
 	public static Agitator ag;
-	public UltrasonicRange ultra;
+	public static UltrasonicRange ultra;
 	public UltrasonicRange ultra2;
 	public FancyLightSet fl;
     public boolean lightsGreen;
 
 	public static Feeder fe;
 	public static TestSolenoid testSol;
+	public static Timer time;
+
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
@@ -69,6 +73,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser chooser;
 
 	public static NetworkTable table;
+	public static NetworkTable table2;
 
 	CameraServer server;
 
@@ -92,17 +97,20 @@ public class Robot extends IterativeRobot {
 		testSol = new TestSolenoid(); 
 		ag = new Agitator();
 		oi = new OI();
-		
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", "in range 2");
+		
+		//this.chooser = new SendableChooser();
+        //this.chooser.addDefault("Starting from right", new startRight());
+
 
 		prefs = Preferences.getInstance();
 		 
-		this.chooser = new SendableChooser(); //SmartDashboard
-
-		// this.autonomousCommand = new autonomousCommandGroup();
+		//this.chooser = new SendableChooser(); //SmartDashboard
+		this.autonomousCommand = new startRight();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
+		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
+		 table2 = NetworkTable.getTable("GRIP");
 	}
 
 	/**
@@ -133,19 +141,24 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		
 
-		this.autonomousCommand = (Command) this.chooser.getSelected();
+		if (autonomousCommand != null) autonomousCommand.start();
+		/*this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
-			this.autonomousCommand.start();
+			this.autonomousCommand.start();*/
 		}
-	}
+
+		//}
 
 	/**
 	 * This function is called periodically during autonomous
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		ultra.ultrasonicMeasurement();
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -157,6 +170,7 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
+
 		
 		/*fl.makeRed();
 		Timer.delay(50);
@@ -167,12 +181,21 @@ public class Robot extends IterativeRobot {
 		fl.makeBlue();
 		fl.makePurple();
 		fl.makeAmericaGreatAgain();*/
+
+		time = new Timer();
+		//time.start();
+
 	}
 
 	/**
 	 * This function is called periodically during operator control
 	 */
+	public static int tracker = 0;
+	
+	double lastFrame = 0;
+	public static double lastTime = 0;
 	@Override
+
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
@@ -180,7 +203,45 @@ public class Robot extends IterativeRobot {
 		ultra2.ultrasonicMeasurement();
 		lightsGreen = ultra.getInRange() || ultra2.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
-    }
+        
+		double [] value = table.getNumberArray("centerX",new double [1]);
+		//printArray("centerX",value);
+		double [] value2 = table.getNumberArray("centerY",new double [1]);
+		//printArray("centerY",value2);
+		double [] value3 = table.getNumberArray("width",new double [1]);
+		//printArray("width",value3);
+		double [] value4 = table.getNumberArray("height",new double [1]);
+		//printArray("height",value4);
+		double [] value5 = table.getNumberArray("area",new double [1]);
+		//printArray("area",value5);
+		double currentFrame = table2.getNumber("FrameRate", 0.0);
+		
+		if(lastFrame != currentFrame) {
+			lastFrame = currentFrame;
+			lastTime = time.get(); 
+		}
+		else {
+			double differentTime = time.get() - lastTime;
+			if(differentTime > 5)
+				SmartDashboard.putString("Kangaroo", "Dead");
+		}
+		
+		Scheduler.getInstance().run();	
+		ultra.ultrasonicMeasurement();
+		}
+	
+	
+	public void printArray (String name, double[] ar){
+		System.out.print(name + ",");
+		for (int s = 0; s< ar.length; s++){
+			System.out.print(ar[s]);
+			if (s!= ar.length-1){
+				System.out.print(",");
+			}
+		}
+		System.out.println();		
+	}
+
 
 	/**
 	 * This function is called periodically during test mode

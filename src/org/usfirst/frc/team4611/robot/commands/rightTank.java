@@ -25,7 +25,7 @@ public class rightTank extends Command {
     @Override
     protected void execute() {
         double joyVal = Robot.oi.filter(Robot.oi.rightJoy.getY());		//Use the 'filter' function on the raw joystick input
-        Robot.rightS.move(joyVal);										//Actually pass that value to the motors
+       // Robot.rightS.move(joyVal);										//Actually pass that value to the motors
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -44,7 +44,16 @@ public class UltrasonicRange  {
     	//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
     	//replace x & y with values for shooting once known
     	this.inRange = (roundedInches > RobotMap.ultraLowerBound && roundedInches < RobotMap.ultraUpperBound);
-
+    	double x = SmartDashboard.getNumber("low end", 40);
+    	double y = SmartDashboard.getNumber("high end", 50);
+    	//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
+    	//replace x & y with values for shooting once known
+    	if(roundedInches > x && roundedInches < y){
+    			this.inRange = true;
+    		}
+    		else{
+    			this.inRange = false;
+    		}
     	
     	SmartDashboard.putNumber(smartLabel, (int)roundedInches);
     	SmartDashboard.putBoolean(showInRange, inRange);
@@ -54,6 +63,11 @@ public class UltrasonicRange  {
     public boolean getInRange(){
     	return inRange;
     }
+    
+    public double getRoundedInches(){
+    	return roundedInches;
+    }
+    
     
 
 }
