@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -158,7 +159,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		/*fl.makeRed();
-		delay(50);
+		Timer.delay(50);
 		fl.makeYellow();
 		
 		fl.makeGreen();
