@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	public static talonTurret turretMotor;
 	public static SingleWheelShooter sw;
 	public static Timer time;
-	public UltrasonicRange ultra;
+	public static UltrasonicRange ultra;
 
 	
 	public static boolean dir = false;
@@ -126,8 +126,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
 		ultra.ultrasonicMeasurement();
+		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
