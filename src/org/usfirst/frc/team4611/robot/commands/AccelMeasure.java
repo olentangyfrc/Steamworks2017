@@ -23,7 +23,7 @@ public class AccelMeasure {
 		//yVal = (int)(Math.round(yVal));
 		//zVal = (int)(Math.round(zVal));
 		
-		System.out.println("X value: " + xVal + "        " + "Z value: " + zVal);
+		//System.out.println("X value: " + xVal + "        " + "Z value: " + zVal);
 		//System.out.println("Y value: " + yVal);
 		//System.out.println("Z value: " + zVal);
 	}

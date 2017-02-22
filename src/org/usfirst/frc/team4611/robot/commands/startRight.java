@@ -11,7 +11,7 @@ public class startRight extends CommandGroup{
     	addSequential (new driveAuto(0),0.1);
     	addSequential(new autoAim(0.4), 2);
     	addSequential(new driveAuto(0), 0.1);
-    	addSequential(new ultraDrive(.4), 2);
+    	addSequential(new ultraDrive(.5), 2);
 		addSequential(new driveAuto(0),0.1);
 	}
 
