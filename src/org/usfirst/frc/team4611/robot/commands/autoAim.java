@@ -19,7 +19,7 @@ public class autoAim extends Command {
 		targetNum = (Math.abs(x1 - x2)*0.625) + Math.max(x1, x2);
 		//System.out.println("Vision Speed:" + visionSpeed);
 		System.out.println("THIS IS target number:" + targetNum);
-		System.out.println(x1+x2/2);
+		System.out.println("Average: " + x1+x2/2);
 		if (targetNum > 160){
 			Robot.leftS.move(visionSpeed);
 			Robot.rightS.move(-visionSpeed);//theoretically move right

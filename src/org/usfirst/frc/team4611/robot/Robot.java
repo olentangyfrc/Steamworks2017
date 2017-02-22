@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 
@@ -37,7 +38,8 @@ public class Robot extends IterativeRobot {
 	public static talonTurret turretMotor;
 	public static SingleWheelShooter sw;
 	public static Timer time;
-	public UltrasonicRange ultra;
+	public static UltrasonicRange ultra;
+	public static AccelMeasure accel;
 
 	
 	public static boolean dir = false;
@@ -68,6 +70,7 @@ public class Robot extends IterativeRobot {
 		sw = new SingleWheelShooter();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		accel = new AccelMeasure();
 		
 		//this.chooser = new SendableChooser();
         //this.chooser.addDefault("Starting from right", new startRight());
@@ -126,8 +129,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
 		ultra.ultrasonicMeasurement();
+		accel.accelMeasurement();
+		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -163,7 +168,7 @@ public class Robot extends IterativeRobot {
 		double [] value5 = table.getNumberArray("area",new double [1]);
 		//printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
-		
+		accel.accelMeasurement();
 		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
 			lastTime = time.get(); 
