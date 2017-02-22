@@ -200,8 +200,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
 		ultra.ultrasonicMeasurement();
-		ultra2.ultrasonicMeasurement();
-		lightsGreen = ultra.getInRange() || ultra2.getInRange();
+		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
         
 		double [] value = table.getNumberArray("centerX",new double [1]);
