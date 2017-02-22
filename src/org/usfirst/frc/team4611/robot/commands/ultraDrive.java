@@ -30,7 +30,8 @@ public class ultraDrive extends Command{
 		double current = pd.getCurrent(12) + pd.getCurrent(13) + pd.getCurrent(14) + pd.getCurrent(15);
 		System.out.println("PD Board Current" + current + "\tCounter" + timeCounter);
 		//System.out.println("Range: " + inches);
-		if(current > previousCurrent + 2 && timeCounter > 30){
+		if(current > previousCurrent + 2.5 && timeCounter > 30){
+			System.out.println("Finished ultraDrive");
 			return true;
 		}
 		previousCurrent = current;
