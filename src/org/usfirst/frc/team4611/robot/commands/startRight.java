@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class startRight extends CommandGroup{
 	
 	public startRight(){
-		addSequential (new driveAuto(0.5),0.5);
+		addSequential (new driveAuto(0.5),0.5); //change speeds to positive for comp bot
 
 		/*addSequential(new driveAuto(-0.6),0.75);
     	addSequential(new turnAuto(-1, 0.55), 0.45);
