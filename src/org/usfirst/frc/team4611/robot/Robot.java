@@ -32,6 +32,7 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
+import org.usfirst.frc.team4611.robot.commands.RunAuton;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
@@ -98,6 +99,12 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		 this.chooser = new SendableChooser();
+		 	this.chooser .addObject("Left", new RunAuton(startPosition.LEFT));
+		 	this.chooser .addObject("Middle ", new RunAuton(startPosition.MIDDLE));
+	        this.chooser.addObject("Right ",new RunAuton(startPosition.RIGHT));       
+	        SmartDashboard.putData("Auto Chooser", this.chooser);
+	       
 		
 		//this.chooser = new SendableChooser();
         //this.chooser.addDefault("Starting from right", new startRight());
@@ -106,12 +113,15 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
-		this.autonomousCommand = new startRight();
+		//this.autonomousCommand = new startRight();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		 table2 = NetworkTable.getTable("GRIP");
 	}
+	public enum startPosition {
+        LEFT, MIDDLE, RIGHT;
+    }
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
