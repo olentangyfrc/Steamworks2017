@@ -52,6 +52,7 @@ public class OI {
         agitateButton.toggleWhenPressed(new MoveAgitator());
         MecShootButton = new JoystickButton(rightJoy, 7);
         MecShootButton.toggleWhenPressed(new MoveMecanumShooter());
+        //MecShootButton.toggleWhenPressed(new MoveMecanumShooter(speed));
 
     }
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.

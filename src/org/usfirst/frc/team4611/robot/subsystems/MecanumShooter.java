@@ -17,8 +17,8 @@ public class MecanumShooter extends Subsystem {
 		this.MecanumShooter = new Victor (RobotMap.MecanumShooter);
 	}
  
-	public void shoot (double shoot){
-		this.MecanumShooter.set(shoot);
+	public void shoot (double speed){
+		this.MecanumShooter.set(speed);
 	}
 	
 	@Override

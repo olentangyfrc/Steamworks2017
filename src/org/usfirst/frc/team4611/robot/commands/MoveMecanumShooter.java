@@ -24,7 +24,7 @@ public class MoveMecanumShooter extends Command{
 	protected void execute(){
 		RobotMap.MecanumShooterSpeed = (SmartDashboard.getNumber("Shoot Speed", 0)) / 100;
 		Robot.MS.shoot(RobotMap.MecanumShooterSpeed);
-		//Robot.MS.shoot(speed);
+		//Robot.MS.shoot(speed); (If smartdashboard bails on us)
 	}
 	
 	@Override

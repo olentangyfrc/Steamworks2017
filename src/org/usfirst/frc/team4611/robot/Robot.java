@@ -170,6 +170,7 @@ public class Robot extends IterativeRobot {
 		//ultra2.ultrasonicMeasurement();
 		gy.gyroMeasure();
 		mecDrive.mecanumDrive_Cartesian((oi.leftJoy.getX() * 0.75), (oi.leftJoy.getY() * 0.75), (oi.leftJoy.getTwist() * 0.75),0);
+		//use left joy for control
 	}
 
 	/**
