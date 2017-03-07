@@ -14,7 +14,8 @@ import org.usfirst.frc.team4611.robot.OI;
 
 import com.ctre.CANTalon;
 
-
+import edu.wpi.cscore.VideoCamera;
+import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -94,9 +95,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// Initializes camera feed on driver station
-		// server = CameraServer.getInstance();
-		// server.setQuality(50);
-		// server.startAutomaticCapture("cam1");
+		server = CameraServer.getInstance();
+		//server.setQuality(50);
+		server.startAutomaticCapture();
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
