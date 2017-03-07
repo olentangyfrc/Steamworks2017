@@ -16,7 +16,7 @@ public class Gyro {
     	gyro.reset();//angle set to 0 when restarted
     }
     
-    public void gyroMeasure(){
+    public void gyroMeasure(){//this method causes the gyro to measure the current heading but IT IS VOID
     	raw = gyro.getAngle();//gets the angle of the gyro relative to the set angle 0
     	//negative values counter clockwise, positive values clockwise
     	
@@ -33,6 +33,12 @@ public class Gyro {
     	
     	SmartDashboard.putNumber("Heading [-360,360]", heading);//Shows accurate angle
     	
+    }
+    
+    public int getAngle()//the method that actually returns the current angle
+    {
+    	
+    	return angleRound;
     }
 
    
