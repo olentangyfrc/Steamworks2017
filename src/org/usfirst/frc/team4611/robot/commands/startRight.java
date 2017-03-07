@@ -7,7 +7,7 @@ public class startRight extends CommandGroup{
 	public startRight(){
 		//Hannah pneumatics close (extend) code goes here
 		addSequential(new driveAuto(-0.6),0.75);
-    	addSequential(new turnAuto(-1, 0.55), 0.45);
+    	addSequential(new turnAuto(1, 0.55), 0.45);
     	addSequential(new driveAuto(-0.5), 0.3);
     	addSequential (new driveAuto(0),0.1);
     	addSequential(new autoAim(0.4), 2);
@@ -18,7 +18,7 @@ public class startRight extends CommandGroup{
 		//Hannah feeder also goes here
 		addSequential(new driveAuto(0.5), 1.5);
 		addSequential (new driveAuto(0),0.1);
-		addSequential(new turnAuto(1, 0.55), 0.6);
+		addSequential(new turnAuto(-1, 0.55), 0.6);
 		addSequential (new driveAuto(0),0.1);	
 	}
 
