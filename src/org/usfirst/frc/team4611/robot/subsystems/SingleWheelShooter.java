@@ -36,6 +36,7 @@ public class SingleWheelShooter extends Subsystem{
 	public void shoot(double targetSpeed){   
 		singleWheelShooter.changeControlMode(TalonControlMode.Speed);
 		singleWheelShooter.set(targetSpeed);
+		System.out.println(singleWheelShooter.getSpeed());
 	}
 	
 	
