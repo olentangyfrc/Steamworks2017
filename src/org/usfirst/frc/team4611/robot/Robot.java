@@ -34,6 +34,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
+import org.usfirst.frc.team4611.robot.commands.Gyro;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 
@@ -61,6 +62,7 @@ public class Robot extends IterativeRobot {
 	public UltrasonicRange ultra2;
 	public FancyLightSet fl;
     public boolean lightsGreen;
+    public Gyro gy;
 
 	public static Feeder fe;
 	public static TestSolenoid testSol;
@@ -97,6 +99,7 @@ public class Robot extends IterativeRobot {
 		testSol = new TestSolenoid(); 
 		ag = new Agitator();
 		oi = new OI();
+		gy = new Gyro();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
 		
 		//this.chooser = new SendableChooser();
@@ -156,6 +159,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		gy.gyroMeasure();
 		ultra.ultrasonicMeasurement();
 		Scheduler.getInstance().run();
 		
