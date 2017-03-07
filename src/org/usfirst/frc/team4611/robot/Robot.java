@@ -2,14 +2,9 @@
 package org.usfirst.frc.team4611.robot;
 
 
-import org.usfirst.frc.team4611.robot.subsystems.*;
-
-
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
-import org.usfirst.frc.team4611.robot.subsystems.leftSide;
-import org.usfirst.frc.team4611.robot.subsystems.rightSide;
-
+import org.usfirst.frc.team4611.robot.subsystems.*;
 import org.usfirst.frc.team4611.robot.OI;
 
 import com.ctre.CANTalon;
@@ -34,7 +29,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
-import org.usfirst.frc.team4611.robot.commands.Gyro;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 
@@ -62,7 +56,7 @@ public class Robot extends IterativeRobot {
 	public UltrasonicRange ultra2;
 	public FancyLightSet fl;
     public boolean lightsGreen;
-    public Gyro gy;
+    public static Gyro gy;
 
 	public static Feeder fe;
 	public static TestSolenoid testSol;
