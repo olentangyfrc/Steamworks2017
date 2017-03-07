@@ -16,8 +16,6 @@ public class startRight extends CommandGroup{
 		
 		addSequential(new MoveTestSolenoid(), 1);
 		addSequential(new CloseTestSolenoid(), 1);
-		//Connor pneumatics open (retract) code goes here
-		//Connor feeder also goes here
 		
 		addSequential(new driveAuto(0.5), 1.5);
 		addSequential (new driveAuto(0),0.1);
