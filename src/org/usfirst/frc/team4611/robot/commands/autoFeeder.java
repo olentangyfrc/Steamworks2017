@@ -13,7 +13,7 @@ public class autoFeeder extends Command {
 		this.speed = s;
 	}
 	protected void execute() {
-		Robot.fe.feed(this.speed);
+		Robot.fe.feed(-this.speed);
 	}
 	
 	@Override
