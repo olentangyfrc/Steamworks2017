@@ -8,10 +8,9 @@ public class startRight extends CommandGroup{
 		//Hannah pneumatics close (extend) code goes here
 		addSequential(new driveAuto(-0.6),0.75);
     	addSequential(new turnAuto(1, 0.55), 0.45);
-    	addSequential(new driveAuto(-0.5), 0.3);
-    	addSequential (new driveAuto(0),0.1);
-    	addSequential(new autoAim(0.4), 2);
-    	addSequential(new driveAuto(0), 0.1);
+		addSequential (new driveAuto(0.5),0.5); //change speeds to positive for comp bot
+		addSequential(new driveAuto(-0.6),0.75);
+    	addSequential(new turnAuto(-1, 0.55), 0.45);
     	addSequential(new ultraDrive(.45), 2);
 		addSequential(new driveAuto(0),0.1);
 		//Hannah pneumatics open (retract) code goes here
@@ -19,7 +18,7 @@ public class startRight extends CommandGroup{
 		addSequential(new driveAuto(0.5), 1.5);
 		addSequential (new driveAuto(0),0.1);
 		addSequential(new turnAuto(-1, 0.55), 0.6);
-		addSequential (new driveAuto(0),0.1);	
+		addSequential (new driveAuto(0),0.1);	 
 	}
 
 	@Override

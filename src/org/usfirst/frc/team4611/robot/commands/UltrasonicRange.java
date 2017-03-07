@@ -17,7 +17,7 @@ public class UltrasonicRange  {
 	public double raw_rangeVoltage;
 	public double suppliedVolt = 5;
 	public double voltsPerInch = suppliedVolt / 512;
-	public static double rangeInches;
+	public double rangeInches;
 	public boolean inRange;
 	public AnalogInput ultrasonicAnalog;
 	public String smartLabel;
@@ -41,6 +41,9 @@ public class UltrasonicRange  {
     	roundedInches = rangeInInches + .5;
     	
     	//receives range for shooting from the dashboard, then changes color box (red = not in range, green = in range)
+    	//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
+    	//replace x & y with values for shooting once known
+    	this.inRange = (roundedInches > RobotMap.ultraLowerBound && roundedInches < RobotMap.ultraUpperBound);
     	double x = SmartDashboard.getNumber("low end", 40);
     	double y = SmartDashboard.getNumber("high end", 50);
     	//x & y for testing purposes, they are the range in which the robot should shoot as distance from the wall
@@ -54,7 +57,7 @@ public class UltrasonicRange  {
     	
     	SmartDashboard.putNumber(smartLabel, (int)roundedInches);
     	SmartDashboard.putBoolean(showInRange, inRange);
-    	
+    	System.out.println((int)roundedInches);
     }
     
     public boolean getInRange(){

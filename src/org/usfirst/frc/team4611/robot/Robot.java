@@ -1,15 +1,30 @@
 
 package org.usfirst.frc.team4611.robot;
 
+
 import org.usfirst.frc.team4611.robot.subsystems.*;
+
+
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
 import org.usfirst.frc.team4611.robot.subsystems.leftSide;
 import org.usfirst.frc.team4611.robot.subsystems.rightSide;
+
+import org.usfirst.frc.team4611.robot.OI;
+
+import com.ctre.CANTalon;
+
+
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -17,9 +32,16 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
+
+import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
+import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
+
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.startRight;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,13 +57,24 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static leftSide leftS; 
 	public static rightSide rightS;
-	public static talonTurret turretMotor;
+
+
 	public static SingleWheelShooter sw;
-	public static Timer time;
+	public static Climber cl;
+	public static Agitator ag;
 	public static UltrasonicRange ultra;
+
 	public static AccelMeasure accel;
 
-	
+	public UltrasonicRange ultra2;
+	public FancyLightSet fl;
+    public boolean lightsGreen;
+
+	public static Feeder fe;
+	public static TestSolenoid testSol;
+	public static Timer time;
+
+
 	public static boolean dir = false;
 
 	public static Preferences prefs ;
@@ -66,24 +99,28 @@ public class Robot extends IterativeRobot {
 		// server.startAutomaticCapture("cam1");
 		leftS = new leftSide();
 		rightS = new rightSide();
-		turretMotor = new talonTurret();
 		sw = new SingleWheelShooter();
+		fe = new Feeder();
+		fl = new FancyLightSet();
+		cl = new Climber();
+		testSol = new TestSolenoid(); 
+		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
 		accel = new AccelMeasure();
 		
 		//this.chooser = new SendableChooser();
         //this.chooser.addDefault("Starting from right", new startRight());
-		
+
 
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
 		this.autonomousCommand = new startRight();
-		// this.autonomousCommand = new autonomousCommandGroup();
+		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
+		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		 table2 = NetworkTable.getTable("GRIP");
-		// VA data to roborio. Not currently in use
 	}
 
 	/**
@@ -144,8 +181,21 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
+
+		
+		/*fl.makeRed();
+		Timer.delay(50);
+		fl.makeYellow();
+		
+		fl.makeGreen();
+		fl.makeCyan();
+		fl.makeBlue();
+		fl.makePurple();
+		fl.makeAmericaGreatAgain();*/
+
 		time = new Timer();
 		//time.start();
+
 	}
 
 	/**
@@ -156,7 +206,14 @@ public class Robot extends IterativeRobot {
 	double lastFrame = 0;
 	public static double lastTime = 0;
 	@Override
-	public void teleopPeriodic() {	
+
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();
+		LiveWindow.run();
+		ultra.ultrasonicMeasurement();
+		lightsGreen = ultra.getInRange();
+        fl.show(lightsGreen, ultra.roundedInches < 90);
+        
 		double [] value = table.getNumberArray("centerX",new double [1]);
 		//printArray("centerX",value);
 		double [] value2 = table.getNumberArray("centerY",new double [1]);
@@ -181,7 +238,6 @@ public class Robot extends IterativeRobot {
 		
 		Scheduler.getInstance().run();	
 		ultra.ultrasonicMeasurement();
-		turretMotor.getEncoderMeasure();
 		}
 	
 	
@@ -195,6 +251,7 @@ public class Robot extends IterativeRobot {
 		}
 		System.out.println();		
 	}
+
 
 	/**
 	 * This function is called periodically during test mode
