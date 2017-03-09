@@ -4,6 +4,7 @@ import org.usfirst.frc.team4611.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Direction;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class FancyLightSet {
 	public Relay fancyLights1;
@@ -77,7 +78,7 @@ public class FancyLightSet {
 	}
 	
 	
-	public void makeAmericaGreatAgain(){
+	public void makeAmericaGreatAgain(){//just makes the lights white don't worry
 		fancyLights1.set(Relay.Value.kReverse);
 		fancyLights2.set(Relay.Value.kOff);
 	}

@@ -34,6 +34,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
+import org.usfirst.frc.team4611.robot.commands.GayPride;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 
@@ -59,7 +60,7 @@ public class Robot extends IterativeRobot {
 	public static Agitator ag;
 	public static UltrasonicRange ultra;
 	public UltrasonicRange ultra2;
-	public FancyLightSet fl;
+	public static FancyLightSet fl;
     public boolean lightsGreen;
 
 	public static Feeder fe;
@@ -70,6 +71,7 @@ public class Robot extends IterativeRobot {
 
 	public static Preferences prefs ;
 	Command autonomousCommand;
+	Command gay;
 	SendableChooser chooser;
 
 	public static NetworkTable table;
@@ -98,6 +100,7 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		gay = new GayPride();
 		
 		//this.chooser = new SendableChooser();
         //this.chooser.addDefault("Starting from right", new startRight());
@@ -111,6 +114,7 @@ public class Robot extends IterativeRobot {
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		 table2 = NetworkTable.getTable("GRIP");
+		 gay.start();
 	}
 
 	/**
