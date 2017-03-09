@@ -7,7 +7,6 @@ public class startRight extends CommandGroup{
 	public startRight(){
 		addSequential(new driveAuto(-0.6),0.75); //Drive forward
     	addSequential(new turnAuto(1, 0.55), 0.45); //Turn left
-		addSequential (new driveAuto(0.5),0.5); //change speeds to positive for comp bot
 		addSequential(new driveAuto(-0.6),0.75); //Drive forward again
     	addSequential(new turnAuto(-1, 0.55), 0.45); //Turn using VA
     	addSequential(new ultraDrive(.45), 2); //Go forward until you hit
@@ -16,7 +15,8 @@ public class startRight extends CommandGroup{
 		addSequential(new autoFeeder(0.75), 1); //Run the feeder
 		addSequential(new driveAuto(0.5), 1.5); //Drive backwards
 		addSequential (new driveAuto(0),0.1); //Stop driving backwards
-		addSequential(new CloseTestSolenoid(), 1); //Close the solenoid
+		addSequential(new autoFeeder(0), 0.1); //Stop running the feeder
+		addSequential(new CloseTestSolenoid(), 1); //Close the solenoid 
 		addSequential(new turnAuto(-1, 0.55), 0.6); //Turn right
 		addSequential (new driveAuto(0),0.1); //Stop driving
 	}
