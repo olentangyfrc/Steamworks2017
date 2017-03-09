@@ -51,7 +51,6 @@ public class OI {
         agitateButton = new JoystickButton(rightJoy, 6);
         agitateButton.toggleWhenPressed(new MoveAgitator());
         MecShootButton = new JoystickButton(rightJoy, 7);
-        MecShootButton.toggleWhenPressed(new MoveMecanumShooter());
         //MecShootButton.toggleWhenPressed(new MoveMecanumShooter(speed));
 
     }

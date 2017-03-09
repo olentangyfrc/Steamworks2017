@@ -54,7 +54,6 @@ public class Robot extends IterativeRobot {
 	public Gyro gy;
 	public FancyLightSet fl;
     public boolean lightsGreen;
-    public static MecanumShooter MS;
 	public static Feeder fe;
 	public static TestSolenoid testSol;
 	
@@ -169,7 +168,7 @@ public class Robot extends IterativeRobot {
 		//ultra.ultrasonicMeasurement();
 		//ultra2.ultrasonicMeasurement();
 		gy.gyroMeasure();
-		mecDrive.mecanumDrive_Cartesian((oi.leftJoy.getX() * 0.75), (oi.leftJoy.getY() * 0.75), (oi.leftJoy.getTwist() * 0.75),0);
+		mecDrive.mecanumDrive_Cartesian((oi.leftJoy.getX() * 0.25), (oi.leftJoy.getY() * 0.25), (oi.leftJoy.getTwist() * 0.25),0);
 		//use left joy for control
 	}
 
