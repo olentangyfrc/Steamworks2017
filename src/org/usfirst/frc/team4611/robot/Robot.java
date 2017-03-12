@@ -17,6 +17,8 @@ import com.ctre.CANTalon;
 import edu.wpi.cscore.VideoCamera;
 import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.NamedSendable;
@@ -35,13 +37,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
-
+import org.usfirst.frc.team4611.robot.commands.CloseTestSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
+import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.autoAim;
+import org.usfirst.frc.team4611.robot.commands.autoFeeder;
+import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-import org.usfirst.frc.team4611.robot.commands.startRight;
+import org.usfirst.frc.team4611.robot.commands.startBoiler;
+import org.usfirst.frc.team4611.robot.commands.turnAuto;
+import org.usfirst.frc.team4611.robot.commands.ultraDrive;
 
 
 /**
@@ -86,7 +94,12 @@ public class Robot extends IterativeRobot {
 	public static NetworkTable table2;
 
 	CameraServer server;
-
+	
+	
+	public DriverStation ds;
+	public static Alliance alliance;
+	public static Alliance red = DriverStation.Alliance.valueOf("Red");
+	public static Alliance blue = DriverStation.Alliance.valueOf("Blue");
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -117,7 +130,7 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
-		this.autonomousCommand = new startRight();
+		this.autonomousCommand = new startBoiler();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
@@ -152,8 +165,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		alliance = ds.getAlliance();
 		
-
 		if (autonomousCommand != null) autonomousCommand.start();
 		/*this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
@@ -261,4 +274,7 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	
+	
+	
 }
