@@ -85,9 +85,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// Initializes camera feed on driver station
-		// server = CameraServer.getInstance();
+		 server = CameraServer.getInstance();
 		// server.setQuality(50);
-		// server.startAutomaticCapture("cam1");
+		 server.startAutomaticCapture();
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
