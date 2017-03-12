@@ -69,7 +69,7 @@ public class OI {
         if (Math.abs(raw) < .07) {
             return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  raw * 0.85;
+            return  raw * 0.95;
         }
     }
 
