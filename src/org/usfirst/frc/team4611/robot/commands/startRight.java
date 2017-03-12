@@ -12,11 +12,11 @@ public class startRight extends CommandGroup{
     	addSequential(new ultraDrive(.45), 2); //Go forward until you hit
 		addSequential(new driveAuto(0),0.1); //Stop driving
 		addSequential(new MoveTestSolenoid(), 1); //Open solenoid
-		addSequential(new autoFeeder(0.75), 1); //Run the feeder
+		addParallel(new autoFeeder(0.75), 1); //Run the feeder
 		addSequential(new driveAuto(0.5), 1.5); //Drive backwards
 		addSequential (new driveAuto(0),0.1); //Stop driving backwards
-		addSequential(new autoFeeder(0), 0.1); //Stop running the feeder
-		addSequential(new CloseTestSolenoid(), 1); //Close the solenoid 
+		addParallel(new autoFeeder(0), 0.1); //Stop running the feeder
+		addParallel(new CloseTestSolenoid(), 1); //Close the solenoid 
 		addSequential(new turnAuto(-1, 0.55), 0.6); //Turn right
 		addSequential (new driveAuto(0),0.1); //Stop driving
 	}
