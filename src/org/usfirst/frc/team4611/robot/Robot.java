@@ -228,15 +228,16 @@ public class Robot extends IterativeRobot {
 		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
         
-		double [] value = table.getNumberArray("centerX",new double [1]);
+        
+		double [] xValues = table.getNumberArray("centerX",new double [1]);
 		//printArray("centerX",value);
-		double [] value2 = table.getNumberArray("centerY",new double [1]);
+		double [] yValues = table.getNumberArray("centerY",new double [1]);
 		//printArray("centerY",value2);
-		double [] value3 = table.getNumberArray("width",new double [1]);
+		double [] widthValues = table.getNumberArray("width",new double [1]);
 		//printArray("width",value3);
-		double [] value4 = table.getNumberArray("height",new double [1]);
+		double [] heightValues = table.getNumberArray("height",new double [1]);
 		//printArray("height",value4);
-		double [] value5 = table.getNumberArray("area",new double [1]);
+		double [] areaValues = table.getNumberArray("area",new double [1]);
 		//printArray("area",value5);
 		double currentFrame = table2.getNumber("FrameRate", 0.0);
 		accel.accelMeasurement();
