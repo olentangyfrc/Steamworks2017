@@ -195,21 +195,6 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-
-		
-		/*fl.makeRed();
-		Timer.delay(50);
-		fl.makeYellow();
-		
-		fl.makeGreen();
-		fl.makeCyan();
-		fl.makeBlue();
-		fl.makePurple();
-		fl.makeAmericaGreatAgain();*/
-
-		time = new Timer();
-		//time.start();
-
 	}
 
 	/**
@@ -228,19 +213,7 @@ public class Robot extends IterativeRobot {
 		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
         
-        
-		double [] xValues = table.getNumberArray("centerX",new double [1]);
-		//printArray("centerX",value);
-		double [] yValues = table.getNumberArray("centerY",new double [1]);
-		//printArray("centerY",value2);
-		double [] widthValues = table.getNumberArray("width",new double [1]);
-		//printArray("width",value3);
-		double [] heightValues = table.getNumberArray("height",new double [1]);
-		//printArray("height",value4);
-		double [] areaValues = table.getNumberArray("area",new double [1]);
-		//printArray("area",value5);
-		double currentFrame = table2.getNumber("FrameRate", 0.0);
-		accel.accelMeasurement();
+		/*double currentFrame = table2.getNumber("FrameRate", 0.0);
 		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
 			lastTime = time.get(); 
@@ -249,25 +222,11 @@ public class Robot extends IterativeRobot {
 			double differentTime = time.get() - lastTime;
 			if(differentTime > 5)
 				SmartDashboard.putString("Kangaroo", "Dead");
-		}
+		}*/
 		
 		Scheduler.getInstance().run();	
 		ultra.ultrasonicMeasurement();
 		}
-	
-	
-	public void printArray (String name, double[] ar){
-		System.out.print(name + ",");
-		for (int s = 0; s< ar.length; s++){
-			System.out.print(ar[s]);
-			if (s!= ar.length-1){
-				System.out.print(",");
-			}
-		}
-		System.out.println();		
-	}
-
-
 	/**
 	 * This function is called periodically during test mode
 	 */
