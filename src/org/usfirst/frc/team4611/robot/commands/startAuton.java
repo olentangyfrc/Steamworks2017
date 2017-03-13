@@ -4,27 +4,37 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class startSide extends CommandGroup{
-	public startSide() {
-	//-1 if you want to turn right and 1 if you want to turn left
-		String side = "";
-		if(Robot.alliance == Robot.red) {
+public class startAuton extends CommandGroup{
+	public startAuton() {
+		String side = "";//This is where Hannah said she could get me something for smart dashboard
+		
+		//use the identifiers Boiler, Loader or middle (or you can just use Boiler and Loader)
+		
+		if(Robot.alliance == Robot.red) {//this checks what alliance we are on so we know the field layout
 			if(side == "Boiler") {	
-				genericAutoSideCommand(1);
+				genericAutoSideCommand(1);//-1 if you want to turn right and 1 if you want to turn left
 			}
-			else {
+			else if(side == "Loader") {
 				genericAutoSideCommand(-1);
 			}
+			else {//if it is not either the loader or the boiler it is the middle and runs the middle program
+				startMiddle();
+			}
 		}
-		else {
+		else if(Robot.alliance == Robot.blue) {//this is the same as the above one that has been changed for the blue alliance side of the field
 			if(side == "Boiler") {
 				genericAutoSideCommand(-1);
 			}
-			else
+			else if(side == "Loader")
 			{
 				genericAutoSideCommand(1);
 			}
+			else {
+				startMiddle();
+			}
 		}
+		else
+			System.out.println("Panic");// in case of tactical emergency
 	}
 	//-1 is for the right and 1 left
 	public void genericAutoSideCommand(int direction) {
@@ -40,10 +50,16 @@ public class startSide extends CommandGroup{
 		addSequential (new driveAuto(0),0.1); //Stop driving backwards
 		addParallel(new autoFeeder(0), 0.1); //Stop running the feeder
 		addParallel(new CloseTestSolenoid(), 1); //Close the solenoid 
-		addSequential(new driveAuto(0.55), 1);
-		//addSequential(new turnAuto(-direction, 0.55), 0.6); //Turn right
-		//addSequential (new driveAuto(0),0.1); //Stop driving
-		}
+		addSequential(new driveAuto(0.55), 1);//Drive back
+		addSequential (new driveAuto(0),0.1); //Stop driving
+	}
+	public void startMiddle() {
+		addSequential(new driveAuto(-.6), .5);//drive forward
+		addSequential(new driveAuto(0), .1);//stop
+		addSequential(new driveAuto(-.6), .5);//drive forward
+		addSequential(new driveAuto(0), .1);//stop
+		addSequential(new driveAuto(.6), .5);//backup
+	}
 	
 	@Override
 	protected boolean isFinished() {
