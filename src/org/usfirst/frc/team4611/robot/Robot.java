@@ -203,6 +203,7 @@ public class Robot extends IterativeRobot {
 		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
         
+        //Get Vision Values, needs to be cleaned up)
 		double [] value = table.getNumberArray("centerX",new double [1]);
 		//printArray("centerX",value);
 		double [] value2 = table.getNumberArray("centerY",new double [1]);
@@ -230,7 +231,7 @@ public class Robot extends IterativeRobot {
 		}
 	
 	
-	public void printArray (String name, double[] ar){
+	public void printArray (String name, double[] ar){ //Used to print out vision array, needs to be cleaned up
 		System.out.print(name + ",");
 		for (int s = 0; s< ar.length; s++){
 			System.out.print(ar[s]);
