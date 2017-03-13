@@ -170,21 +170,6 @@ public class Robot extends IterativeRobot {
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
-
-		
-		/*fl.makeRed();
-		Timer.delay(50);
-		fl.makeYellow();
-		
-		fl.makeGreen();
-		fl.makeCyan();
-		fl.makeBlue();
-		fl.makePurple();
-		fl.makeAmericaGreatAgain();*/
-
-		time = new Timer();
-		//time.start();
-
 	}
 
 	/**
@@ -203,18 +188,7 @@ public class Robot extends IterativeRobot {
 		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
         
-        //Get Vision Values, needs to be cleaned up)
-		double [] value = table.getNumberArray("centerX",new double [1]);
-		//printArray("centerX",value);
-		double [] value2 = table.getNumberArray("centerY",new double [1]);
-		//printArray("centerY",value2);
-		double [] value3 = table.getNumberArray("width",new double [1]);
-		//printArray("width",value3);
-		double [] value4 = table.getNumberArray("height",new double [1]);
-		//printArray("height",value4);
-		double [] value5 = table.getNumberArray("area",new double [1]);
-		//printArray("area",value5);
-		double currentFrame = table2.getNumber("FrameRate", 0.0);
+		/*double currentFrame = table2.getNumber("FrameRate", 0.0);
 		
 		if(lastFrame != currentFrame) {
 			lastFrame = currentFrame;
@@ -224,25 +198,12 @@ public class Robot extends IterativeRobot {
 			double differentTime = time.get() - lastTime;
 			if(differentTime > 5)
 				SmartDashboard.putString("Kangaroo", "Dead");
-		}
+		}*/
 		
 		Scheduler.getInstance().run();	
 		ultra.ultrasonicMeasurement();
 		}
 	
-	
-	public void printArray (String name, double[] ar){ //Used to print out vision array, needs to be cleaned up
-		System.out.print(name + ",");
-		for (int s = 0; s< ar.length; s++){
-			System.out.print(ar[s]);
-			if (s!= ar.length-1){
-				System.out.print(",");
-			}
-		}
-		System.out.println();		
-	}
-
-
 	/**
 	 * This function is called periodically during test mode
 	 */
