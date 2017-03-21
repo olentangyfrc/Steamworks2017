@@ -8,7 +8,7 @@ public class startRight extends CommandGroup{
 	public startRight(){
 		/*addSequential(new driveAuto(0.75), 1); //Drive forward
     	addSequential(new turnAuto(1, 0.55), 0.45); //Turn left*/
-    	addSequential(new autoAim(0.55), 10); //Turn using VA
+    	addSequential(new autoAim(0.4)); //Turn using VA
     	/*addSequential(new ultraDrive(-0.45), 2); //Go forward until you hit
 		addSequential(new driveAuto(0),0.1); //Stop driving
 		addSequential(new MoveTestSolenoid(), 1); //Open solenoid

@@ -61,15 +61,23 @@ public class autoAim extends Command {
 		
 			
 			if(xValues.length >= 2) {							//If we have 2 or more contours, then just run the normal contours command
-				moveContours(xValues[targetContour1], xValues[targetContour2]);			//Remember, these are the array locations
+				moveContours(xValues[targetContour1], xValues[targetContour2]);//Remember, these are the array locations
+				System.out.println("Have two contours, move accoding to moveContours method");
 			}
 			else if(xValues.length == 1 && xValues[0] < 100) {	//If there's only one contour, and it's to the left of 100, then turn a bit to the left
 				Robot.leftS.move(-visionSpeed);					//Maybe this is when we're only finding one contour because the other is offscreen?
 				Robot.rightS.move(visionSpeed);
+				System.out.println("1 contour, left of 100, move left.");
 			}
-			else {												//If we don't have any contours, then stop moving and say we're done. Why?
-				Robot.leftS.move(0);
-				Robot.rightS.move(0);							//Build a better case for what to do when we can't find anything. Probably turn in place.
+			else if(xValues.length == 1 && xValues[0] > 220) {	//If there's only one contour, and it's to the right of 160, then turn a bit to the right
+				Robot.leftS.move(visionSpeed);					//Maybe this is when we're only finding one contour because the other is offscreen?
+				Robot.rightS.move(-visionSpeed);
+				System.out.println("1 contour, right of 220, move right.");
+			}
+			
+			else {												//If we don't have any contours, then turn right (clockwise)
+				Robot.leftS.move(visionSpeed);
+				Robot.rightS.move(-visionSpeed);							
 				System.out.println("NO CONTOURS FOUND");
 			}
 		}
