@@ -33,6 +33,7 @@ public class autoAim extends Command {
 		else{											//If we're at exactly center by some miracle, don't move
 			Robot.leftS.move(0);	
 			Robot.rightS.move(0);
+			System.out.println("We are pointed at the exact center");
 		}
 	}
 	
