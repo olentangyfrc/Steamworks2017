@@ -39,7 +39,7 @@ public class autoAim extends Command {
 	
 	
 	protected void execute() { 
-		System.out.println("autoAim started" + visionDone);
+		System.out.println("Vision Done: " + visionDone);
 		double [] xValues = Robot.table.getNumberArray("centerX",new double [1]);
 		double [] yValues = Robot.table.getNumberArray("centerY",new double [1]);
 		if(visionDone == false) {
@@ -70,10 +70,10 @@ public class autoAim extends Command {
 				Robot.rightS.move(visionSpeed);
 				System.out.println("1 contour, left of 100, move left.");
 			}
-			else if(xValues.length == 1 && xValues[0] > 220) {	//If there's only one contour, and it's to the right of 160, then turn a bit to the right
+			else if(xValues.length == 1 && xValues[0] > 200) {	//If there's only one contour, and it's to the right of 160, then turn a bit to the right
 				Robot.leftS.move(visionSpeed);					//Maybe this is when we're only finding one contour because the other is offscreen?
 				Robot.rightS.move(-visionSpeed);
-				System.out.println("1 contour, right of 220, move right.");
+				System.out.println("1 contour, right of 200, move right.");
 			}
 			
 			else {												//If we don't have any contours, then turn right (clockwise)

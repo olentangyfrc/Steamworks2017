@@ -45,6 +45,7 @@ import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.autoFeeder;
 import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.startAuton;
+import org.usfirst.frc.team4611.robot.commands.startRight;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
@@ -108,9 +109,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// Initializes camera feed on driver station
-		server = CameraServer.getInstance();
+		//server = CameraServer.getInstance();
 		//server.setQuality(50);
-		server.startAutomaticCapture();
+		//server.startAutomaticCapture();
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
@@ -130,7 +131,7 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
-		this.autonomousCommand = new startAuton();
+		this.autonomousCommand = new startRight();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
@@ -165,7 +166,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		alliance = ds.getAlliance();
+		//alliance = ds.getAlliance();
 		
 		if (autonomousCommand != null) autonomousCommand.start();
 		/*this.autonomousCommand = (Command) this.chooser.getSelected();
