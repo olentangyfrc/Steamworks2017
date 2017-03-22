@@ -2,9 +2,9 @@ package org.usfirst.frc.team4611.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class startRight extends CommandGroup{
+public class startAuton extends CommandGroup{
 	
-	public startRight(){
+	public startAuton(){
 		addSequential (new driveAuto(0.5),0.5); //change speeds to positive for comp bot
 
 		/*addSequential(new driveAuto(-0.6),0.75);
