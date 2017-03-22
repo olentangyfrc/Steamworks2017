@@ -57,7 +57,7 @@ public class UltrasonicRange  {
     	
     	SmartDashboard.putNumber(smartLabel, (int)roundedInches);
     	SmartDashboard.putBoolean(showInRange, inRange);
-    	System.out.println((int)roundedInches);
+    	//System.out.println((int)roundedInches);
     }
     
     public boolean getInRange(){

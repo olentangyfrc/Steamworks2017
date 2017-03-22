@@ -17,19 +17,21 @@ public class gyroTurn extends Command {
 		angle = initAngle + a;
 		this.requires(Robot.leftS);
 	    this.requires(Robot.rightS);
+	    
 	}
 	 protected void execute() {
 		 
 	Robot.gy.gyroMeasure();
+	System.out.println("Angle: " + angle + " Current Angle " + Robot.gy.getAngle());
 	
-	if(Robot.gy.getAngle() < angle){
-		 Robot.leftS.move(1);
-		 Robot.rightS.move(-1);
-	 }
+	if(Math.abs(Robot.gy.getAngle()) < angle){
+		 Robot.leftS.move(0.5);
+		 Robot.rightS.move(-0.5);
+	 } 
 	
-	else if(Robot.gy.getAngle() > angle){
-		 Robot.leftS.move(-1);
-		 Robot.rightS.move(1);
+	else if(Math.abs(Robot.gy.getAngle()) > angle){
+		 Robot.leftS.move(-0.5);
+		 Robot.rightS.move(0.5);
 	 }
 	 
 	else{
