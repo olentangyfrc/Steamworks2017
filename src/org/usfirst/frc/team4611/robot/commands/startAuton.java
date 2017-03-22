@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class startAuton extends CommandGroup{
 	
 	public startAuton(){
-		addSequential (new driveAuto(0.5),0.85); //change speeds to positive for comp bot
+		addSequential (new driveAuto(0.9), 1.5); //change speeds to positive for comp bot
 		addSequential(new driveAuto(0));
 
 		/*addSequential(new driveAuto(-0.6),0.75);
