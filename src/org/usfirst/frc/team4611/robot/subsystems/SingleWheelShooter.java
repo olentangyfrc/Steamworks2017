@@ -26,7 +26,7 @@ public class SingleWheelShooter extends Subsystem{
 		
         singleWheelShooter.setProfile(0);
         singleWheelShooter.setF(-1.942405063);
-        singleWheelShooter.setP(-4);
+        singleWheelShooter.setP(-3);
         singleWheelShooter.setI(0.0); 
         singleWheelShooter.setD(0.0);
         
