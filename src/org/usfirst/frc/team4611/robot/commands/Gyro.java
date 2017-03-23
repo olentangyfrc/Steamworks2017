@@ -7,7 +7,7 @@ public class Gyro {
 	
     private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
     double raw;//raw heading, no math
-    int angleRound;//nearest whole number of the heading
+    int angleRound;//nearest whole nusmber of the heading
     int heading;//the angle the robot is facing, between -360 & 360
     int rotations;//# of times the robot has rotated
     

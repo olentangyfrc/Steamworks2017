@@ -152,7 +152,7 @@ public class Robot extends IterativeRobot {
 		}
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", true);
 		ultra2 = new UltrasonicRange(RobotMap.ultraSonicPort2, "Ultrasonic Range 2", false);
-		//gy = new Gyro();
+		gy = new Gyro();
 
 	}
 
