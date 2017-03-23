@@ -107,7 +107,7 @@ public class Robot extends IterativeRobot {
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
 		this.autonomousCommand = new startAuton();
-		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
+		// table = NetworkTable.getTable("GRIP/	cdata"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		 table2 = NetworkTable.getTable("GRIP");

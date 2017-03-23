@@ -26,7 +26,7 @@ public class SingleWheelShooter extends Subsystem{
 		
         singleWheelShooter.setProfile(0);
         singleWheelShooter.setF(-1.942405063);
-        singleWheelShooter.setP(-2.75);
+        singleWheelShooter.setP(-4);
         singleWheelShooter.setI(0.0); 
         singleWheelShooter.setD(0.0);
         
@@ -36,7 +36,7 @@ public class SingleWheelShooter extends Subsystem{
 	public void shoot(double targetSpeed){   
 		singleWheelShooter.changeControlMode(TalonControlMode.Speed);
 		singleWheelShooter.set(targetSpeed);
-		System.out.println("Shooter speed:" + singleWheelShooter.getEncVelocity());
+		System.out.println("Shooter speed:" + singleWheelShooter.getSpeed());
 	}
 	
 	

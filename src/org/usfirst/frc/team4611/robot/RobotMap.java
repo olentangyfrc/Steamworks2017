@@ -48,7 +48,7 @@ public class RobotMap {
     //speed variables
     public static double feederSpeed = -0.75; 
     public static double singleShooterSpeed = 3600;
-    public static double climberSpeed = -1;
+    public static double climberSpeed = 1;
     public static double agitateSpeed = 1;
     
     
