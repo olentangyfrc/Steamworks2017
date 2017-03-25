@@ -13,6 +13,8 @@ public class autoAim extends Command {
 	
 	public autoAim(double speed){
 		visionSpeed = speed;
+		bounceCounter = 0;
+		System.out.println("bounce count set to 0");
 		
 	}
 	
