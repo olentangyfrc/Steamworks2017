@@ -45,6 +45,7 @@ import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.autoFeeder;
 import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.startAuton;
+import org.usfirst.frc.team4611.robot.commands.startCenter;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 
@@ -131,7 +132,7 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
-		this.autonomousCommand = new startRight();
+		this.autonomousCommand = new startCenter();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
