@@ -37,9 +37,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
-import org.usfirst.frc.team4611.robot.commands.CloseTestSolenoid;
+import org.usfirst.frc.team4611.robot.commands.RetractSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
-import org.usfirst.frc.team4611.robot.commands.MoveTestSolenoid;
+import org.usfirst.frc.team4611.robot.commands.ExtendSolenoid;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.autoFeeder;
