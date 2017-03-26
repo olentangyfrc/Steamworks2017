@@ -11,7 +11,7 @@ public class startRight extends CommandGroup{
     	addSequential(new turnAuto(1, 0.55), 0.6); //Turn left
     	addSequential(new driveAuto(0), 0.1);
     	addSequential(new driveAuto(0.75), 0.7);
-    	addSequential(new driveAuto(0), 2);
+    	addSequential(new driveAuto(0), 1.75);
     	addSequential(new autoAim(0.4), 2); //Turn using VA
     	//addSequential(new driveAuto(0.55), 0.1);
     	addSequential(new ultraDrive(-0.45), 2); //Go forward until you hit
@@ -22,8 +22,9 @@ public class startRight extends CommandGroup{
 		addSequential (new driveAuto(0),0.1); //Stop driving backwards
 		addParallel(new MoveFeeder(0), 0.1); //Stop running the feeder
 		addParallel(new CloseTestSolenoid(), 1); //Close the solenoid 
-		addSequential(new turnAuto(-1, 0.75), 0.5); //Turn right
-		addSequential(new driveAuto(0.5), 0.6);
+		addSequential(new turnAuto(-1, 0.75), 0.65); //Turn right
+		addSequential(new driveAuto(0.75), 1.5);
+		addSequential(new driveAuto(0), 2);
 		//addSequential (new driveAuto(0),0.1); //Stop driving
 		System.out.println("-------ENDING AUTON-------");
 	}
