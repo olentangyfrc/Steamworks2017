@@ -13,9 +13,15 @@ public class autoAim extends Command {
 	
 	public autoAim(double speed){
 		visionSpeed = speed;
-		bounceCounter = 0;
-		System.out.println("bounce count set to 0");
+		System.out.println("Ran the constructor");
+		//bounceCounter = 0;
+		//System.out.println("bounce count set to 0");
 		
+	}
+	
+	public void initialize(){
+		bounceCounter = 0;
+		System.out.println("Set bounceCounter to 0 in initialize()");
 	}
 	
 	public void moveContours(double x1, double x2){						//Receive the x values of our two target contours
