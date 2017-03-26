@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class MoveOneSolenoid extends Command{
+public class ExtendOneSolenoid extends Command{
 	public DoubleSolenoid sole;
 	
-	public MoveOneSolenoid(DoubleSolenoid soul){
+	public ExtendOneSolenoid(DoubleSolenoid soul){
 		this.requires(Robot.testSol);
 		sole = soul;
 	}

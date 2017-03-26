@@ -54,7 +54,7 @@ public class OI {
     	light.toggleWhenPressed(lightSpike);
     	//piston button
     	shootPiston = new JoystickButton(rightJoy, 1);
-        this.shootPiston.toggleWhenPressed(new MoveTestSolenoid()); //when pressed, shoot piston
+        this.shootPiston.toggleWhenPressed(new ExtendSolenoid()); //when pressed, shoot piston
         //move only one piston button
         //agitate button
         agitateButtonForward = new JoystickButton(shootJoy, 3);
