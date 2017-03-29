@@ -19,13 +19,13 @@ public class AccelMeasure {
 		yVal = accel.getY();
 		zVal = accel.getZ();
 		
-		xVal = (int)(Math.round(xVal));
-		yVal = (int)(Math.round(yVal));
-		zVal = (int)(Math.round(zVal));
+		//xVal = (int)(Math.round(xVal));
+		//yVal = (int)(Math.round(yVal));
+		//zVal = (int)(Math.round(zVal));
 		
-		System.out.println("X value: " + xVal);
-		System.out.println("Y value: " + yVal);
-		System.out.println("Z value: " + zVal);
+		//System.out.println("X value: " + xVal + "        " + "Z value: " + zVal);
+		//System.out.println("Y value: " + yVal);
+		//System.out.println("Z value: " + zVal);
 	}
 
 }

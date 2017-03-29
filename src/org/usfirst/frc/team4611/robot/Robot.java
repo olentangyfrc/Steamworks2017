@@ -14,8 +14,11 @@ import org.usfirst.frc.team4611.robot.OI;
 
 import com.ctre.CANTalon;
 
-
+import edu.wpi.cscore.VideoCamera;
+import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.NamedSendable;
@@ -31,10 +34,24 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
+import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
+import org.usfirst.frc.team4611.robot.commands.RetractSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
+import org.usfirst.frc.team4611.robot.commands.ExtendSolenoid;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.autoAim;
+import org.usfirst.frc.team4611.robot.commands.autoFeeder;
+import org.usfirst.frc.team4611.robot.commands.driveAuto;
+import org.usfirst.frc.team4611.robot.commands.startAuton;
+import org.usfirst.frc.team4611.robot.commands.startCenter;
+import org.usfirst.frc.team4611.robot.commands.startLeft;
+import org.usfirst.frc.team4611.robot.commands.startRight;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
-import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.turnAuto;
+import org.usfirst.frc.team4611.robot.commands.ultraDrive;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -56,6 +73,9 @@ public class Robot extends IterativeRobot {
 	public static Climber cl;
 	public static Agitator ag;
 	public static UltrasonicRange ultra;
+
+	public static AccelMeasure accel;
+
 	public UltrasonicRange ultra2;
 	public FancyLightSet fl;
     public boolean lightsGreen;
@@ -63,6 +83,7 @@ public class Robot extends IterativeRobot {
 	public static Feeder fe;
 	public static Solenoid testSol;
 	public static Timer time;
+
 
 	public static boolean dir = false;
 
@@ -74,7 +95,12 @@ public class Robot extends IterativeRobot {
 	public static NetworkTable table2;
 
 	CameraServer server;
-
+	
+	
+	public DriverStation ds;
+	public static Alliance alliance;
+	public static Alliance red = DriverStation.Alliance.valueOf("Red");
+	public static Alliance blue = DriverStation.Alliance.valueOf("Blue");
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -86,6 +112,7 @@ public class Robot extends IterativeRobot {
 		 server = CameraServer.getInstance();
 		// server.setQuality(50);
 		 server.startAutomaticCapture();
+		 
 		leftS = new leftSide();
 		rightS = new rightSide();
 		sw = new SingleWheelShooter();
@@ -96,6 +123,7 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		accel = new AccelMeasure();
 		
 		//this.chooser = new SendableChooser();
         //this.chooser.addDefault("Starting from right", new startRight());
@@ -104,6 +132,8 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
+		//this.autonomousCommand = new startLeft();
+		
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
@@ -138,8 +168,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		//alliance = ds.getAlliance();
 		
-
 		if (autonomousCommand != null) autonomousCommand.start();
 		/*this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
@@ -154,6 +184,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		ultra.ultrasonicMeasurement();
+		accel.accelMeasurement();
 		Scheduler.getInstance().run();
 		
 	}
@@ -184,23 +215,13 @@ public class Robot extends IterativeRobot {
 		ultra.ultrasonicMeasurement();
 		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
+	}
         
 		/*double currentFrame = table2.getNumber("FrameRate", 0.0);
-		
-		if(lastFrame != currentFrame) {
-			lastFrame = currentFrame;
-			lastTime = time.get(); 
-		}
-		else {
-			double differentTime = time.get() - lastTime;
-			if(differentTime > 5)
-				SmartDashboard.putString("Kangaroo", "Dead");
-		}*/
 		
 		Scheduler.getInstance().run();	
 		ultra.ultrasonicMeasurement();
 		}
-	
 	/**
 	 * This function is called periodically during test mode
 	 */
@@ -208,4 +229,7 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	
+	
+	
 }
