@@ -3,8 +3,7 @@ package org.usfirst.frc.team4611.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class startLeft extends CommandGroup{
-	//THIS SHOULD NOT BE USED USE THE START AUTO
-	//ONLY USE THIS FOR TESTING
+	
 	public startLeft(){
 		addSequential(new driveAuto(0.75), 1.3); //Drive forward
     	addSequential(new turnAuto(-1, 0.55), 0.4); //Turn right
