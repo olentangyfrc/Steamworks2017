@@ -35,8 +35,6 @@ import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-import org.usfirst.frc.team4611.robot.commands.startRight;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -63,7 +61,7 @@ public class Robot extends IterativeRobot {
     public boolean lightsGreen;
 
 	public static Feeder fe;
-	public static TestSolenoid testSol;
+	public static Solenoid testSol;
 	public static Timer time;
 
 	public static boolean dir = false;
@@ -94,7 +92,7 @@ public class Robot extends IterativeRobot {
 		fe = new Feeder();
 		fl = new FancyLightSet();
 		cl = new Climber();
-		testSol = new TestSolenoid(); 
+		testSol = new Solenoid(); 
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
@@ -106,7 +104,6 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		 
 		//this.chooser = new SendableChooser(); //SmartDashboard
-		this.autonomousCommand = new startRight();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
