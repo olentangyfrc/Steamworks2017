@@ -13,7 +13,7 @@ public class startRight extends CommandGroup{
     	addSequential(new driveAuto(0), 1.75);
     	addSequential(new autoAim(0.4), 2); //Turn using VA
     	addSequential(new ultraDrive(-0.45), 2); //Go forward until you hit
-		addSequential(new ExtendSolenoid(), 1); //Open solenoid		S
+		addSequential(new ExtendSolenoid(), 1); //Open solenoid
 		addParallel(new MoveFeeder(-0.75), 1); //Run the feeder
 		addSequential(new driveAuto(-0.5), 1.5); //Drive backwards
 		addSequential (new driveAuto(0),0.1); //Stop driving backwards
