@@ -117,7 +117,7 @@ public class Robot extends IterativeRobot {
 		 	this.chooser .addObject("Middle of Airship ", new RunAuton(startPosition.MIDDLE));
 	        this.chooser.addObject("Right of Airship ",new RunAuton(startPosition.RIGHT));       
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);*/
-		this.autonomousCommand = new RunAuton(startPosition.RIGHT);
+		this.autonomousCommand = new RunAuton(startPosition.LEFT);
 		
 		prefs = Preferences.getInstance();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
@@ -157,7 +157,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		//alliance = ds.getAlliance();
-		//spike.start();
+		spike.start();
 		if (autonomousCommand != null) autonomousCommand.start();
 		//this.autonomousCommand = (Command) this.chooser.getSelected();
 		}
@@ -179,8 +179,8 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		//spike = new relaySpike(0 , Relay.Direction.kReverse);
-		spike.start();
-		ag.agitate(RobotMap.agitateSpeed);
+		//spike.start();
+		//ag.agitate(RobotMap.agitateSpeed);
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
