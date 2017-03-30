@@ -35,11 +35,10 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
-import org.usfirst.frc.team4611.robot.commands.AccelMeasure;
 import org.usfirst.frc.team4611.robot.commands.RetractSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.ExtendSolenoid;
+import org.usfirst.frc.team4611.robot.commands.RunAuton;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.driveAuto;
@@ -72,8 +71,6 @@ public class Robot extends IterativeRobot {
 	public static Agitator ag;
 	public static UltrasonicRange ultra;
 
-	public static AccelMeasure accel;
-
 	public UltrasonicRange ultra2;
 	public FancyLightSet fl;
     public boolean lightsGreen;
@@ -90,15 +87,8 @@ public class Robot extends IterativeRobot {
 	SendableChooser chooser;
 
 	public static NetworkTable table;
-	public static NetworkTable table2;
 
 	CameraServer server;
-	
-	
-	public DriverStation ds;
-	public static Alliance alliance;
-	public static Alliance red = DriverStation.Alliance.valueOf("Red");
-	public static Alliance blue = DriverStation.Alliance.valueOf("Blue");
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -121,22 +111,21 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		accel = new AccelMeasure();
 		
-		//this.chooser = new SendableChooser();
-        //this.chooser.addDefault("Starting from right", new startRight());
-
+		 this.chooser = new SendableChooser();
+		 	this.chooser .addObject("Left", new RunAuton(startPosition.LEFT));
+		 	this.chooser .addObject("Middle ", new RunAuton(startPosition.MIDDLE));
+	        this.chooser.addObject("Right ",new RunAuton(startPosition.RIGHT));       
+	        SmartDashboard.putData("Auto Chooser", this.chooser);
 
 		prefs = Preferences.getInstance();
-		 
-		//this.chooser = new SendableChooser(); //SmartDashboard
-		//this.autonomousCommand = new startLeft();
-		
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
-		 table2 = NetworkTable.getTable("GRIP");
 	}
+	public enum startPosition {
+        LEFT, MIDDLE, RIGHT;
+    }
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -182,7 +171,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		ultra.ultrasonicMeasurement();
-		accel.accelMeasurement();
 		Scheduler.getInstance().run();
 		
 	}
