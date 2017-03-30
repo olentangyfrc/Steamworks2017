@@ -26,8 +26,8 @@ public class SingleWheelShooter extends Subsystem{
 		
 		//PID loops account for drops in speed by pushing more voltage toward the motor
         singleWheelShooter.setProfile(0); //There can be two PID loops just in case we were shooting at multiple speeds
-        singleWheelShooter.setF(-1.942405063); //Calculated using the equation found in the Talon SRX software manual. Sets target value for speed
-        singleWheelShooter.setP(-4); //This determines how much extra the talon pumps in the account for speed change
+        singleWheelShooter.setF(1.942405063); //Calculated using the equation found in the Talon SRX software manual. Sets target value for speed
+        singleWheelShooter.setP(4); //This determines how much extra the talon pumps in the account for speed change
         singleWheelShooter.setI(0.0); //If the mechanism doesn't quite reach the speed add an I value
         singleWheelShooter.setD(0.0); //Your D value smoothes the motion of the motor
         

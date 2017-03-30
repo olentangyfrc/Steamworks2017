@@ -9,7 +9,7 @@ public class RunAuton extends CommandGroup {
 		switch (pos){
 		case LEFT:
 			addSequential(new driveAuto(0.75), 1.3); //Drive forward
-	    	addSequential(new turnAuto(1, 0.55), 0.4); //Turn right
+	    	addSequential(new turnAuto(-1, 0.55), 0.4); //Turn right
 	    	addSequential(new driveAuto(0), 0.1);
 	    	addSequential(new driveAuto(0.75), 0.7);
 	    	addSequential(new driveAuto(0), 1.75);
@@ -21,9 +21,9 @@ public class RunAuton extends CommandGroup {
 			addSequential(new driveAuto(0),0.1); //Stop driving backwards
 			addParallel(new MoveFeeder(0), 0.1); //Stop running the feeder
 			addParallel(new RetractSolenoid(), 1); //Close the solenoid 
-			addSequential(new turnAuto(-1, 0.75), 0.65); //Turn left
+			addSequential(new turnAuto(1, 0.75), 0.65); //Turn left
 			addSequential(new driveAuto(0.75), 1.5);
-			addSequential(new driveAuto(0), 2);
+			addSequential(new driveAuto(0), 2); //go to center of field
 			break;
 		case MIDDLE:
 			addSequential(new driveAuto(0.75), 0.8); //Drive forward
