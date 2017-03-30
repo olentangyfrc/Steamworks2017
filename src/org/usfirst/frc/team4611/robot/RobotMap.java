@@ -32,9 +32,9 @@ public class RobotMap {
     public static int Agitator = 7;
     
 
-	public static int fancyPort1 = 1;
-	public static int fancyPort2 = 2;
-    public static int lightSpike = 3;
+	public static int fancyPort1 = 0;
+	public static int fancyPort2 = 1;
+   // public static int lightSpike = 3;
     
 
     //Pneumatic Ports. Two ports are required for a double solenoid

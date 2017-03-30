@@ -110,15 +110,15 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		spike = new relaySpike(0 , Relay.Direction.kForward);
-		
+		spike = new relaySpike(2 , Relay.Direction.kForward);		
 		/* this.chooser = new SendableChooser();
 		 	this.chooser.addDefault("Default ", new RunAuton(startPosition.DEFAULT));
 		 	this.chooser .addObject("Left of Airship ", new RunAuton(startPosition.LEFT));
 		 	this.chooser .addObject("Middle of Airship ", new RunAuton(startPosition.MIDDLE));
 	        this.chooser.addObject("Right of Airship ",new RunAuton(startPosition.RIGHT));       
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);*/
-		autonomousCommand = new RunAuton(startPosition.RIGHT);
+		this.autonomousCommand = new RunAuton(startPosition.RIGHT);
+		
 		prefs = Preferences.getInstance();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
@@ -157,15 +157,10 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		//alliance = ds.getAlliance();
-		
+		//spike.start();
 		if (autonomousCommand != null) autonomousCommand.start();
-		this.autonomousCommand = (Command) this.chooser.getSelected();
-		if (this.autonomousCommand != null) {
-			this.autonomousCommand.start();
+		//this.autonomousCommand = (Command) this.chooser.getSelected();
 		}
-		}
-
-		//}
 
 	/**
 	 * This function is called periodically during autonomous
@@ -183,6 +178,9 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		//spike = new relaySpike(0 , Relay.Direction.kReverse);
+		spike.start();
+		ag.agitate(RobotMap.agitateSpeed);
 		if (this.autonomousCommand != null) {
 			this.autonomousCommand.cancel();
 		}
