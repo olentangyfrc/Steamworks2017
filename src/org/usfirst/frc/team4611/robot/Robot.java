@@ -43,6 +43,9 @@ import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
+import org.usfirst.frc.team4611.robot.commands.startCenter;
+import org.usfirst.frc.team4611.robot.commands.startLeft;
+import org.usfirst.frc.team4611.robot.commands.startRight;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.turnAuto;
 import org.usfirst.frc.team4611.robot.commands.ultraDrive;
@@ -113,10 +116,10 @@ public class Robot extends IterativeRobot {
 		spike = new relaySpike(2 , Relay.Direction.kForward);	
 		
 		this.chooser = new SendableChooser();
-		 	this.chooser.addDefault("Default ", new RunAuton(startPosition.DEFAULT));
-		 	this.chooser .addObject("Left of Airship ", new RunAuton(startPosition.LEFT));
-		 	this.chooser .addObject("Middle of Airship ", new RunAuton(startPosition.MIDDLE));
-	        this.chooser.addObject("Right of Airship ",new RunAuton(startPosition.RIGHT));       
+		 	this.chooser.addDefault("Default ", new startCenter());
+		 	this.chooser.addObject("Left of Airship ", new startLeft());
+		 	this.chooser.addObject("Middle of Airship ", new startCenter());
+	        this.chooser.addObject("Right of Airship ",new startRight());       
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);
 	        
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
@@ -159,9 +162,12 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		//alliance = ds.getAlliance();
-		spike.start();
-		if (autonomousCommand != null) autonomousCommand.start();
-		//this.autonomousCommand = (Command) this.chooser.getSelected();
+		spike.start();		
+		//if (autonomousCommand != null) 
+			//autonomousCommand.start();
+		this.autonomousCommand = (Command) this.chooser.getSelected();
+		autonomousCommand.start();
+		
 		}
 
 	/**
