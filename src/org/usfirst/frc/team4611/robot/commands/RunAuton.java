@@ -27,7 +27,7 @@ public class RunAuton extends CommandGroup {
 			break;
 		case MIDDLE:
 			addSequential(new driveAuto(0.75), 0.8); //Drive forward
-	    	addSequential(new turnAuto(-1, 0.55), 0.1); //Turn left
+	    	addSequential(new turnAuto(1, 0.55), 0.1); //Turn left
 	    	addSequential(new driveAuto(0), 1.5);		//Stop until we settle down for VA
 	    	addSequential(new autoAim(0.4), 2); //Turn using VA
 	    	addSequential(new ultraDrive(-0.45), 2); //Go forward until you hit
