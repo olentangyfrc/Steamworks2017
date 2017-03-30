@@ -110,14 +110,16 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		spike = new relaySpike(2 , Relay.Direction.kForward);		
-		/* this.chooser = new SendableChooser();
+		spike = new relaySpike(2 , Relay.Direction.kForward);	
+		
+		this.chooser = new SendableChooser();
 		 	this.chooser.addDefault("Default ", new RunAuton(startPosition.DEFAULT));
 		 	this.chooser .addObject("Left of Airship ", new RunAuton(startPosition.LEFT));
 		 	this.chooser .addObject("Middle of Airship ", new RunAuton(startPosition.MIDDLE));
 	        this.chooser.addObject("Right of Airship ",new RunAuton(startPosition.RIGHT));       
-	        SmartDashboard.putData("Auto Chooser ", this.chooser);*/
-		this.autonomousCommand = new RunAuton(startPosition.LEFT);
+	        SmartDashboard.putData("Auto Chooser ", this.chooser);
+	        
+		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
 		
 		prefs = Preferences.getInstance();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
