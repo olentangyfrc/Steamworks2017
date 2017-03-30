@@ -25,8 +25,6 @@ public class RobotMap {
     //Ultrasonic Sensor Port
     public static int ultraSonicPort = 3;
     public static int ultraSonicPort2 = 2;
-    //Pressure Sensor Port
-    public static int PressurePort = 1;
 
     //shooter ports
     public static int Feeder= 4;
@@ -34,8 +32,8 @@ public class RobotMap {
     public static int Agitator = 7;
     
 
-	public static int fancyPort1 = 0;
-	public static int fancyPort2 = 1;
+	public static int fancyPort1 = 1;
+	public static int fancyPort2 = 2;
     public static int lightSpike = 3;
     
 
@@ -49,7 +47,7 @@ public class RobotMap {
     
     //speed variables
     public static double feederSpeed = -0.75;
-    public static double singleShooterSpeed = -3600;
+    public static double singleShooterSpeed = 3600;
     public static double climberSpeed = -1;
     public static double agitateSpeed = 1;
     

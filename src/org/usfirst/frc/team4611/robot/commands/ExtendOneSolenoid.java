@@ -13,6 +13,10 @@ public class ExtendOneSolenoid extends Command{
 		this.requires(Robot.testSol);
 		sole = soul;
 	}
+	/*public ExtendOneSolenoid(){
+		this.requires(Robot.testSol);
+		sole = 
+	}*/
 	
 	@Override
     protected void initialize() {

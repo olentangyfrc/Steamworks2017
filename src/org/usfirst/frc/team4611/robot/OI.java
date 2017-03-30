@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot;
 import org.usfirst.frc.team4611.robot.commands.*;
 
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
+import org.usfirst.frc.team4611.robot.subsystems.Solenoid;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay.Direction;
@@ -21,6 +22,7 @@ public class OI {
     public Joystick leftJoy;
     public Joystick rightJoy;
     public Joystick shootJoy;
+  
     public Button shootbut;
     public Button climbButton;
     public Button light;
@@ -28,8 +30,9 @@ public class OI {
     public Button agitateButtonBackward;
     public Button feedbutForward;
     public Button feedbutBackward;
-    public static relaySpike lightSpike = new relaySpike(RobotMap.lightSpike, Direction.kForward); //kForward uses only forward pin
+    //public static relaySpike lightSpike = new relaySpike(RobotMap.lightSpike, Direction.kForward); //kForward uses only forward pin
     public Button shootPiston;
+    public Button shootOnePiston;
 
 
     
@@ -50,12 +53,14 @@ public class OI {
     	climbButton = new JoystickButton(shootJoy, 1);
     	climbButton.whileHeld(new MoveClimber());
     	//activate lights
-    	light = new JoystickButton(leftJoy, 7);
-    	light.toggleWhenPressed(lightSpike);
+    	//light = new JoystickButton(leftJoy, 7);
+    	//light.toggleWhenPressed(lightSpike);
     	//piston button
     	shootPiston = new JoystickButton(rightJoy, 1);
         this.shootPiston.toggleWhenPressed(new ExtendSolenoid()); //when pressed, shoot piston
         //move only one piston button
+        shootOnePiston = new JoystickButton(rightJoy, 4);
+        this.shootOnePiston.whileHeld(new ExtendOneSolenoid(Robot.testSol.Sole1));
         //agitate button
         agitateButtonForward = new JoystickButton(shootJoy, 3);
         agitateButtonForward.toggleWhenPressed(new MoveAgitator(RobotMap.agitateSpeed));

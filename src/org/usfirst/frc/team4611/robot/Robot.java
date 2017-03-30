@@ -42,9 +42,7 @@ import org.usfirst.frc.team4611.robot.commands.RunAuton;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
 import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.driveAuto;
-import org.usfirst.frc.team4611.robot.commands.startCenter;
-import org.usfirst.frc.team4611.robot.commands.startLeft;
-import org.usfirst.frc.team4611.robot.commands.startRight;
+import org.usfirst.frc.team4611.robot.commands.relaySpike;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.turnAuto;
 import org.usfirst.frc.team4611.robot.commands.ultraDrive;
@@ -78,6 +76,7 @@ public class Robot extends IterativeRobot {
 	public static Feeder fe;
 	public static Solenoid testSol;
 	public static Timer time;
+	public static relaySpike spike;
 
 
 	public static boolean dir = false;
@@ -111,20 +110,22 @@ public class Robot extends IterativeRobot {
 		ag = new Agitator();
 		oi = new OI();
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
+		spike = new relaySpike(0 , Relay.Direction.kForward);
 		
-		 this.chooser = new SendableChooser();
-		 	this.chooser .addObject("Left", new RunAuton(startPosition.LEFT));
-		 	this.chooser .addObject("Middle ", new RunAuton(startPosition.MIDDLE));
-	        this.chooser.addObject("Right ",new RunAuton(startPosition.RIGHT));       
-	        SmartDashboard.putData("Auto Chooser", this.chooser);
-
+		/* this.chooser = new SendableChooser();
+		 	this.chooser.addDefault("Default ", new RunAuton(startPosition.DEFAULT));
+		 	this.chooser .addObject("Left of Airship ", new RunAuton(startPosition.LEFT));
+		 	this.chooser .addObject("Middle of Airship ", new RunAuton(startPosition.MIDDLE));
+	        this.chooser.addObject("Right of Airship ",new RunAuton(startPosition.RIGHT));       
+	        SmartDashboard.putData("Auto Chooser ", this.chooser);*/
+		autonomousCommand = new RunAuton(startPosition.RIGHT);
 		prefs = Preferences.getInstance();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
 		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 	}
 	public enum startPosition {
-        LEFT, MIDDLE, RIGHT;
+        LEFT, MIDDLE, RIGHT, DEFAULT;
     }
 
 	/**
@@ -158,9 +159,10 @@ public class Robot extends IterativeRobot {
 		//alliance = ds.getAlliance();
 		
 		if (autonomousCommand != null) autonomousCommand.start();
-		/*this.autonomousCommand = (Command) this.chooser.getSelected();
+		this.autonomousCommand = (Command) this.chooser.getSelected();
 		if (this.autonomousCommand != null) {
-			this.autonomousCommand.start();*/
+			this.autonomousCommand.start();
+		}
 		}
 
 		//}

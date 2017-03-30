@@ -10,7 +10,9 @@ public class relaySpike extends Command{
 	
 	public static Relay spike;
 	
-	/*	kOff - Turns both relay outputs off
+	/*	
+		type Value
+	    kOff - Turns both relay outputs off
 		kForward - Sets the relay to forward (M+ @ 12V, M- @ GND)
 		kReverse - Sets the relay to reverse (M+ @ GND, M- @ 12V)
 		kOn - Sets both relay outputs on (M+ @ 12V, M- @ 12V).
