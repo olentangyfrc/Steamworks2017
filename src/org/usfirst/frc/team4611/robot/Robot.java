@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot {
 	public static UltrasonicRange ultra;
 
 	public UltrasonicRange ultra2;
-	public FancyLightSet fl;
+	public static FancyLightSet fl;
     public boolean lightsGreen;
 
 	public static Feeder fe;
