@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class autoAim extends Command {
 	public static double visionSpeed;
 	public static boolean visionDone = false;
-	public int bounceCounter = 0;
+	public static int bounceCounter = 0;
+	public static final int BOUNCE_LIMIT = 3;
 	public boolean lastDirection;
 	
 	public autoAim(double speed){
@@ -30,7 +31,7 @@ public class autoAim extends Command {
 		//System.out.println("Vision Speed:" + visionSpeed);
 		//System.out.println("THIS IS target number:" + targetNum);
 		//System.out.println("Average: " + (x1+x2)/2);//This says where the place between the contours is
-		if (bounceCounter >= 2){
+		if (bounceCounter >= BOUNCE_LIMIT){
 			System.out.print("WE ARE DONE- Bounce Counters");
 			return;
 		}
@@ -62,7 +63,7 @@ public class autoAim extends Command {
 	
 	
 	protected void execute() { 
-		if (bounceCounter >= 3){
+		if (bounceCounter >= BOUNCE_LIMIT){
 			System.out.print("WE ARE DONE- Bounce Counters");
 			return;
 		}

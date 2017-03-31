@@ -30,6 +30,9 @@ public class ultraDrive extends Command{
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
+		if(autoAim.bounceCounter < autoAim.BOUNCE_LIMIT){
+			return true;
+		}
 		double current = pd.getCurrent(12) + pd.getCurrent(13) + pd.getCurrent(14) + pd.getCurrent(15);
 		System.out.println("PD Board Current" + current + "\tCounter" + timeCounter);
 		//System.out.println("Range: " + inches);
