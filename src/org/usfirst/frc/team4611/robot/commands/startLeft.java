@@ -13,7 +13,7 @@ public class startLeft extends CommandGroup{
     	addSequential(new driveAuto(0.4), 0.15); // was 0.6 power second match //was 0.5 seconds for first match //after turn, get closer to peg to initiate VA
     	//^was 0.3 seconds second match
     	addSequential(new driveAuto(0), 1.75);
-    	addSequential(new autoAim(0.4), 4); //Turn using VA //was 2 seconds third match
+    	addSequential(new autoAim(0.25), 4); //Turn using VA //was 2 seconds third match
     	addSequential(new ultraDrive(-0.45), 1); //Go forward until you hit
     	addSequential(new driveAuto(0), 0.1); //stop driving
     	
