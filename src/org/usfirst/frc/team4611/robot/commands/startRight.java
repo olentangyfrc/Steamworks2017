@@ -10,11 +10,11 @@ public class startRight extends CommandGroup{
     	addSequential(new driveAuto(0), 0.1);
     	addSequential(new driveAuto(0.6), 0.3); //was 0.5 seconds for first match//after turn, get closer to peg to initiate VA
     	addSequential(new driveAuto(0), 1.75);*/
-    	addSequential(new autoAim(0.3), 2); //Turn using VA
+    	addSequential(new autoAim(0.25), 5); //Turn using VA
     	/*addSequential(new ultraDrive(-0.45), 1); //Go forward until you hit
     	addSequential(new driveAuto(0), 0.1); //stop driving*/
     	
-    	//Schmidt didn't want us to continue past getting the gear on the peg
+    	//Schmidt didn't want us to continue past  getting the gear on the peg
     	/*addSequential(new ExtendSolenoid(), 1); //Open solenoid	
 		addParallel(new MoveFeeder(-0.75), 1); //Run the feeder
 		addSequential(new driveAuto(-0.5), 1.5); //Drive backwards
