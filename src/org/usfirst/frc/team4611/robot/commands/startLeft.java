@@ -5,13 +5,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class startLeft extends CommandGroup{
 	
 	public startLeft(){
-		addSequential(new driveAuto(0.6), 1); //Drive forward //was 1.3 seconds for first match
-    	addSequential(new turnAuto(-1, 0.45), 0.4); //Turn right
+		addSequential(new driveAuto(0.6), 0.85);
+		//was 1 second for third match
+		//Drive forward //was 1.3 seconds for first match
+    	addSequential(new turnAuto(-1, 0.45), 0.3); //Turn right //was 0.4 seconds for third match
     	addSequential(new driveAuto(0), 0.1);
     	addSequential(new driveAuto(0.4), 0.15); // was 0.6 power second match //was 0.5 seconds for first match //after turn, get closer to peg to initiate VA
     	//^was 0.3 seconds second match
     	addSequential(new driveAuto(0), 1.75);
-    	addSequential(new autoAim(0.4), 2); //Turn using VA
+    	addSequential(new autoAim(0.4), 4); //Turn using VA //was 2 seconds third match
     	addSequential(new ultraDrive(-0.45), 1); //Go forward until you hit
     	addSequential(new driveAuto(0), 0.1); //stop driving
     	
