@@ -5,11 +5,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class startCenter extends CommandGroup{
 
 	public startCenter(){
-		addSequential(new driveAuto(0.6), 0.4); //Drive forward
+		/*addSequential(new driveAuto(0.6), 0.4); //Drive forward
     	addSequential(new turnAuto(1, 0.45), 0.1); //Turn left
     	addSequential(new driveAuto(0), 1.5); //Stop until we settle down for VA
-    	addSequential(new autoAim(0.4), 2); //Turn using VA
-    	addSequential(new ultraDrive(-0.45), 0.5); //Go forward until you hit
+    	addSequential(new autoAim(0.4), 2); //Turn using VA*/
+    	addSequential(new ultraDrive(-0.40), 5); //Go forward until you hit
+    	//was 0.45 power fourth match
     	addSequential(new driveAuto(0), 0.1); //Stop Driving
     	
     	//Schmidt didn't want us to continue past getting the gear on the peg
