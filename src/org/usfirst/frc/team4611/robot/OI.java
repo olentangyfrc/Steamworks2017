@@ -66,7 +66,6 @@ public class OI {
         agitateButtonForward.toggleWhenPressed(new MoveAgitator(RobotMap.agitateSpeed));
         agitateButtonBackward = new JoystickButton(shootJoy,2);
         agitateButtonBackward.toggleWhenPressed(new MoveAgitator(-RobotMap.agitateSpeed));
-
     }
 
     public double filter(double raw) //Modifies the joystick input to be something cleaner to output to motors.
@@ -74,7 +73,7 @@ public class OI {
         if (Math.abs(raw) < .07) {
             return 0;				//Set a dead zone, to filter out noise
         } else {
-            return  raw * 0.95; //Drivetrain motors are running at 95%, linear filter
+            return  raw; //Drivetrain motors are running at 100%, linear filter
         }
     }
 
