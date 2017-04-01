@@ -44,6 +44,7 @@ import org.usfirst.frc.team4611.robot.commands.autoAim;
 import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
 import org.usfirst.frc.team4611.robot.commands.startCenter;
+import org.usfirst.frc.team4611.robot.commands.startDefaultAuton;
 import org.usfirst.frc.team4611.robot.commands.startLeft;
 import org.usfirst.frc.team4611.robot.commands.startRight;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
@@ -99,9 +100,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		// Initializes camera feed on driver station
-		 server = CameraServer.getInstance();
+		// server = CameraServer.getInstance();
 		// server.setQuality(50);
-		 server.startAutomaticCapture();
+		 //server.startAutomaticCapture();
 		 
 		leftS = new leftSide();
 		rightS = new rightSide();
@@ -116,7 +117,7 @@ public class Robot extends IterativeRobot {
 		spike = new relaySpike(2 , Relay.Direction.kForward);	
 		
 		this.chooser = new SendableChooser();
-		 	this.chooser.addDefault("Default ", new startCenter());
+		 	this.chooser.addDefault("Default ", new startDefaultAuton());
 		 	this.chooser.addObject("Left of Airship ", new startLeft());
 		 	this.chooser.addObject("Middle of Airship ", new startCenter());
 	        this.chooser.addObject("Right of Airship ",new startRight());       
