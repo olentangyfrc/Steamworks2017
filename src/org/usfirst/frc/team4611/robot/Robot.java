@@ -127,7 +127,7 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 		// VA data to roborio. Not currently in use		
-		 table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
+		 //table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 	}
 	public enum startPosition {
         LEFT, MIDDLE, RIGHT, DEFAULT;
