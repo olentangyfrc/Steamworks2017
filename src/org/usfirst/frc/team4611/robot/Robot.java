@@ -7,12 +7,10 @@ import org.usfirst.frc.team4611.robot.subsystems.*;
 
 //import org.usfirst.frc.team4611.robot.subsystems.Motor;
 //import org.usfirst.frc.team4611.robot.subsystems.VisionTank;
-import org.usfirst.frc.team4611.robot.subsystems.leftSide;
-import org.usfirst.frc.team4611.robot.subsystems.rightSide;
+
 
 import org.usfirst.frc.team4611.robot.OI;
 
-import com.ctre.CANTalon;
 
 import edu.wpi.cscore.VideoCamera;
 import edu.wpi.cscore.VideoSource;
@@ -38,17 +36,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4611.robot.commands.RetractSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.ExtendSolenoid;
-import org.usfirst.frc.team4611.robot.commands.RunAuton;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-import org.usfirst.frc.team4611.robot.commands.autoAim;
-import org.usfirst.frc.team4611.robot.commands.driveAuto;
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
-import org.usfirst.frc.team4611.robot.commands.startCenter;
-import org.usfirst.frc.team4611.robot.commands.startDefaultAuton;
-import org.usfirst.frc.team4611.robot.commands.startLeft;
-import org.usfirst.frc.team4611.robot.commands.startRight;
+import org.usfirst.frc.team4611.robot.commands.StartCenter;
+import org.usfirst.frc.team4611.robot.commands.StartDefaultAuton;
+import org.usfirst.frc.team4611.robot.commands.StartLeft;
+import org.usfirst.frc.team4611.robot.commands.StartRight;
+import org.usfirst.frc.team4611.robot.commands.TestEncoderDriveBlock;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
-import org.usfirst.frc.team4611.robot.commands.turnAuto;
 import org.usfirst.frc.team4611.robot.commands.ultraDrive;
 
 
@@ -64,14 +59,13 @@ public class Robot extends IterativeRobot {
 	// public static final ExampleSubsystem exampleSubsystem = new
 	// ExampleSubsystem();
 	public static OI oi;
-	public static leftSide leftS; 
-	public static rightSide rightS;
-
+	public static DriveTrain driveT;
 
 	public static SingleWheelShooter sw;
 	public static Climber cl;
 	public static Agitator ag;
 	public static UltrasonicRange ultra;
+	public static Gyro gy;
 
 	public UltrasonicRange ultra2;
 	public static FancyLightSet fl;
@@ -81,7 +75,8 @@ public class Robot extends IterativeRobot {
 	public static Solenoid testSol;
 	public static Timer time;
 	public static relaySpike spike;
-
+	
+	public int autoTime;
 
 	public static boolean dir = false;
 
@@ -103,9 +98,7 @@ public class Robot extends IterativeRobot {
 		// server = CameraServer.getInstance();
 		// server.setQuality(50);
 		 //server.startAutomaticCapture();
-		 
-		leftS = new leftSide();
-		rightS = new rightSide();
+		driveT = new DriveTrain(); 
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
@@ -113,14 +106,19 @@ public class Robot extends IterativeRobot {
 		testSol = new Solenoid(); 
 		ag = new Agitator();
 		oi = new OI();
+		Robot.driveT.masterLeft.setEncPosition(0);
+		Robot.driveT.masterRight.setEncPosition(0);
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		spike = new relaySpike(2 , Relay.Direction.kForward);	
+		spike = new relaySpike(2 , Relay.Direction.kForward);
+		gy = new Gyro();
+		Robot.gy.gyro.calibrate();
 		
 		this.chooser = new SendableChooser();
-		 	this.chooser.addDefault("Default ", new startDefaultAuton());
-		 	this.chooser.addObject("Left of Airship ", new startLeft());
-		 	this.chooser.addObject("Middle of Airship ", new startCenter());
-	        this.chooser.addObject("Right of Airship ",new startRight());       
+		 	this.chooser.addDefault("Default ", new StartDefaultAuton());
+		 	this.chooser.addObject("Left of Airship ", new StartLeft());
+		 	this.chooser.addObject("Middle of Airship ", new StartCenter());
+	        this.chooser.addObject("Right of Airship ",new StartRight());
+	        this.chooser.addObject("Test Encoder Drive ",new TestEncoderDriveBlock()); 
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);
 	        
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
@@ -130,9 +128,6 @@ public class Robot extends IterativeRobot {
 		// VA data to roborio. Not currently in use		
 		 //table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 	}
-	public enum startPosition {
-        LEFT, MIDDLE, RIGHT, DEFAULT;
-    }
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -163,6 +158,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
 		//alliance = ds.getAlliance();
+		autoTime = 0;
 		spike.start();		
 		//if (autonomousCommand != null) 
 			//autonomousCommand.start();

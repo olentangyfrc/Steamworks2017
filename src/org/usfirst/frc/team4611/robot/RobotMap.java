@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.Relay;
 public class RobotMap {
     
 	//Drive motor ports. They're numbered clockwise, starting with zero at the front right.
-    public static int frontRightWheel = 0;
-    public static int backRightWheel = 1;
-    public static int backLeftWheel = 2;
-    public static int frontLeftWheel = 3;
+	public static int frontLeftWheel = 50;
+	public static int rearLeftWheel = 51;
+	public static int frontRightWheel = 53;
+	public static int rearRightWheel = 52;
 
     //CAN Ports
     public static int powerdis = 1;
@@ -55,6 +55,8 @@ public class RobotMap {
     //Range values for ultrasonic sensor
     public static double ultraLowerBound = 90;
     public static double ultraUpperBound = 96;
+    
+    public static int cpr = 980;
 
 }
 	

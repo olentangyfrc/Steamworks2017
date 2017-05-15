@@ -23,8 +23,8 @@ public class ultraDrive extends Command{
 	}
 	
 	protected void execute() {
-			Robot.rightS.move(ultraSpeed);
-			Robot.leftS.move(ultraSpeed);
+			//Robot.rightS.move(ultraSpeed);
+			//Robot.leftS.move(ultraSpeed);
 			timeCounter ++;
 		}
 	@Override

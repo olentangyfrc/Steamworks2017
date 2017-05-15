@@ -2,11 +2,10 @@ package org.usfirst.frc.team4611.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class startDefaultAuton extends CommandGroup{
+public class StartDefaultAuton extends CommandGroup{
 	
-	public startDefaultAuton(){
-		addSequential(new driveAuto(0.6), 2.5);
-		addSequential(new driveAuto(0), 0.1);
+	public StartDefaultAuton(){
+	
 	}
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
