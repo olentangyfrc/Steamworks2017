@@ -10,15 +10,15 @@ import edu.wpi.first.wpilibj.Relay;
  */
 public class RobotMap {
     
-	//Drive motor ports. They're numbered clockwise, starting with zero at the front right.
-	public static int frontLeftWheel = 50;
-	public static int rearLeftWheel = 51;
-	public static int frontRightWheel = 53;
-	public static int rearRightWheel = 52;
+	//Drive motor ports. They're numbered clockwise, starting with ten at the front right.
+	public static int frontRightWheel = 10;
+	public static int rearRightWheel = 11;
+	public static int rearLeftWheel = 12;
+	public static int frontLeftWheel = 13;
 
     //CAN Ports
     public static int powerdis = 1;
-    public static int singleShooter = 61; //talon port
+    public static int singleShooter = 20; //shooter talon port
 
     //speed variables
     //public static double shooterTargetSpeed = -3000.0;
