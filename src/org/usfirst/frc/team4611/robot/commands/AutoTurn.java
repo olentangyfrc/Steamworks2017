@@ -28,15 +28,15 @@ public class AutoTurn extends Command {
 		Robot.driveT.masterLeft.changeControlMode(TalonControlMode.MotionMagic);
 		Robot.driveT.masterRight.changeControlMode(TalonControlMode.MotionMagic);
 		
-		Robot.driveT.masterLeft.setF(1.74);
-		Robot.driveT.masterLeft.setP(25);
+		Robot.driveT.masterLeft.setF(0.3581);
+		Robot.driveT.masterLeft.setP(1);
 		Robot.driveT.masterLeft.setI(0);
 		Robot.driveT.masterLeft.setD(0);
 		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(50);
 		Robot.driveT.masterLeft.setMotionMagicAcceleration(100);
 		
-		Robot.driveT.masterRight.setF(1.74);
-		Robot.driveT.masterRight.setP(25);
+		Robot.driveT.masterRight.setF(0.3581);
+		Robot.driveT.masterRight.setP(1);
 		Robot.driveT.masterRight.setI(0);
 		Robot.driveT.masterRight.setD(0);
 		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(50);

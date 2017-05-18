@@ -25,44 +25,40 @@ public class DriveEncoders extends Command {
 	}
 	
 	public void initialize(){
-		this.pValueGyro = 1;
+		this.pValueGyro = 4;
 		
-		Robot.driveT.masterLeft.setF(1.74);
-		Robot.driveT.masterLeft.setP(18);
+		Robot.driveT.masterLeft.setF(0.3581);
+		Robot.driveT.masterLeft.setP(0.5);
 		Robot.driveT.masterLeft.setI(0);
 		Robot.driveT.masterLeft.setD(0);
-		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(150);
-		Robot.driveT.masterLeft.setMotionMagicAcceleration(150);
+		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(200);
+		Robot.driveT.masterLeft.setMotionMagicAcceleration(95);
 		
-		Robot.driveT.masterRight.setF(1.74);
-		Robot.driveT.masterRight.setP(18);
+		Robot.driveT.masterRight.setF(0.3581);
+		Robot.driveT.masterRight.setP(0.5);
 		Robot.driveT.masterRight.setI(0);
 		Robot.driveT.masterRight.setD(0);
-		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(150);
-		Robot.driveT.masterRight.setMotionMagicAcceleration(150);
+		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(200);
+		Robot.driveT.masterRight.setMotionMagicAcceleration(110);
 		
 		leftStart = Robot.driveT.masterLeft.getPosition();
 		rightStart = Robot.driveT.masterRight.getPosition();
 		startAngle = Robot.gy.gyro.getAngle();
-		//System.out.println("Left Start:  "+leftStart);
-		//System.out.println("Left Goal:  "+(leftStart + rotations));
-		//System.out.println("Right Start:  "+rightStart);
-		//System.out.println("Right Goal:  "+(rightStart+ rotations));
 	}
 	
 	protected void execute(){
 		Robot.driveT.setDistance(leftStart + rotations, rightStart + rotations);
 		angleError = this.startAngle - Robot.gy.gyro.getAngle();
-		System.out.println("Driving Forward" + "\tAngle: " + Robot.gy.gyro.getAngle() + "\t Angle Error: " + angleError);
+		//System.out.println("Driving Forward" + "\tAngle: " + Robot.gy.gyro.getAngle() + "\t Angle Error: " + angleError);
 		
 		int flipAcceleration = 1;
 		if(Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition())>rotations/2)
 		{
-			System.out.println("Second Half");
+			//System.out.println("Second Half");
 			flipAcceleration = -1;
 		}
 		else
-			System.out.println("First Half");
+			//System.out.println("First Half");
 		if (angleError > 0) { //Left
 					
 			if (leftStart + rotations - Robot.driveT.masterLeft.getPosition() < 0) {
@@ -89,9 +85,12 @@ public class DriveEncoders extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		if (Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition()) > .1||Math.abs(rightStart + rotations - Robot.driveT.masterRight.getPosition()) > .1){
+		if (Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition()) > .6||Math.abs(rightStart + rotations - Robot.driveT.masterRight.getPosition()) > .6) {
 			return false;
 		}
-		return true;
+		else { 
+			System.out.println("DRIVE FORWARD ENDED");
+			return true;
+		}
 	}
 }

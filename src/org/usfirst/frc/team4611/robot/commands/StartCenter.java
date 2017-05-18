@@ -4,8 +4,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class StartCenter extends CommandGroup{
 
-	public StartCenter(){
-		
+	public StartCenter() {
+		addSequential(new DriveEncoders(72.5));
+		addSequential(new Wait(), 2);
 	}
 
 	@Override

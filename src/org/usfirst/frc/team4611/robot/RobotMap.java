@@ -56,7 +56,7 @@ public class RobotMap {
     public static double ultraLowerBound = 90;
     public static double ultraUpperBound = 96;
     
-    public static int cpr = 980;
+    public static int cpr = 1440;
 
 }
 	

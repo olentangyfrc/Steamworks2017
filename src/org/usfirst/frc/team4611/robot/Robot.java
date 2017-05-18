@@ -174,6 +174,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		ultra.ultrasonicMeasurement();
 		Scheduler.getInstance().run();
+		//System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
+		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
 		
 	}
 
@@ -206,6 +208,9 @@ public class Robot extends IterativeRobot {
 		ultra.ultrasonicMeasurement();
 		lightsGreen = ultra.getInRange();
         fl.show(lightsGreen, ultra.roundedInches < 90);
+        //System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
+		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
+        System.out.println("Angle: " + Robot.gy.gyro.getAngle());
 	}
         
 		/*double currentFrame = table2.getNumber("FrameRate", 0.0);
