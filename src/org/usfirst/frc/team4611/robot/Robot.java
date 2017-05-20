@@ -159,7 +159,7 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		//alliance = ds.getAlliance();
 		autoTime = 0;
-		spike.start();		
+		spike.start();	
 		//if (autonomousCommand != null) 
 			//autonomousCommand.start();
 		this.autonomousCommand = (Command) this.chooser.getSelected();

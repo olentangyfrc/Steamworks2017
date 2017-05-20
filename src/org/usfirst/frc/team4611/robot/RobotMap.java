@@ -57,6 +57,7 @@ public class RobotMap {
     public static double ultraUpperBound = 96;
     
     public static int cpr = 1440;
+    public static double pValueForMotionMagic = 12;
 
 }
 	

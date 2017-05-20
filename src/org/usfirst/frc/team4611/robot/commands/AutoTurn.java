@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4611.robot.commands;
 
 import org.usfirst.frc.team4611.robot.Robot;
+import org.usfirst.frc.team4611.robot.RobotMap;
 
 import com.ctre.CANTalon.TalonControlMode;
 
@@ -10,7 +11,7 @@ public class AutoTurn extends Command {
 	
 	public double inputAngle;
 	public double angleError;
-	public double pValue;
+	public double pAngleValue;
 	
 	public AutoTurn(double angle){
 		this.requires(Robot.driveT);
@@ -19,11 +20,10 @@ public class AutoTurn extends Command {
 	}
 	
 	public void initialize(){
-		//pValue = 0.015; didn't make it 90
+		 pAngleValue = 0.005; 
 		//pValue = 0.03;
-		pValue = 0.02;
+		//pAngleValue = 0.035;
 		
-		this.inputAngle += Robot.gy.gyro.getAngle();
 		Robot.driveT.masterLeft.setPosition(0);
 		Robot.driveT.masterRight.setPosition(0);
 		
@@ -31,31 +31,42 @@ public class AutoTurn extends Command {
 		Robot.driveT.masterRight.changeControlMode(TalonControlMode.MotionMagic);
 		
 		Robot.driveT.masterLeft.setF(0.3581);
-		Robot.driveT.masterLeft.setP(1);
+		Robot.driveT.masterLeft.setP(RobotMap.pValueForMotionMagic);
 		Robot.driveT.masterLeft.setI(0);
 		Robot.driveT.masterLeft.setD(0);
-		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(40);
-		Robot.driveT.masterLeft.setMotionMagicAcceleration(90);
+		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(30);
+		Robot.driveT.masterLeft.setMotionMagicAcceleration(60);
 		
 		Robot.driveT.masterRight.setF(0.3581);
-		Robot.driveT.masterRight.setP(1);
+		Robot.driveT.masterRight.setP(RobotMap.pValueForMotionMagic);
 		Robot.driveT.masterRight.setI(0);
 		Robot.driveT.masterRight.setD(0);
-		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(40);
-		Robot.driveT.masterRight.setMotionMagicAcceleration(90);
+		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(30);
+		Robot.driveT.masterRight.setMotionMagicAcceleration(60);
 	}
 	
 	public void execute() {
-		angleError = inputAngle - Robot.gy.gyro.getAngle();
-		Robot.driveT.masterLeft.set(Robot.driveT.masterLeft.getPosition() + (pValue * angleError));
-		Robot.driveT.masterRight.set(Robot.driveT.masterRight.getPosition() - (pValue * angleError));
+		double currentAngle = Robot.gy.gyro.getAngle();
+		angleError = inputAngle - currentAngle;
+		Robot.driveT.masterLeft.set(Robot.driveT.masterLeft.getPosition() + (pAngleValue * angleError));
+		Robot.driveT.masterRight.set(Robot.driveT.masterRight.getPosition() - (pAngleValue * angleError));
 				
-		System.out.println("Turning" + "\tAngle: " + Robot.gy.gyro.getAngle() + "\t Angle Error: " + angleError);
+		System.out.println("Turning" + "\tAngle: " + currentAngle + "\t Angle Error: " + angleError);
+		
 	}
+	
 	@Override
 	protected boolean isFinished() {
-		if (Math.abs(angleError) < 1 && Robot.driveT.masterLeft.getEncVelocity() == 0)
-			return true;	
+		if (Math.abs(angleError) < 2) {
+			Robot.fl.makeGreen();
+		}
+		else {
+			Robot.fl.makeRed();
+		}
+		if (Math.abs(angleError) < 2 && Math.round(Math.abs(Robot.driveT.masterLeft.getEncVelocity())) == 0) {
+			System.out.println("TURNING ENDED");
+			return true;
+		}
 		else
 			return false;
 	}
