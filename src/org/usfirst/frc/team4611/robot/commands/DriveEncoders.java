@@ -17,10 +17,10 @@ public class DriveEncoders extends Command {
 	public double angleError;
 	public double pValueGyro;
 	public double inches;
-	public double leftVelocity = 200;
-	public double leftAcceleration = 75;
-	public double rightAcceleration = 75;
-	public double rightVelocity = 200;
+	public double leftVelocity = 100;
+	public double leftAcceleration = 100;
+	public double rightAcceleration = 100;
+	public double rightVelocity = 100;
 	
 	public DriveEncoders(double inches){
 		this.requires(Robot.driveT);
@@ -30,17 +30,17 @@ public class DriveEncoders extends Command {
 	}
 	
 	public void initialize(){
-		this.pValueGyro = 1;
+		this.pValueGyro = 3.5;
 		
-		Robot.driveT.masterLeft.setF(0.3581);
-		Robot.driveT.masterLeft.setP(RobotMap.pValueForMotionMagic);
+		Robot.driveT.masterLeft.setF(RobotMap.fValue);
+		Robot.driveT.masterLeft.setP(RobotMap.motionMagicP);
 		Robot.driveT.masterLeft.setI(0);
 		Robot.driveT.masterLeft.setD(0);
 		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity);
 		Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration);
 		
-		Robot.driveT.masterRight.setF(0.3581);
-		Robot.driveT.masterRight.setP(RobotMap.pValueForMotionMagic);
+		Robot.driveT.masterRight.setF(RobotMap.fValue);
+		Robot.driveT.masterRight.setP(RobotMap.motionMagicP);
 		Robot.driveT.masterRight.setI(0);
 		Robot.driveT.masterRight.setD(0);
 		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(rightVelocity);
@@ -53,36 +53,40 @@ public class DriveEncoders extends Command {
 	
 	protected void execute(){
 		Robot.driveT.setDistance(leftStart + rotations, rightStart + rotations);
+		System.out.println(Robot.driveT.masterLeft.getEncPosition() +" " + Robot.driveT.masterLeft.getPosition() + " " + (Robot.driveT.masterRight.getEncPosition()) + " " + Robot.driveT.masterRight.getPosition());
 		angleError = this.startAngle - Robot.gy.gyro.getAngle();
 
 		int flipAcceleration = 1;
 		if(Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition())<rotations/2)
 		{
-			System.out.println("Second Half");
 			flipAcceleration = -1;
 		}
-		else
-			System.out.println("First Half");
+			
 		if (angleError > 0) { //Left
-					
+			System.out.println("Left");		
 			if (leftStart + rotations - Robot.driveT.masterLeft.getPosition() < 0) {
 				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration-(this.pValueGyro * flipAcceleration * this.angleError));
 				Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity-(this.pValueGyro*this.angleError));
+				System.out.println("Decreace left");
 			}
 			else {
 				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration-(this.pValueGyro * flipAcceleration *  this.angleError));
 				Robot.driveT.masterRight.setMotionMagicCruiseVelocity(rightVelocity-(this.pValueGyro*this.angleError)); //Decrease right side
+				System.out.println("Decreace right");
 			}
 		} 
 		
 		if (angleError < 0) { //Right
+			System.out.println("Right");
 			if (leftStart + rotations - Robot.driveT.masterLeft.getPosition() < 0) {
-				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration-(this.pValueGyro * flipAcceleration *  this.angleError));
-				Robot.driveT.masterRight.setMotionMagicCruiseVelocity(rightVelocity-(this.pValueGyro*this.angleError));
+				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration+(this.pValueGyro * flipAcceleration *  this.angleError));
+				Robot.driveT.masterRight.setMotionMagicCruiseVelocity(rightVelocity+(this.pValueGyro*this.angleError));
+				System.out.println("Decreace right");
 			}
 			else {
-				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration-(this.pValueGyro *  flipAcceleration * this.angleError));
-				Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity-(this.pValueGyro*this.angleError)); //Decrease right side
+				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration+(this.pValueGyro *  flipAcceleration * this.angleError));
+				Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity+(this.pValueGyro*this.angleError)); //Decrease right side
+				System.out.println("Decreace left");
 			}
 		}
 	}

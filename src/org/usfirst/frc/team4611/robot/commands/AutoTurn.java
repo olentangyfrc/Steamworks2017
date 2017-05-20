@@ -20,29 +20,30 @@ public class AutoTurn extends Command {
 	}
 	
 	public void initialize(){
-		 pAngleValue = 0.005; 
+		 pAngleValue = 0.015; 
 		//pValue = 0.03;
 		//pAngleValue = 0.035;
 		
+		this.inputAngle += Robot.gy.gyro.getAngle();
 		Robot.driveT.masterLeft.setPosition(0);
 		Robot.driveT.masterRight.setPosition(0);
 		
 		Robot.driveT.masterLeft.changeControlMode(TalonControlMode.MotionMagic);
 		Robot.driveT.masterRight.changeControlMode(TalonControlMode.MotionMagic);
 		
-		Robot.driveT.masterLeft.setF(0.3581);
-		Robot.driveT.masterLeft.setP(RobotMap.pValueForMotionMagic);
+		Robot.driveT.masterLeft.setF(RobotMap.fValue);
+		Robot.driveT.masterLeft.setP(RobotMap.motionMagicP);
 		Robot.driveT.masterLeft.setI(0);
 		Robot.driveT.masterLeft.setD(0);
-		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(30);
-		Robot.driveT.masterLeft.setMotionMagicAcceleration(60);
+		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(50);
+		Robot.driveT.masterLeft.setMotionMagicAcceleration(100);
 		
-		Robot.driveT.masterRight.setF(0.3581);
-		Robot.driveT.masterRight.setP(RobotMap.pValueForMotionMagic);
+		Robot.driveT.masterRight.setF(RobotMap.fValue);
+		Robot.driveT.masterRight.setP(RobotMap.motionMagicP);
 		Robot.driveT.masterRight.setI(0);
 		Robot.driveT.masterRight.setD(0);
-		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(30);
-		Robot.driveT.masterRight.setMotionMagicAcceleration(60);
+		Robot.driveT.masterRight.setMotionMagicCruiseVelocity(50);
+		Robot.driveT.masterRight.setMotionMagicAcceleration(100);
 	}
 	
 	public void execute() {
@@ -51,22 +52,20 @@ public class AutoTurn extends Command {
 		Robot.driveT.masterLeft.set(Robot.driveT.masterLeft.getPosition() + (pAngleValue * angleError));
 		Robot.driveT.masterRight.set(Robot.driveT.masterRight.getPosition() - (pAngleValue * angleError));
 				
-		System.out.println("Turning" + "\tAngle: " + currentAngle + "\t Angle Error: " + angleError);
+		System.out.println((Robot.driveT.masterLeft.getPosition() + (pAngleValue * angleError))+" "+ (Robot.driveT.masterRight.getPosition() - (pAngleValue * angleError)));
 		
 	}
 	
 	@Override
 	protected boolean isFinished() {
-		if (Math.abs(angleError) < 2) {
+		if (Math.abs(angleError) < 1) {
 			Robot.fl.makeGreen();
 		}
 		else {
 			Robot.fl.makeRed();
 		}
-		if (Math.abs(angleError) < 2 && Math.round(Math.abs(Robot.driveT.masterLeft.getEncVelocity())) == 0) {
-			System.out.println("TURNING ENDED");
-			return true;
-		}
+		if (Math.abs(angleError) < 1 && Robot.driveT.masterLeft.getEncVelocity() == 0)
+			return true;	
 		else
 			return false;
 	}
