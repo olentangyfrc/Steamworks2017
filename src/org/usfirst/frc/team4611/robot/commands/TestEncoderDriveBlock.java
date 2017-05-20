@@ -5,6 +5,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TestEncoderDriveBlock extends CommandGroup{
 	
 	public TestEncoderDriveBlock() {
-		addSequential(new AutoTurn(90));
+		addSequential(new AutoTurn(60));
 	}
 }
