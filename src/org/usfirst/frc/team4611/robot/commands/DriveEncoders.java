@@ -53,7 +53,6 @@ public class DriveEncoders extends Command {
 	
 	protected void execute(){
 		Robot.driveT.setDistance(leftStart + rotations, rightStart + rotations);
-		System.out.println(Robot.driveT.masterLeft.getEncPosition() +" " + Robot.driveT.masterLeft.getPosition() + " " + (Robot.driveT.masterRight.getEncPosition()) + " " + Robot.driveT.masterRight.getPosition());
 		angleError = this.startAngle - Robot.gy.gyro.getAngle();
 
 		int flipAcceleration = 1;
@@ -62,42 +61,35 @@ public class DriveEncoders extends Command {
 			flipAcceleration = -1;
 		}
 			
-		if (angleError > 0) { //Left
-			System.out.println("Left");		
+		if (angleError > 0) { //Left	
 			if (leftStart + rotations - Robot.driveT.masterLeft.getPosition() < 0) {
-				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration-(this.pValueGyro * flipAcceleration * this.angleError));
+				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration-((this.pValueGyro/2) * flipAcceleration * this.angleError));
 				Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity-(this.pValueGyro*this.angleError));
-				System.out.println("Decreace left");
 			}
 			else {
-				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration-(this.pValueGyro * flipAcceleration *  this.angleError));
+				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration-((this.pValueGyro/2) * flipAcceleration *  this.angleError));
 				Robot.driveT.masterRight.setMotionMagicCruiseVelocity(rightVelocity-(this.pValueGyro*this.angleError)); //Decrease right side
-				System.out.println("Decreace right");
 			}
 		} 
 		
 		if (angleError < 0) { //Right
-			System.out.println("Right");
 			if (leftStart + rotations - Robot.driveT.masterLeft.getPosition() < 0) {
-				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration+(this.pValueGyro * flipAcceleration *  this.angleError));
+				Robot.driveT.masterRight.setMotionMagicAcceleration(rightAcceleration+((this.pValueGyro/2) * flipAcceleration *  this.angleError));
 				Robot.driveT.masterRight.setMotionMagicCruiseVelocity(rightVelocity+(this.pValueGyro*this.angleError));
-				System.out.println("Decreace right");
 			}
 			else {
-				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration+(this.pValueGyro *  flipAcceleration * this.angleError));
+				Robot.driveT.masterLeft.setMotionMagicAcceleration(leftAcceleration+((this.pValueGyro/2)*  flipAcceleration * this.angleError));
 				Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity+(this.pValueGyro*this.angleError)); //Decrease right side
-				System.out.println("Decreace left");
 			}
 		}
 	}
 
 	@Override
 	protected boolean isFinished() {
-		if (Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition()) > .6||Math.abs(rightStart + rotations - Robot.driveT.masterRight.getPosition()) > .6) {
+		if (Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition()) > .1||Math.abs(rightStart + rotations - Robot.driveT.masterRight.getPosition()) > .1) {
 			return false;
 		}
 		else { 
-			System.out.println("DRIVE FORWARD ENDED");
 			return true;
 		}
 	}

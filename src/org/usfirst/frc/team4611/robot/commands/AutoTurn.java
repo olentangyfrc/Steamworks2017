@@ -10,21 +10,22 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoTurn extends Command {
 	
 	public double inputAngle;
+	public double targetAngle;
 	public double angleError;
 	public double pAngleValue;
 	
 	public AutoTurn(double angle){
 		this.requires(Robot.driveT);
 		this.requires(Robot.gy);
-		this.inputAngle = angle;
+		this.targetAngle = angle;
 	}
 	
 	public void initialize(){
-		 pAngleValue = 0.015; 
+		 pAngleValue = 0.01; 
 		//pValue = 0.03;
 		//pAngleValue = 0.035;
 		
-		this.inputAngle += Robot.gy.gyro.getAngle();
+		this.inputAngle = Robot.gy.gyro.getAngle()+this.targetAngle;
 		Robot.driveT.masterLeft.setPosition(0);
 		Robot.driveT.masterRight.setPosition(0);
 		
@@ -46,13 +47,14 @@ public class AutoTurn extends Command {
 		Robot.driveT.masterRight.setMotionMagicAcceleration(100);
 	}
 	
+	
 	public void execute() {
 		double currentAngle = Robot.gy.gyro.getAngle();
 		angleError = inputAngle - currentAngle;
 		Robot.driveT.masterLeft.set(Robot.driveT.masterLeft.getPosition() + (pAngleValue * angleError));
 		Robot.driveT.masterRight.set(Robot.driveT.masterRight.getPosition() - (pAngleValue * angleError));
 				
-		System.out.println((Robot.driveT.masterLeft.getPosition() + (pAngleValue * angleError))+" "+ (Robot.driveT.masterRight.getPosition() - (pAngleValue * angleError)));
+		//System.out.println((Robot.driveT.masterLeft.getPosition() + (pAngleValue * angleError))+" "+ (Robot.driveT.masterRight.getPosition() - (pAngleValue * angleError)));
 		
 	}
 	

@@ -5,12 +5,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StartRight extends CommandGroup{
 	
 	public StartRight() {
-		addSequential(new DriveEncoders(68.81));
-		addSequential(new Wait(), 2);
-		addSequential(new AutoTurn(-60));
-		addSequential(new Wait(), 2);
-		addSequential(new DriveEncoders(65));
-		addSequential(new Wait(), 2);
+		addSequential(new RetractSolenoid(),.5);
+		addSequential(new DriveEncoders(71));
+		addSequential(new Wait(),1);
+		addSequential(new AutoTurn(-59));
+		addSequential(new Wait(),1);
+		addSequential(new DriveEncoders(67));
+		addSequential(new Wait(),1);
+		addSequential(new ExtendSolenoid(),1);
+		addParallel(new MoveFeeder(-0.5));
+		addSequential(new DriveEncoders(-63));
+		addSequential(new Wait(),1);
+		addSequential(new AutoTurn(60));
+		addParallel(new MoveFeeder(0));
+		addParallel(new RetractSolenoid());
+		addSequential(new Wait(),1);
 	}
 
 	@Override

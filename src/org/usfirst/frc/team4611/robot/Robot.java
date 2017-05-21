@@ -111,8 +111,10 @@ public class Robot extends IterativeRobot {
 		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
 		spike = new relaySpike(2 , Relay.Direction.kForward);
 		gy = new Gyro();
+		System.out.println("Calibrating gyro. Can't touch this. Do, do do do. Do do. Do do. Can't touch this.");
+		System.out.println("But seriously, if the bot is moved right now, auto will NOT work.");
 		Robot.gy.gyro.calibrate();
-		
+		System.out.println("I'm safe to touch.");
 		this.chooser = new SendableChooser();
 		 	this.chooser.addDefault("Default ", new StartDefaultAuton());
 		 	this.chooser.addObject("Left of Airship ", new StartLeft());
@@ -120,7 +122,6 @@ public class Robot extends IterativeRobot {
 	        this.chooser.addObject("Right of Airship ",new StartRight());
 	        this.chooser.addObject("Test Encoder Drive ",new TestEncoderDriveBlock()); 
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);
-	        
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
 		
 		prefs = Preferences.getInstance();
@@ -160,6 +161,7 @@ public class Robot extends IterativeRobot {
 		//alliance = ds.getAlliance();
 		autoTime = 0;
 		spike.start();	
+		gy.gyro.reset();
 		//if (autonomousCommand != null) 
 			//autonomousCommand.start();
 		this.autonomousCommand = (Command) this.chooser.getSelected();

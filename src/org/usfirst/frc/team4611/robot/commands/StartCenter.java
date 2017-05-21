@@ -5,8 +5,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StartCenter extends CommandGroup{
 
 	public StartCenter() {
-		addSequential(new DriveEncoders(72.5));
-		addSequential(new Wait(), 2);
+		addSequential(new RetractSolenoid(),.5);
+		addSequential(new DriveEncoders(77));
+		addSequential(new Wait(), 1);
+		addSequential(new ExtendSolenoid(),1);
+		addParallel(new MoveFeeder(-0.5));
+		addSequential(new DriveEncoders(-50));
+		addParallel(new MoveFeeder(0));
+		addParallel(new RetractSolenoid());
 	}
 
 	@Override
