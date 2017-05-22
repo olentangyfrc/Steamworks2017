@@ -212,7 +212,7 @@ public class Robot extends IterativeRobot {
         fl.show(lightsGreen, ultra.roundedInches < 90);
         //System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
-        System.out.println("Angle: " + Robot.gy.gyro.getAngle());
+        //System.out.println("Angle: " + Robot.gy.gyro.getAngle());	//Debugging for gyroscope
 	}
         
 		/*double currentFrame = table2.getNumber("FrameRate", 0.0);
