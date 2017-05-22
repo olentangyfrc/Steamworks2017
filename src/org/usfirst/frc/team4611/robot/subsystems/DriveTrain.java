@@ -71,8 +71,8 @@ public class DriveTrain extends Subsystem{
 		masterLeft.changeControlMode(TalonControlMode.PercentVbus);
 		masterRight.changeControlMode(TalonControlMode.PercentVbus);
 		
-		masterLeft.set(-leftJoy.getY());
-		masterRight.set(rightJoy.getY());
+		masterLeft.set(Robot.oi.filter(-leftJoy.getY()));
+		masterRight.set(Robot.oi.filter(rightJoy.getY()));
 		
 		//System.out.println("RPM Left: " + masterLeft.getEncVelocity());
 		//System.out.println("RPM Right: " + masterRight.getEncVelocity());

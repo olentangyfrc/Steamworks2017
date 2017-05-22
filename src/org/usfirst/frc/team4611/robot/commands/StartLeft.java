@@ -20,6 +20,8 @@ public class StartLeft extends CommandGroup{
 		addParallel(new MoveFeeder(0));
 		addParallel(new RetractSolenoid());
 		addSequential(new Wait(),1);
+		addSequential(new DriveEncoders(80));
+		addSequential(new Wait(),1);
 	}
 
 	@Override

@@ -102,6 +102,7 @@ public class Robot extends IterativeRobot {
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
+		Robot.fl.makeBlue();
 		cl = new Climber();
 		testSol = new Solenoid(); 
 		ag = new Agitator();
@@ -113,7 +114,9 @@ public class Robot extends IterativeRobot {
 		gy = new Gyro();
 		System.out.println("Calibrating gyro. Can't touch this. Do, do do do. Do do. Do do. Can't touch this.");
 		System.out.println("But seriously, if the bot is moved right now, auto will NOT work.");
+		Robot.fl.makeRed();
 		Robot.gy.gyro.calibrate();
+		Robot.fl.makeBlue();
 		System.out.println("I'm safe to touch.");
 		this.chooser = new SendableChooser();
 		 	this.chooser.addDefault("Default ", new StartDefaultAuton());
@@ -142,6 +145,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		this.autonomousCommand = (Command) this.chooser.getSelected();
 	}
 
 	/**
@@ -164,7 +168,7 @@ public class Robot extends IterativeRobot {
 		gy.gyro.reset();
 		//if (autonomousCommand != null) 
 			//autonomousCommand.start();
-		this.autonomousCommand = (Command) this.chooser.getSelected();
+		//this.autonomousCommand = (Command) this.chooser.getSelected();
 		autonomousCommand.start();
 		
 		}
