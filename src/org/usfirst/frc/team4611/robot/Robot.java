@@ -37,11 +37,13 @@ import org.usfirst.frc.team4611.robot.commands.RetractSolenoid;
 import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
 import org.usfirst.frc.team4611.robot.commands.ExtendSolenoid;
 import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
+import org.usfirst.frc.team4611.robot.commands.driveVelocityByJoysticks;
 import org.usfirst.frc.team4611.robot.commands.relaySpike;
 import org.usfirst.frc.team4611.robot.commands.StartCenter;
 import org.usfirst.frc.team4611.robot.commands.StartDefaultAuton;
 import org.usfirst.frc.team4611.robot.commands.StartLeft;
 import org.usfirst.frc.team4611.robot.commands.StartRight;
+import org.usfirst.frc.team4611.robot.commands.TankDrive;
 import org.usfirst.frc.team4611.robot.commands.TestEncoderDriveBlock;
 import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
 import org.usfirst.frc.team4611.robot.commands.ultraDrive;
@@ -77,6 +79,7 @@ public class Robot extends IterativeRobot {
 	public static relaySpike spike;
 	
 	public int autoTime;
+	public static boolean lockdown;
 
 	public static boolean dir = false;
 

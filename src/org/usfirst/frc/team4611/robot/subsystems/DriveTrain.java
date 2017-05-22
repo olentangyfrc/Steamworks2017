@@ -3,6 +3,7 @@ package org.usfirst.frc.team4611.robot.subsystems;
 import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 import org.usfirst.frc.team4611.robot.commands.TankDrive;
+import org.usfirst.frc.team4611.robot.commands.driveVelocityByJoysticks;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -63,31 +64,103 @@ public class DriveTrain extends Subsystem{
 	
 	@Override
 	protected void initDefaultCommand() {
-		//When no other commands are running we run tankDrive
-		this.setDefaultCommand(new TankDrive());
+		// When no other commands are using the drivetrain we run this command
+		this.setDefaultCommand(new driveVelocityByJoysticks());
 	}
 
-	public void tankDrive(Joystick leftJoy, Joystick rightJoy) {
+	// Tells the talon to run the motor at the given percent
+	public void setOutput(double leftPercent, double rightPercent) {
 		masterLeft.changeControlMode(TalonControlMode.PercentVbus);
 		masterRight.changeControlMode(TalonControlMode.PercentVbus);
 		
-		masterLeft.set(-leftJoy.getY());
-		masterRight.set(rightJoy.getY());
-		
-		//System.out.println("RPM Left: " + masterLeft.getEncVelocity());
-		//System.out.println("RPM Right: " + masterRight.getEncVelocity());
+		masterLeft.set(leftPercent);
+		masterRight.set(rightPercent);
 	}
 
-
-
-	public void setDistance(double leftRotation, double rightRotation) {
-		//First we set the talons to run on position mode 
-		//Slaves dont convert from slave mode to position mode they just run the same amount as the master
+	// Tells the Talon to go to and hold the given position
+	// This is motion magic so it uses a special way of reaching the target.
+	// The "graph" below shows how the speed changes over time to reach the position.
+	/*        ________________
+	 *       /                \
+	 *      /                  \
+	 *     /                    \
+	 *    /                      \
+	 */
+	public void setPosition(double leftRotations, double rightRotations) {
+		// First we set the talons to run on the MotionMagic position mode 
+		// Slaves don't convert from slave mode to position mode they just run the same amount as the master
 		masterLeft.changeControlMode(TalonControlMode.MotionMagic);
 		masterRight.changeControlMode(TalonControlMode.MotionMagic);
 		
-		masterLeft.set(leftRotation);
-		masterRight.set(rightRotation);
+		masterLeft.set(leftRotations);
+		masterRight.set(rightRotations);
+	}
+	
+	// Tells the talon to go to and hold the given velocities.
+	public void setVelocity(double leftRPM, double rightRPM) {
+		// First we set the talons to run on speed mode 
+		// Slaves don't convert from slave mode to position mode they just run the same amount as the master
+		masterLeft.changeControlMode(TalonControlMode.Speed);
+		masterRight.changeControlMode(TalonControlMode.Speed);
+		
+		masterLeft.set(leftRPM);
+		masterRight.set(rightRPM);
+	}
+	
+	// Used to set the right PID values
+	public void setRightFPID(double F, double P, double I, double D) {
+		masterRight.setF(F);
+		masterRight.setP(P);
+		masterRight.setI(I);
+		masterRight.setD(D);
+	}
+	
+	// Used to set the right PID values
+	public void setLeftFPID(double F, double P, double I, double D) {
+		masterLeft.setF(F);
+		masterLeft.setP(P);
+		masterLeft.setI(I);
+		masterLeft.setD(D);
+	}
+	
+	// Sets the right cruise velocity and acceleration for use of the Motion magic position mode
+	public void setRightMotionMagic(double cruiseVelocity, double acceleraton) {
+		masterRight.setMotionMagicCruiseVelocity(cruiseVelocity);
+		masterRight.setMotionMagicAcceleration(acceleraton);
+	}
+	
+	// Sets the left cruise velocity and acceleration for use of the Motion magic position mode
+	public void setLeftMotionMagic(double cruiseVelocity, double acceleraton) {
+		masterLeft.setMotionMagicCruiseVelocity(cruiseVelocity);
+		masterLeft.setMotionMagicAcceleration(acceleraton);
+	}
+	
+	// Returns the current RPM of the left side of drive train
+	public double getLeftRPM() {
+		return masterLeft.getSpeed();
+	}
+	
+	// Returns the current RPM of the right side of drive train
+	public double getRightRPM() {
+		return masterRight.getSpeed();
+	}
+
+	// Returns the position in rotations of the left side of drive train
+	public double getLeftPosition() {
+		return masterLeft.getPosition();
+	}
+	
+	// Returns the position in rotations of the right side of drive train
+	public double getRightPosition() {
+		return masterRight.getPosition();
+	}
+	
+	// Sets output to neutral
+	public void idle() {
+		masterLeft.changeControlMode(TalonControlMode.PercentVbus);
+		masterRight.changeControlMode(TalonControlMode.PercentVbus);
+		masterLeft.set(0);
+		masterRight.set(0);
 	}
 
 }

@@ -19,13 +19,14 @@ public class TankDrive extends Command {
 	
 	public void execute() { 
 		//Here we just have to pass the tankDrive method the joysticks hopefully
-	     Robot.driveT.tankDrive(Robot.oi.leftJoy, Robot.oi.rightJoy);
+	     Robot.driveT.setOutput(-Robot.oi.oldFilter(Robot.oi.leftJoy.getY()),Robot.oi.oldFilter( Robot.oi.rightJoy.getY()));
 	}
 	
 	
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		
+        	return false;
 	}
 }

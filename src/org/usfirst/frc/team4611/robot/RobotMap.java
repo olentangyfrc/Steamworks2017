@@ -59,6 +59,22 @@ public class RobotMap {
     public static int cpr = 1440;
     public static double fValue = 1.5;
     public static double motionMagicP = 15;
+    
+    // Joystick
+ 	public static int leftJoystickPort = 0;
+ 	public static int rightJoystickPort = 1;
+ 	public static int shooterJoystickPort = 2;
+ 	public static double joystickCurve = 1;		// Strength of joystick curve. Here is the curve where j is the curve value and x is joystick:		j*x*x + (1-j)*x
+ 	public static double joystickDeadzone = .07;	// Joystick input has to me greater than this to drive the motors.
+ 	
+ 	// Constants specific to the bot
+ 	public static double maxRPM = 600;				// Mex RPM the bot should drive, used for calculations.
+ 	
+ 	// PID Values
+ 	public static double pForVelocity = 1;		// P and I while driving
+ 	public static double iForVelocity = 0;
+ 	public static double pForHoldingPosition = 20;	// P for lockdown mode
+ 	public static double fGain = 1023/(maxRPM/60/10*cpr);
 
 }
 	

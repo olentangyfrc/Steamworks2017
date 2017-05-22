@@ -52,7 +52,7 @@ public class DriveEncoders extends Command {
 	}
 	
 	protected void execute(){
-		Robot.driveT.setDistance(leftStart + rotations, rightStart + rotations);
+		Robot.driveT.setPosition(leftStart + rotations, rightStart + rotations);
 		angleError = this.startAngle - Robot.gy.gyro.getAngle();
 
 		int flipAcceleration = 1;
