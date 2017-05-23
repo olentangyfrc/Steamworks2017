@@ -17,10 +17,10 @@ public class DriveEncoders extends Command {
 	public double angleError;
 	public double pValueGyro;
 	public double inches;
-	public double leftVelocity = 100;
+	public double leftVelocity = 400;
 	public double leftAcceleration = 100;
 	public double rightAcceleration = 100;
-	public double rightVelocity = 100;
+	public double rightVelocity = 400;
 	
 	public DriveEncoders(double inches){
 		this.requires(Robot.driveT);
@@ -55,10 +55,10 @@ public class DriveEncoders extends Command {
 		Robot.driveT.setPosition(leftStart + rotations, rightStart + rotations);
 		angleError = this.startAngle - Robot.gy.gyro.getAngle();
 
-		int flipAcceleration = 1;
+		double flipAcceleration = 1;
 		if(Math.abs(leftStart + rotations - Robot.driveT.masterLeft.getPosition())<rotations/2)
 		{
-			flipAcceleration = -1;
+			flipAcceleration = -0.4;
 		}
 			
 		if (angleError > 0) { //Left	
