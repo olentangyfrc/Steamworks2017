@@ -16,7 +16,7 @@ public class StartLeft extends CommandGroup{
 		addParallel(new MoveFeeder(-0.5));
 		addSequential(new DriveEncoders(-31.5));
 		addSequential(new Wait(), .01);
-		addSequential(new AutoTurn(60));
+		addSequential(new AutoTurn(-60));
 		addParallel(new MoveFeeder(0));
 		addParallel(new RetractSolenoid());
 		addSequential(new Wait(), .01);
