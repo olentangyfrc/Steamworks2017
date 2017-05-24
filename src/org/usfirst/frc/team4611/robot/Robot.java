@@ -102,7 +102,6 @@ public class Robot extends IterativeRobot {
 		sw = new SingleWheelShooter();
 		fe = new Feeder();
 		fl = new FancyLightSet();
-		Robot.fl.makeBlue();
 		cl = new Climber();
 		testSol = new Solenoid(); 
 		ag = new Agitator();
@@ -114,9 +113,7 @@ public class Robot extends IterativeRobot {
 		gy = new Gyro();
 		System.out.println("Calibrating gyro. Can't touch this. Do, do do do. Do do. Do do. Can't touch this.");
 		System.out.println("But seriously, if the bot is moved right now, auto will NOT work.");
-		Robot.fl.makeRed();
 		Robot.gy.gyro.calibrate();
-		Robot.fl.makeBlue();
 		System.out.println("I'm safe to touch.");
 		this.chooser = new SendableChooser();
 		 	this.chooser.addDefault("Default ", new StartDefaultAuton());
@@ -125,6 +122,7 @@ public class Robot extends IterativeRobot {
 	        this.chooser.addObject("Right of Airship ",new StartRight());
 	        this.chooser.addObject("Test Encoder Drive ",new TestEncoderDriveBlock()); 
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);
+	    Robot.fl.makeGreen();
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
 		
 		prefs = Preferences.getInstance();
@@ -144,6 +142,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		Robot.fl.makeRed();
 		Scheduler.getInstance().run();
 		this.autonomousCommand = (Command) this.chooser.getSelected();
 	}
@@ -168,7 +167,7 @@ public class Robot extends IterativeRobot {
 		gy.gyro.reset();
 		//if (autonomousCommand != null) 
 			//autonomousCommand.start();
-		//this.autonomousCommand = (Command) this.chooser.getSelected();
+		this.autonomousCommand = (Command) this.chooser.getSelected();
 		autonomousCommand.start();
 		
 		}
@@ -179,6 +178,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		ultra.ultrasonicMeasurement();
+		Robot.fl.makeGreen();
 		Scheduler.getInstance().run();
 		//System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
@@ -211,9 +211,10 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
-		ultra.ultrasonicMeasurement();
-		lightsGreen = ultra.getInRange();
-        fl.show(lightsGreen, ultra.roundedInches < 90);
+		Robot.fl.makeGreen();
+		//ultra.ultrasonicMeasurement();
+		//lightsGreen = ultra.getInRange();
+        //fl.show(lightsGreen, ultra.roundedInches < 90);
         //System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
         //System.out.println("Angle: " + Robot.gy.gyro.getAngle());	//Debugging for gyroscope
