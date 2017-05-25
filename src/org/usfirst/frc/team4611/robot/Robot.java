@@ -140,6 +140,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		this.autonomousCommand = (Command) this.chooser.getSelected();
 	}
 
 	@Override
@@ -179,6 +180,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		ultra.ultrasonicMeasurement();
 		Scheduler.getInstance().run();
+		Robot.fl.makeBlue();
 		//System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
 		
@@ -210,9 +212,10 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
-		ultra.ultrasonicMeasurement();
-		lightsGreen = ultra.getInRange();
-        fl.show(lightsGreen, ultra.roundedInches < 90);
+		//Robot.fl.makeBlue();
+		//ultra.ultrasonicMeasurement();
+		//lightsGreen = ultra.getInRange();
+        //fl.show(lightsGreen, ultra.roundedInches < 90);
         //System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
         //System.out.println("Angle: " + Robot.gy.gyro.getAngle());	//Debugging for gyroscope

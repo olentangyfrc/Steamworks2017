@@ -59,10 +59,14 @@ public class driveVelocityByJoysticks extends Command {
     	}
     	
     	// If it is in lockdown
-    	if(Robot.lockdown)
-    		Robot.driveT.setPosition(lStoppedPosition, rStoppedPosition); // Tell it to go to the position it is locked to.
-    	else // Otherwise
+    	if(Robot.lockdown) {
+    		Robot.driveT.setPosition(lStoppedPosition, rStoppedPosition);// Tell it to go to the position it is locked to.
+    		Robot.fl.turnOff();
+    	}
+    	else {// Otherwise
     		Robot.driveT.setVelocity(leftTargetVelocity, rightTargetVelocity); // Go the speed given by the joysicks
+    		Robot.fl.makeBlue();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
