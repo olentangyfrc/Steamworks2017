@@ -9,11 +9,11 @@ public class StartCenter extends CommandGroup{
 		addSequential(new DriveEncoders(73));
 		addSequential(new Wait(), .01);
 		addSequential(new ExtendSolenoid(),1);
-		addParallel(new MoveFeeder(-0.5));
+		/*addParallel(new MoveFeeder(-0.5));
 		addSequential(new DriveEncoders(-50));
 		addParallel(new MoveFeeder(0));
 		addParallel(new RetractSolenoid());
-		addSequential(new Wait(), .01);
+		addSequential(new Wait(), .01);*/
 	}
 
 	@Override
