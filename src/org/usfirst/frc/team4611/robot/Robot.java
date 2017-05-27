@@ -179,7 +179,6 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		ultra.ultrasonicMeasurement();
 		Scheduler.getInstance().run();
-		Robot.fl.makeBlue();
 		//System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
 		
