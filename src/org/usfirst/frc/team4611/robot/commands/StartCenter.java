@@ -6,7 +6,7 @@ public class StartCenter extends CommandGroup{
 
 	public StartCenter() {
 		addSequential(new RetractSolenoid(),.5);
-		addSequential(new DriveEncoders(77));
+		addSequential(new DriveEncoders(73));
 		addSequential(new Wait(), .01);
 		addSequential(new ExtendSolenoid(),1);
 		addParallel(new MoveFeeder(-0.5));

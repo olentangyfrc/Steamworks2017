@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StartDefaultAuton extends CommandGroup{
 	
 	public StartDefaultAuton() {
-	
+		addSequential(new DriveEncoders(110));
 	}
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
