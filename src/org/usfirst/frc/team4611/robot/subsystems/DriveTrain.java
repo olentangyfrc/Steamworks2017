@@ -64,7 +64,6 @@ public class DriveTrain extends Subsystem{
 		masterRight.setCurrentLimit(25);
 		slaveLeft.setCurrentLimit(25);
 		slaveRight .setCurrentLimit(25);
-		
 	}
 	
 	@Override
