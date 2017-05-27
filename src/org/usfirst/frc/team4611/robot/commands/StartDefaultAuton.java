@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class StartDefaultAuton extends CommandGroup{
 	
-	public StartDefaultAuton(){
+	public StartDefaultAuton() {
 	
 	}
 	protected boolean isFinished() {

@@ -123,7 +123,6 @@ public class Robot extends IterativeRobot {
 		 	this.chooser.addObject("Left of Airship ", new StartLeft());
 		 	this.chooser.addObject("Middle of Airship ", new StartCenter());
 	        this.chooser.addObject("Right of Airship ",new StartRight());
-	        this.chooser.addObject("Test Encoder Drive ",new TestEncoderDriveBlock()); 
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
 		
