@@ -32,19 +32,6 @@ public class FancyLightSet {
 		fancyLights2 = new Relay(RobotMap.fancyPort2, Direction.kBoth);
 	}
 	
-	public void show(boolean inRange, boolean gear){
-		//turns lights green if in range, yellow for gear, blue if not
-		if(inRange){
-			makeGreen();
-		}
-		else if (gear){
-			makeAmericaGreatAgain();
-		}
-		else{
-			makeBlue();
-		}
-	}
-	
 	public void makeGreen(){
 		fancyLights1.set(Relay.Value.kReverse);
 		fancyLights2.set(Relay.Value.kOn);
@@ -77,7 +64,7 @@ public class FancyLightSet {
 	}
 	
 	
-	public void makeAmericaGreatAgain(){
+	public void makeWhite(){
 		fancyLights1.set(Relay.Value.kReverse);
 		fancyLights2.set(Relay.Value.kOff);
 	}

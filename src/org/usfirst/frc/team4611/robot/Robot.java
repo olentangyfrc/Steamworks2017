@@ -119,7 +119,7 @@ public class Robot extends IterativeRobot {
 		Robot.gy.gyro.calibrate();
 		System.out.println("I'm safe to touch.");
 		this.chooser = new SendableChooser();
-		 	this.chooser.addDefault("Default ", new StartDefaultAuton());
+		 	this.chooser.addDefault("ALEX KING! DON'T SELECT ME!", new StartDefaultAuton());
 		 	this.chooser.addObject("Left of Airship ", new StartLeft());
 		 	this.chooser.addObject("Middle of Airship ", new StartCenter());
 	        this.chooser.addObject("Right of Airship ",new StartRight());

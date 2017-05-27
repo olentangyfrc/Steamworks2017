@@ -57,14 +57,16 @@ public class RobotMap {
     public static double ultraUpperBound = 96;
     
     public static int cpr = 1440; //Codes per revolution on the encoder
-    public static double fValue = 1.5; 
-    public static double motionMagicP = 15;
+    public static double fValue = 1.5; //how fast the motor spins per unit of power
+    //converts output of pid loop to motor voltage
+    public static double motionMagicP = 15; //P value for motionMagic
+    //The proportional adjustment for inconsistencies in motion magic curve
     
     // Joystick
  	public static int leftJoystickPort = 0;
  	public static int rightJoystickPort = 1;
  	public static int shooterJoystickPort = 2;
- 	public static double joystickCurve = 1; // Strength of joystick curve. Here is the curve where j is the curve value and x is joystick:		j*x*x + (1-j)*x
+ 	public static double joystickCurve = 1; // Strength of joystick curve. Here is the curve where j is the curve value and x is joystick: j*x*x + (1-j)*x
  	public static double joystickDeadzone = .07; //Joystick input has to me greater than this to drive the motors.
  	
  	// Constants specific to the bot

@@ -13,6 +13,9 @@ public class TankDrive extends Command {
 	}
 	
 	public void start() {
+		//start by changing control modes into Percent Vbus
+		//most basic control mode is Percent Vbus, 
+		//where 1 stands for full forward, 0 for stop and -1 for reverse.
 		Robot.driveT.masterLeft.changeControlMode(TalonControlMode.PercentVbus);
 		Robot.driveT.masterRight.changeControlMode(TalonControlMode.PercentVbus);
 	}
