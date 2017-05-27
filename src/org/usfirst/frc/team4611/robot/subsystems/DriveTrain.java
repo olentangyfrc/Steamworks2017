@@ -60,10 +60,15 @@ public class DriveTrain extends Subsystem{
 		masterLeft.configEncoderCodesPerRev(RobotMap.cpr/4);
 		masterRight.configEncoderCodesPerRev(RobotMap.cpr/4);
 		
-		masterLeft.setCurrentLimit(25);
-		masterRight.setCurrentLimit(25);
-		slaveLeft.setCurrentLimit(25);
-		slaveRight .setCurrentLimit(25);
+		masterLeft.EnableCurrentLimit(true);
+		masterRight.EnableCurrentLimit(true);
+		slaveLeft.EnableCurrentLimit(true);
+		slaveRight.EnableCurrentLimit(true);
+		
+		masterLeft.setCurrentLimit(30);
+		masterRight.setCurrentLimit(30);
+		slaveLeft.setCurrentLimit(30);
+		slaveRight .setCurrentLimit(30);
 	}
 	
 	@Override
