@@ -12,8 +12,8 @@ public class StartRight extends CommandGroup{
 		addSequential(new Wait(), .01);
 		addSequential(new DriveEncoders(67));
 		addSequential(new Wait(), .01);		//Supah short
-		/*addSequential(new ExtendSolenoid(),1);
-		addParallel(new MoveFeeder(-0.5));
+		addSequential(new ExtendSolenoid(),1);
+		/*addParallel(new MoveFeeder(-0.5));
 		addSequential(new DriveEncoders(-31.5));
 		addSequential(new Wait(), .01);
 		addSequential(new AutoTurn(60));
