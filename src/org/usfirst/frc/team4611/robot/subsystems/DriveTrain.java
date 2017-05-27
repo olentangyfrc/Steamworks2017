@@ -65,10 +65,10 @@ public class DriveTrain extends Subsystem{
 		slaveLeft.EnableCurrentLimit(true);
 		slaveRight.EnableCurrentLimit(true);
 		
-		masterLeft.setCurrentLimit(30);
-		masterRight.setCurrentLimit(30);
-		slaveLeft.setCurrentLimit(30);
-		slaveRight .setCurrentLimit(30);
+		masterLeft.setCurrentLimit(25);
+		masterRight.setCurrentLimit(25);
+		slaveLeft.setCurrentLimit(25);
+		slaveRight .setCurrentLimit(25);
 	}
 	
 	@Override

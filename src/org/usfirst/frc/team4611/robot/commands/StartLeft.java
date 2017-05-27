@@ -6,9 +6,9 @@ public class StartLeft extends CommandGroup{
 	
 	public StartLeft() {
 		addSequential(new RetractSolenoid(),.5);
-		addSequential(new DriveEncoders(62));
+		addSequential(new DriveEncoders(64));
 		addSequential(new Wait(), .01);
-		addSequential(new AutoTurn(59));
+		addSequential(new AutoTurn(58));
 		addSequential(new Wait(), .01);
 		addSequential(new DriveEncoders(67));
 		addSequential(new Wait(), .01);		//Supah short
