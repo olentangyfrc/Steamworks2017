@@ -31,7 +31,7 @@ public class DriveTrain extends Subsystem{
 		slaveRight = new CANTalon (RobotMap.rearRightWheel);
 		slaveLeft = new CANTalon (RobotMap.rearLeftWheel);
 		
-		//There are slave talons too for the back of the drive train (maybe this will work (probably wont)
+		//There are slave talons too for the back of the drive train
 		//The slaved talons just copy what their master talon does (established using slave.set(master.getDeviceID))
 		slaveLeft.changeControlMode(TalonControlMode.Follower);
 		slaveLeft.set(masterLeft.getDeviceID());
@@ -70,6 +70,8 @@ public class DriveTrain extends Subsystem{
 
 	// Tells the talon to run the motor at the given percent
 	public void setOutput(double leftPercent, double rightPercent) {
+		//most basic control mode is Percent Vbus, 
+		//where 1 stands for full forward, 0 for stop and -1 for reverse.
 		masterLeft.changeControlMode(TalonControlMode.PercentVbus);
 		masterRight.changeControlMode(TalonControlMode.PercentVbus);
 		
@@ -157,9 +159,11 @@ public class DriveTrain extends Subsystem{
 	
 	// Sets output to neutral
 	public void idle() {
-		masterLeft.changeControlMode(TalonControlMode.PercentVbus);
+		//most basic control mode is Percent Vbus, 
+		//where 1 stands for full forward, 0 for stop and -1 for reverse.
+		masterLeft.changeControlMode(TalonControlMode.PercentVbus); 
 		masterRight.changeControlMode(TalonControlMode.PercentVbus);
-		masterLeft.set(0);
+		masterLeft.set(0); //stops motors
 		masterRight.set(0);
 	}
 

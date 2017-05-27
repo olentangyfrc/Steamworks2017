@@ -26,14 +26,14 @@ public class DriveEncoders extends Command {
 		this.requires(Robot.driveT); //Requires Drive Train
 		this.requires(Robot.gy); //And the gyro
 		this.circumference = Math.PI * 6; //Get the Circumference of the wheel
-		this.rotations = inches / this.circumference; //Divide input of inches by circuference to get rotations needed
+		this.rotations = inches / this.circumference; //Divide input of inches by circumference to get rotations needed
 	}
 	
 	public void initialize(){
-		this.pValueGyro = 3.5; //RPM adjustment proportional to drift. If off by one degree adjust proportinally to this value
+		this.pValueGyro = 3.5; //RPM adjustment proportional to drift. If off by one degree adjust proportionally to this value
 		
 		Robot.driveT.masterLeft.setF(RobotMap.fValue); //Sorta predicts what the PID loop will output
-		Robot.driveT.masterLeft.setP(RobotMap.motionMagicP); //The proportional adjustment for inconsistencies in motion majic curve
+		Robot.driveT.masterLeft.setP(RobotMap.motionMagicP); //The proportional adjustment for inconsistencies in motion magic curve
 		Robot.driveT.masterLeft.setI(0);
 		Robot.driveT.masterLeft.setD(0);
 		Robot.driveT.masterLeft.setMotionMagicCruiseVelocity(leftVelocity);
