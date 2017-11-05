@@ -126,9 +126,9 @@ public class Robot extends IterativeRobot {
 	        SmartDashboard.putData("Auto Chooser ", this.chooser);
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
 		
-		prefs = Preferences.getInstance();
-		// table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
-		// VA data to roborio. Not currently in use		
+		 prefs = Preferences.getInstance();
+		 table = NetworkTable.getTable("Vision"); //Network tables to pull
+		 //VA data to roborio. Not currently in use		
 		 //table = NetworkTable.getTable("GRIP/data"); //Network tables to pull
 	}
 
@@ -219,11 +219,11 @@ public class Robot extends IterativeRobot {
         //System.out.println("Angle: " + Robot.gy.gyro.getAngle());	//Debugging for gyroscope
 	}
         
-		/*double currentFrame = table2.getNumber("FrameRate", 0.0);
+		double angle = table.getNumber("angle", 0.0);
 		
-		Scheduler.getInstance().run();	
-		ultra.ultrasonicMeasurement();
-		}
+		//Scheduler.getInstance().run();	
+		//ultra.ultrasonicMeasurement();
+		//}
 	/**
 	 * This function is called periodically during test mode
 	 */
