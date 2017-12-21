@@ -21,8 +21,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
@@ -32,19 +30,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team4611.robot.commands.RetractSolenoid;
-import org.usfirst.frc.team4611.robot.commands.MoveFeeder;
-import org.usfirst.frc.team4611.robot.commands.ExtendSolenoid;
-import org.usfirst.frc.team4611.robot.commands.UltrasonicRange;
-import org.usfirst.frc.team4611.robot.commands.relaySpike;
-import org.usfirst.frc.team4611.robot.commands.StartCenter;
-import org.usfirst.frc.team4611.robot.commands.StartDefaultAuton;
-import org.usfirst.frc.team4611.robot.commands.StartLeft;
-import org.usfirst.frc.team4611.robot.commands.StartRight;
-import org.usfirst.frc.team4611.robot.commands.TestEncoderDriveBlock;
-import org.usfirst.frc.team4611.robot.commands.FancyLightSet;
-import org.usfirst.frc.team4611.robot.commands.ultraDrive;
 
 
 /**
@@ -59,30 +44,17 @@ public class Robot extends IterativeRobot {
 	// public static final ExampleSubsystem exampleSubsystem = new
 	// ExampleSubsystem();
 	public static OI oi;
-	public static DriveTrain driveT;
 
-	public static SingleWheelShooter sw;
-	public static Climber cl;
-	public static Agitator ag;
-	public static UltrasonicRange ultra;
-	public static Gyro gy;
-
-	public UltrasonicRange ultra2;
-	public static FancyLightSet fl;
-    public boolean lightsGreen;
-
-	public static Feeder fe;
-	public static Solenoid testSol;
-	public static Timer time;
-	public static relaySpike spike;
+	
 	
 	public int autoTime;
 
 	public static boolean dir = false;
-
+	
+	public static DriveTrain tankDrive;
+	
 	public static Preferences prefs ;
 	Command autonomousCommand;
-	SendableChooser chooser;
 
 	public static NetworkTable table;
 
@@ -98,30 +70,11 @@ public class Robot extends IterativeRobot {
 		// server = CameraServer.getInstance();
 		// server.setQuality(50);
 		 //server.startAutomaticCapture();
-		driveT = new DriveTrain(); 
-		sw = new SingleWheelShooter();
-		fe = new Feeder();
-		fl = new FancyLightSet();
-		cl = new Climber();
-		testSol = new Solenoid(); 
-		ag = new Agitator();
+		
+		tankDrive = new DriveTrain();
 		oi = new OI();
-		Robot.driveT.masterLeft.setEncPosition(0);
-		Robot.driveT.masterRight.setEncPosition(0);
-		ultra = new UltrasonicRange(RobotMap.ultraSonicPort, "Ultrasonic Range 1", "in range 1");
-		spike = new relaySpike(2 , Relay.Direction.kForward);
-		gy = new Gyro();
-		System.out.println("Calibrating gyro. Can't touch this. Do, do do do. Do do. Do do. Can't touch this.");
-		System.out.println("But seriously, if the bot is moved right now, auto will NOT work.");
-		Robot.gy.gyro.calibrate();
-		System.out.println("I'm safe to touch.");
-		this.chooser = new SendableChooser();
-		 	this.chooser.addDefault("ALEX DONT SELECT THIS", new StartDefaultAuton());
-		 	this.chooser.addObject("Left of Airship ", new StartLeft());
-		 	this.chooser.addObject("Middle of Airship ", new StartCenter());
-	        this.chooser.addObject("Right of Airship ",new StartRight());
-	        SmartDashboard.putData("Auto Chooser ", this.chooser);
-	    Robot.fl.makeGreen();
+		
+		
 		//this.autonomousCommand = new RunAuton(startPosition.RIGHT);
 		
 		prefs = Preferences.getInstance();
@@ -141,9 +94,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		Robot.fl.makeRed();
 		Scheduler.getInstance().run();
-		this.autonomousCommand = (Command) this.chooser.getSelected();
 	}
 
 	/**
@@ -162,12 +113,8 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		//alliance = ds.getAlliance();
 		autoTime = 0;
-		spike.start();	
-		gy.gyro.reset();
 		//if (autonomousCommand != null) 
 			//autonomousCommand.start();
-		this.autonomousCommand = (Command) this.chooser.getSelected();
-		autonomousCommand.start();
 		
 		}
 
@@ -176,8 +123,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		ultra.ultrasonicMeasurement();
-		Robot.fl.makeGreen();
 		Scheduler.getInstance().run();
 		//System.out.println("Left Rotations: " + Robot.driveT.masterLeft.getPosition());
 		//System.out.println("Right Rotations: " + Robot.driveT.masterRight.getPosition());
@@ -210,7 +155,6 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		LiveWindow.run();
-		Robot.fl.makeGreen();
 		//ultra.ultrasonicMeasurement();
 		//lightsGreen = ultra.getInRange();
         //fl.show(lightsGreen, ultra.roundedInches < 90);
