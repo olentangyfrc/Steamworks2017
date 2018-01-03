@@ -25,10 +25,10 @@ public class ButtonTest extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	buttonState = Robot.oi.controller.getXButton();
-    	if(buttonState = true) {
-    		System.out.println("Stuff)");
-    		Robot.oi.controller.setRumble(GenericHID.RumbleType.kRightRumble, .3);
+    	buttonState = Robot.oi.controller.getXButton(); //would have just put this  in the if but it said it had to be a variable
+    	if(buttonState = true) {//most of the button methods return a boolean so if it is held down we will initiate the command
+    		System.out.println("Stuff)");//a testing print
+    		Robot.oi.controller.setRumble(GenericHID.RumbleType.kRightRumble, .3); //should cause the controller to shake if that is implemented into a gamepad
     	}
     }
 

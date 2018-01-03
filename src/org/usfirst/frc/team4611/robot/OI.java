@@ -19,27 +19,24 @@ public class OI {
 
     //Instantiate Joysticks on ports 0 and 1.
     public XboxController controller;
+    /*not sure if our controller will be recognized as an xbox controller because ours is a gamepad
+     * but the xbox controller class has better methods if it does not work then we will switch it
+     * to a gamepad before doing that check drivetrain code*/
     
     public OI() {
-    	//joysticks
+    	//joysticks and controllers
     	controller = new XboxController(0);
-        //buttons / axis
+        //buttons / axis NOT NEEDED FOR CONTROLLER cannot instantiate buttons must use get commands from xboxcontroller or gamepad class
     	
     }
 
-    public double filter(double raw) // Applies a deadzone and curve
+    public double filter(double raw) 
 	 {
-		 if (Math.abs(raw) < RobotMap.joystickDeadzone)
-			 // If in the deadzone, set motor to 0
-			 return 0;
-		 else 
-		 {
-			 // Flip joystick input
-			 raw = -raw;
-			 
-			 // Apply curve
-			 return  RobotMap.joystickCurve * raw * Math.abs(raw) + (1-RobotMap.joystickCurve) * raw;  
-		 }
+    	if (Math.abs(raw) < .20) {
+            return 0; //If the value passed is less than 20% ignore it. This is reffered to as a deadzone
+        } else {
+            return  raw * 0.7; //Set the output to a ceratin percent of of the input
+        }
 	 }
 
 }
