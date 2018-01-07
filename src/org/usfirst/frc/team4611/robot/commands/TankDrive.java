@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class TankDrive extends Command{
 	
+	public double rightJoyVal;
+	public double leftJoyVal;
+	
 	public TankDrive(){
 		this.requires(Robot.tankDrive); //This command uses this subsystem
 	}
@@ -15,8 +18,8 @@ public class TankDrive extends Command{
 	protected void initialize() {}
 	
 	protected void execute() { //execute is called every 20 miliseconds
-		double rightJoyVal = Robot.oi.filter(Robot.oi.controller.getY(GenericHID.Hand.kLeft)); //Grab the Y value of the joystick and pass 
-		double leftJoyVal = Robot.oi.filter(Robot.oi.controller.getY(GenericHID.Hand.kRight));; //it through the filter 
+		rightJoyVal = Robot.oi.filter(Robot.oi.controller.getY(GenericHID.Hand.kLeft)); //Grab the Y value of the joystick and pass 
+		leftJoyVal = Robot.oi.filter(Robot.oi.controller.getY(GenericHID.Hand.kRight)); //it through the filter 
 	    Robot.tankDrive.move(leftJoyVal, rightJoyVal); //Then pass that double to the method "move" in tankDrive
 	  }
 	

@@ -26,6 +26,8 @@ public class OI {
     public OI() {
     	//joysticks and controllers
     	controller = new XboxController(0);
+    	
+    	
         //buttons / axis NOT NEEDED FOR CONTROLLER cannot instantiate buttons must use get commands from xboxcontroller or gamepad class
     	
     }
@@ -35,7 +37,7 @@ public class OI {
     	if (Math.abs(raw) < .20) {
             return 0; //If the value passed is less than 20% ignore it. This is reffered to as a deadzone
         } else {
-            return  raw * 0.7; //Set the output to a ceratin percent of of the input
+            return  raw * 0.1; //Set the output to a ceratin percent of of the input
         }
 	 }
 

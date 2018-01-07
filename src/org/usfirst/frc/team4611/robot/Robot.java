@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 
 	// public static final ExampleSubsystem exampleSubsystem = new
 	// ExampleSubsystem();
-	public static OI oi;
+	
 
 	
 	
@@ -57,8 +57,10 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 
 	public static NetworkTable table;
-
+	
 	CameraServer server;
+	
+	public static OI oi;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
