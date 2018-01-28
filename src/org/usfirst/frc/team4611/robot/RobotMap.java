@@ -18,7 +18,7 @@ public class RobotMap {
 
     //CAN Ports
     public static int powerdis = 1;
-    public static int singleShooter = 61; //talon port
+    //public static int singleShooter = 61; //talon port
 
     //speed variables
     //public static double shooterTargetSpeed = -3000.0;
@@ -30,7 +30,8 @@ public class RobotMap {
     public static int Feeder= 4;
     public static int Climber = 6;
     public static int Agitator = 7;
-    
+    public static int singleShooter = 8; //talon port
+
 
 	public static int fancyPort1 = 0;
 	public static int fancyPort2 = 1;

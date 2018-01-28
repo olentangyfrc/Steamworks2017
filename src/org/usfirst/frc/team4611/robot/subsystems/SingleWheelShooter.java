@@ -4,24 +4,28 @@ import org.usfirst.frc.team4611.robot.Robot;
 import org.usfirst.frc.team4611.robot.RobotMap;
 import org.usfirst.frc.team4611.robot.commands.SingleWheelShoot;
 
-import com.ctre.CANTalon;
-import com.ctre.CANTalon.FeedbackDevice;
-import com.ctre.CANTalon.TalonControlMode;
+import edu.wpi.first.wpilibj.Victor;
+
+//import com.ctre.CANTalon;
+//import com.ctre.CANTalon.FeedbackDevice;
+//import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SingleWheelShooter extends Subsystem{
 	
-	private CANTalon singleWheelShooter;
-	private FeedbackDevice shooterEncoder;
+	//private CANTalon singleWheelShooter;
+	private Victor singleWheelShooter;
+	//private FeedbackDevice shooterEncoder;
 	
 	public SingleWheelShooter(){
-		this.singleWheelShooter = new CANTalon (RobotMap.singleShooter); //Create a CANTalon attached to port 61		
+		this.singleWheelShooter = new Victor(RobotMap.singleShooter); //Create a CANTalon attached to port 61
+		/*
 		shooterEncoder = (FeedbackDevice.QuadEncoder); //The feedback device called shooterEncoder is a Quadrature Encoder
 		singleWheelShooter.setFeedbackDevice(shooterEncoder); //The feedback device plugged into the Talon is shooterEncoder
 		singleWheelShooter.setPosition(0); //Start the encoder at 0
-		singleWheelShooter.reverseSensor(false); //Reverse the sensor if needed
+		singleWheelShooter.reverseSensor(false); //Reverse the sensor if need	ed
 		singleWheelShooter.configEncoderCodesPerRev(20); //There are 20 position units in a revolution for the am-3314a encoder
 		
 		//PID loops account for drops in speed by pushing more voltage toward the motor
@@ -33,9 +37,10 @@ public class SingleWheelShooter extends Subsystem{
         
         singleWheelShooter.configNominalOutputVoltage(+0f, -0f); //Sets the lowest amount of voltage that can go to the motor
         singleWheelShooter.configPeakOutputVoltage(+12f, -12f); //Sets the highest amount of voltage that can go to the motor
+        */
 	}
 	public void shoot(double targetSpeed){   
-		singleWheelShooter.changeControlMode(TalonControlMode.Speed); //Now what we "set" the motor to isn't percentage but speed
+		// singleWheelShooter.changeControlMode(TalonControlMode.Speed); //Now what we "set" the motor to isn't percentage but speed
 		singleWheelShooter.set(targetSpeed);
 		System.out.println("Shooter speed:" + singleWheelShooter.getSpeed());
 	}
